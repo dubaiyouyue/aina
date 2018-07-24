@@ -1,0 +1,107 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="format-detection" content="telephone=no" />
+<title>会员中心-我的余额</title>
+<!-------------- css start -------------->
+<!--全部css-->
+<link href="css/style.css" type="text/css" rel="stylesheet"  />
+<!-------------- css end ---------------->
+
+<!-------------- js start -------------->
+<!--手机布局rem-->
+<script src="js/rem.js"></script>
+<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+
+<script src="js/layer.js"></script>
+<!-------------- js end ----------------> 
+<style>
+.yue .yuetubiao {
+    background: url(../images/huiyuanshouyetubiao.png) no-repeat left;
+    background-position: 16px 10px;
+    padding-left: 44px;
+}.yue p {
+    padding: 15px;
+}
+</style>  
+</head>
+
+<body style="background-color:#EEEEEE;">
+<!---------------------------- 文字我的余额start ---------------------------->
+<div class="top">
+   <div class="fanhui"><a  onclick="history.go(-1)"  style="cursor:pointer;"><img src="images/fh.png" width="9" height="16" /></a></div>
+   <div class="baizi">我的余额</div>
+</div>
+<!---------------------------- 文字我的余额end ---------------------------->
+
+
+
+
+<!---------------------------- 充值start ---------------------------->
+  <div class="yue" style="margin-top:2.25rem;height:auto;">
+     <p class="yuetubiao" style="position: relative;    height: 100%;">我的余额（元）
+       <span class="jine" style="    left: 115px;top: 16px;"><?php
+		echo $s['yue']+0;
+		?></span>
+       <span class="chongzhi" style="top: 0.55rem;width: 24.1px;height: 16px;display:none;" id="chongzhichongzhi" onclick="chongzhi()">充值</span>  
+     </p>
+      <p style="display:none;<?php
+		if(!$user['vip']) echo'color:yellow;background-color: #00415D;';
+		else echo 'color:red;';
+		?> text-align:center;"><?php
+		if($user['vip']) echo'您已是';
+		else echo'充值满￥'.$config['chongzhihuiyuan'].'可升级';
+	 ?>VIP会员购买享受{$config.vipcegg}折扣</p>
+  </div>
+<!---------------------------- 充值ends ---------------------------->
+ 
+
+<!---------------------------- 充值记录start ---------------------------->
+<div class="chouzhijilu">
+  <div class="czjlwz">充值记录</div>
+  <div class="czjjnr" style="padding-bottom:0.25rem;">
+     <span class="czsj" style="width:4.25rem; display:inline-block; text-align:center;">充值时间</span>
+     <span class="czfs" style="width:3.6rem; display:inline-block; text-align:center;">充值方式</span>
+     <span class="czze" style="width:3.75rem; display:inline-block; text-align:center;">金额（元）</span>
+     <span class="czzt" style="width:3rem; display:inline-block; text-align:center;">充值状态</span>
+  </div>
+<?php
+	foreach($sjl as $k=>$v){
+		if(!$v['zsyue']) $v['zsyue']=0;
+?>
+  <div class="jiange" style="padding-top:0.5rem; padding-bottom:0.25rem;">
+     <span class="xxsj" style="width:4.25rem; display:inline-block; text-align:center;">{$v.ctime|time_format=###,'Y.m.d'}</span>
+     <span class="xxfs" style="width:3.6rem; display:inline-block; text-align:center;">微信零钱</span>
+     <span class="xxfs" style="width:3.75rem; display:inline-block; text-align:center;">{$v.jine}(赠送{$v.zsyue})</span>
+     <span class="xxzt" style="width:3rem; display:inline-block; text-align:center;">成功</span>
+  </div>
+  
+<?php
+}?>
+  
+  <div class="clearfloat"></div>
+</div>
+  
+<!---------------------------- 充值记录end ---------------------------->
+<script>
+immm='<div style="height: 100%;background:url(data:image/gif;base64,R0lGODlhEAAQALMPAHp6evf394qKiry8vJOTk83NzYKCgubm5t7e3qysrMXFxe7u7pubm7S0tKOjo////yH/C05FVFNDQVBFMi4wAwEAAAAh+QQJCAAPACwAAAAAEAAQAAAETPDJSau9NRDAgWxDYGmdZADCkQnlU7CCOA3oNgXsQG2FRhUAAoWDIU6MGeSDR0m4ghRa7JjIUXCogqQzpRxYhi2HILsOGuJxGcNuTyIAIfkECQgADwAsAAAAABAAEAAABGLwSXmMmjhLAQjSWDAYQHmAz8GVQPIESxZwggIYS0AIATYAvAdh8OIQJwRAQbJkdjAlUCA6KfU0VEmyGWgWnpNfcEAoAo6SmWtBUtCuk9gjwQKeQAeWYQAHIZICKBoKBncTEQAh+QQJCAAPACwAAAAAEAAQAAAEWvDJORejGCtQsgwDAQAGGWSHMK7jgAWq0CGj0VEDIJxPnvAU0a13eAQKrsnI81gqAZ6AUzIonA7JRwFAyAQSgCQsjCmUAIhjDEhlrQTFV+lMGLApWwUzw1jsIwAh+QQJCAAPACwAAAAAEAAQAAAETvDJSau9L4QaBgEAMWgEQh0CqALCZ0pBKhRSkYLvM7Ab/OGThoE2+QExyAdiuexhVglKwdCgqKKTGGBgBc00Np7VcVsJDpVo5ydyJt/wCAAh+QQJCAAPACwAAAAAEAAQAAAEWvDJSau9OAwCABnBtQhdCQjHlQhFWJBCOKWPLAXk8KQIkCwWBcAgMDw4Q5CkgOwohCVCYTIwdAgPolVhWSQAiN1jcLLVQrQbrBV4EcySA8l0Alo0yA8cw+9TIgAh+QQFCAAPACwAAAAAEAAQAAAEWvDJSau9WA4AyAhWMChPwXHCQRUGYARgKQBCzJxAQgXzIC2KFkc1MREoHMTAhwQ0Y5oBgkMhAAqUw8mgWGho0EcCx5DwaAUQrGXATg6zE7bwCQ2sAGZmz7dEAAA7);background-repeat: no-repeat;background-position: center;"></div>';
+function chongzhi(){
+$('#chongzhichongzhi').html(immm);
+$('#chongzhichongzhi').css('backgroundColor','#fff');
+//Ajax获取
+$.post('/index.php?s=/addon/WeiSite/WeiSite/chongzhi/', {}, function(str){
+    layer.open({
+		title:'余额充值',
+		shade: [0.8, '#393D49'],
+        type: 1,
+        content: str //注意，如果str是object，那么需要字符拼接。
+    });
+});
+
+}
+</script>
+<include file="Addons/WeiSite/View/default/TemplateIndex/ColorV1/footm.html" />

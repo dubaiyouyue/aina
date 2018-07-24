@@ -1,0 +1,418 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="format-detection" content="telephone=no" />
+
+<link href="css/css.css" type="text/css" rel="stylesheet" />
+
+<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+
+<script src="js/layer.js"></script>
+
+
+ 
+<title>购物车</title>
+
+<script>	
+//- 设置html标签font-size
+(function (doc, win) {
+    var _root = doc.documentElement,
+        resizeEvent = 'orientationchange' in window ? 'orientationchange' : 'resize',
+        resizeCallback = function () {
+            var clientWidth = _root.clientWidth,
+                fontSize = 20;
+            if (!clientWidth) return;
+            //if(clientWidth < 640) {
+                fontSize = 20 * (clientWidth / 320);
+            /*} else {
+                fontSize = 20 * (640 / 320);
+            }*/
+            _root.style.fontSize = fontSize + 'px';
+        };
+    if (!doc.addEventListener) return;
+    win.addEventListener(resizeEvent, resizeCallback, false);
+    doc.addEventListener('DOMContentLoaded', resizeCallback, false);
+})(document, window);
+
+function djjssdkkk(t,id){
+	var t=t-1;
+	if(t>0){
+		$('#dssdf'+id).text(t);
+		setTimeout('djjssdkkk('+t+','+id+')',1000);
+	}
+	else{
+		$.ajax( {
+			url: '/index.php?s=/addon/WeiSite/WeiSite/qiangogushijdaodao/id/'+id+'.html', //这里是静态页的地址
+			type: "GET", //静态页用get方法，否则服务器会抛出405错误
+			//dataType: "json",
+			//cache: false,
+			//async: false,
+			beforeSend: function(){
+			 // Handle the beforeSend event
+			},
+			success: function(data){
+				$('#ssss'+id).remove();
+				location.href = '/index.php?s=/addon/WeiSite/WeiSite/shooppcaa.html';
+				//var result = $(data).find("另一个html页面的指定的一部分").html();
+			}
+		});
+	}
+}
+</script>
+
+<style>
+.xxslq,.xxgwlb_li_b_l{height:auto;}
+</style>
+</head>
+
+<body>
+
+<header>
+</header>
+
+<!--+++++++++++购物车头部+++++++++++-->
+
+<div class="xxshopping_top">
+
+	<a onclick="history.go(-1)" style="cursor:pointer;"><img class="xxfanhui" src="images/return.png" /></a>
+	
+	购物车
+
+</div>
+
+<!--+++++++++++购物车内容+++++++++++-->
+
+<div class="xxshopping_con">
+
+	<!--+++++++++++商品列表头部+++++++++++-->
+
+	<div class="xxsp_one clearfloat">
+	
+		<div class="xxsp_one_1">订购商品</div>
+		
+		<div class="xxsp_one_2">单价</div>
+		
+		<div class="xxsp_one_4">小计</div>
+		
+		<div class="xxsp_one_5">操作</div>
+	
+	</div>
+	
+	<!--+++++++++++商品列表头部end+++++++++++-->
+	
+
+		
+		<!--+++++++++++商品ul列表+++++++++++-->
+		
+		<ul class="xxgwlb_ul dleeell clearfloat">
+			<?php
+				foreach($sp as $k=>$v){
+					$zje=$zje+$v['jiage']*$v['num'];
+					$znum=$znum+$v['num'];
+				
+			
+			?>
+			<li class="xxgwlb_li clearfloat" id="ssss{$v.id}">
+				
+				
+				<div class="xxgwlb_li_top">
+				
+				<div class="xxgwlb_li1">
+				
+					<div class="xxgwlb_li1_l"><img style="height: 100%;width: 100%;" src="<?php
+						echo get_cover_url ( $v ['pic'] );
+					?>" / ></div>
+					
+					<div class="xxgwlb_li1_r">
+					
+					<p class="xxgwcpm" style="height: auto;">{$v.title}</p>
+					
+					<p class="xxcpcc">尺寸：{$v.chicun}</p>
+					
+					
+					</div>
+				
+				</div>
+				
+				<div class="xxgwlb_li2" ng-model="price1" >{$v.jiage}</div>
+				
+				<!--<div class="xxgwlb_li3"></div>-->
+				
+				<div class="xxgwlb_li4" id="xxjjjj{$v.id}"><?php
+					echo $v['jiage']*$v['num'];
+				?></div><!--小计-->
+				
+				<div class="xxgwlb_li5" onclick="delshanpg({$v.id});"></div>
+				
+				</div>
+				
+				<div class="xxgwlb_li_b clearfloat">
+				
+					<div class="xxgwlb_li_b_l">
+					
+					<button  onclick="ffssdd({$v.id},{$v.jiage})" <?php
+						if(!$v['jiage']) echo 'style="display:none;"';
+					?> >-</button>
+					
+					<input readonly="readonly" id="inppuuu{$v.id}" class="xxslq" type="text" value="{$v.num}" style="line-height: 20px;" />
+					
+					<button  onclick="aassdd({$v.id},{$v.jiage})" <?php
+						if(!$v['jiage']) echo 'style="display:none;"';
+					?>>+</button>
+					
+					</div>
+					
+					<div class="xxgwlb_li_b_r">数量:</div>
+					
+					
+				
+				</div>
+				
+			<?php
+			if($v['qtime']){?>
+			<div>【抢购商品】付款剩余时间<span style="color:red;" id="dssdf<?php echo $v['id'];?>"></span>秒
+				<script>djjssdkkk('<?php echo ($v['qtime']-time());?>','<?php echo $v['id'];?>');</script>
+			</div><?php }?>
+			</li>
+			<?php
+			}
+			$znum=$znum+0;
+			$zje=$zje+0;
+			//if(!$zje) $yunfei=0;
+			?>
+			
+			
+			
+			
+			
+			
+		
+		</ul>
+		
+		<!--+++++++++++商品ul列表+++++++++++-->
+		
+		<!--+++++++++++商品列表底部+++++++++++-->
+		
+		<div class="xxspje">商品金额：￥<span  id="sssbbje">{$zje}</span></div>
+		
+		<div class="xxspjeoo">共 <span class="xxjesp" id="jjjjsj">{$znum}</span>件商品&nbsp;&nbsp;  <?php
+			//echo $yunfei;
+			if($yunfei){
+			?>
+		超出配送范围运费：<span class="xxjesp" id="ssyuuff">￥{$yunfei}</span>&nbsp;&nbsp;
+		<?php
+			}else{
+				echo '';
+			}
+		?>商品应付总额：&nbsp;&nbsp;￥<span id="zsssjjjs" class="xxjesp"><?php
+			echo $zje+$yunfei;
+		?></span>
+		</div>
+		
+		<div class="xxjiesuan clearfloat">
+		
+			<div class="xxjiesuan_l">
+			
+				<a href="/index.php?s=/addon/WeiSite/WeiSite/Products.html">继续购物</a><span class="xxggsp">|</span><a href="javascript:;" onclick="delaall();">清空购物车</a>
+			
+			</div>
+			
+			<div class="xxjiesuan_r"><a href="/index.php?s=/addon/WeiSite/WeiSite/SubmitOrder.html">去结算</a></div>
+		
+		</div>
+		
+		
+		<!--+++++++++++商品列表底部end+++++++++++-->
+		
+	
+
+
+</div>
+
+<div style="width:100%;height:58px;"></div>
+
+
+
+<script>
+
+if($('#jjjjsj').text()=='0'){
+	layer.confirm('当前购物车空空的哦，请先选购商品呢', {
+		closeBtn: 0,
+		title:false,
+	  btn: ['去看看'] //按钮
+	}, function(){
+	  //layer.msg('的确很重要', {icon: 1});
+		location.href = '/index.php?s=/addon/WeiSite/WeiSite/index.html';
+	});
+}
+//清空购物车
+function delaall(){
+	layer.confirm('确定要清空购物车？', {
+		closeBtn: 0,
+		title:false,
+	  btn: ['确认','取消'] //按钮
+	}, function(){
+	  //layer.msg('的确很重要', {icon: 1});
+
+
+
+		$.ajax( {
+			url: '/index.php?s=/addon/WeiSite/WeiSite/JoinCartNew/mmoo/delall.html', //这里是静态页的地址
+			type: "GET", //静态页用get方法，否则服务器会抛出405错误
+			//dataType: "json",
+			//cache: false,
+			//async: false,
+			beforeSend: function(){
+			 // Handle the beforeSend event
+			},
+			success: function(data){
+				//var result = $(data).find("另一个html页面的指定的一部分").html();
+				if(data=='ok') {
+					$('#sssbbje').text(0);
+					$('#jjjjsj').text(0);
+					$('#zsssjjjs').text(0);
+					$('#ssyuuff').text(0);
+					$('.dleeell li').remove();
+					location.href = '/index.php?s=/addon/WeiSite/WeiSite/index.html';
+				}
+			}
+		});
+		layer.closeAll();
+	}, function(){
+		layer.closeAll();
+	});
+}
+
+//删除商品
+function delshanpg(sid){
+	layer.confirm('确定删除商品吗？', {
+		closeBtn: 0,
+		title:false,
+	  btn: ['确认','取消'] //按钮
+	}, function(){
+	  //layer.msg('的确很重要', {icon: 1});
+
+
+		var nnuum=parseInt($('#inppuuu'+sid).val());
+		var xxjjjj=parseInt($('#xxjjjj'+sid).text());
+		var jjjjsj=parseInt($('#jjjjsj').text());
+		var zsssjjjs=parseInt($('#zsssjjjs').text());
+		var sssbbje=parseInt($('#sssbbje').text());
+		$.ajax( {
+			url: '/index.php?s=/addon/WeiSite/WeiSite/JoinCartNew/mmoo/del/delsssid/'+sid+'.html', //这里是静态页的地址
+			type: "GET", //静态页用get方法，否则服务器会抛出405错误
+			//dataType: "json",
+			//cache: false,
+			//async: false,
+			beforeSend: function(){
+			 // Handle the beforeSend event
+			},
+			success: function(data){
+				//var result = $(data).find("另一个html页面的指定的一部分").html();
+				if(data=='ok') {
+					
+					$('#jjjjsj').text(jjjjsj-nnuum);
+					$('#zsssjjjs').text(zsssjjjs-xxjjjj);
+					$('#sssbbje').text(sssbbje-xxjjjj);
+					$('#ssss'+sid).remove();
+					if(!(jjjjsj-nnuum)) location.href = '/index.php?s=/addon/WeiSite/WeiSite/index.html';
+				}
+			}
+		});
+		layer.closeAll();
+	}, function(){
+		layer.closeAll();
+	});
+}
+//加商品
+function aassdd(sid,jiage){
+	var nnuum=parseInt($('#inppuuu'+sid).val());
+	var jjjjsj=parseInt($('#jjjjsj').text());
+	var zsssjjjs=parseInt($('#zsssjjjs').text());
+	var sssbbje=parseInt($('#sssbbje').text());
+	$.ajax( {
+		url: '/index.php?s=/addon/WeiSite/WeiSite/JoinCartNew/mmoo/add/delsssid/'+sid+'.html', //这里是静态页的地址
+		type: "GET", //静态页用get方法，否则服务器会抛出405错误
+		//dataType: "json",
+		//cache: false,
+		//async: false,
+		beforeSend: function(){
+		 // Handle the beforeSend event
+		},
+		success: function(data){
+			//var result = $(data).find("另一个html页面的指定的一部分").html();
+			if(data=='ok') {
+				nnuum=nnuum+1;
+				$('#inppuuu'+sid).val(nnuum);
+				$('#xxjjjj'+sid).text(nnuum*jiage);
+				$('#jjjjsj').text(jjjjsj+1);
+				$('#zsssjjjs').text(zsssjjjs+jiage);
+				$('#sssbbje').text(sssbbje+jiage);
+			}
+		}
+	});
+}
+//减商品
+function ffssdd(sid,jiage){
+	var nnuum=parseInt($('#inppuuu'+sid).val());
+	if(nnuum<2){
+		return false;
+	}
+	var jjjjsj=parseInt($('#jjjjsj').text());
+	var zsssjjjs=parseInt($('#zsssjjjs').text());
+	var sssbbje=parseInt($('#sssbbje').text());
+	$.ajax( {
+		url: '/index.php?s=/addon/WeiSite/WeiSite/JoinCartNew/mmoo/jj/delsssid/'+sid+'.html', //这里是静态页的地址
+		type: "GET", //静态页用get方法，否则服务器会抛出405错误
+		//dataType: "json",
+		//cache: false,
+		//async: false,
+		beforeSend: function(){
+		 // Handle the beforeSend event
+		},
+		success: function(data){
+			//var result = $(data).find("另一个html页面的指定的一部分").html();
+			if(data=='ok') {
+				nnuum=nnuum-1;
+				$('#inppuuu'+sid).val(nnuum);
+				$('#xxjjjj'+sid).text(nnuum*jiage);
+				$('#jjjjsj').text(jjjjsj-1);
+				$('#zsssjjjs').text(zsssjjjs-jiage);
+				$('#sssbbje').text(sssbbje-jiage);
+			}
+		}
+	});
+}
+/*
+	$(document).ready(
+	
+		function(){
+		
+			$('#xxanniu1').add($('#xxanniu2')).click(
+			
+				function(){
+				
+					//alert('123');
+					
+					var  xxhq=$('.xxgwlb_li4').text();
+					
+					//alert(xxhq);
+				
+				}
+			
+			);
+		
+		}
+	
+	);
+*/
+</script>
+<style>
+body{font-family: "微软雅黑", Arial;}
+</style>
+
+<include file="Addons/WeiSite/View/default/TemplateIndex/ColorV1/footm.html" />

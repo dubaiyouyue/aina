@@ -1,0 +1,100 @@
+<include file="Addons/WeiSite/View/default/TemplateIndex/ColorV1/head.html" />
+
+<!-- banner start -->
+<div class="banner">
+  <img src="{$info.img}" width="100%" />
+</div>
+<!-- banner end -->
+
+
+
+<!--------------------最新推荐start------------------>
+
+<div class="biaoti">
+  <div class="biaoti-wenzi1">Product List</div>
+  <div class="biaoti-wenzi2">产品名录</div>
+</div>
+<!--------------------最新推荐end------------------>
+
+
+<!-- 栏目start -->
+
+<div class="lanmu">
+  <ul class="xuanxiang xuanxiangnew-lij clearfloat" style="
+    width: 15rem;
+    margin: auto;
+">
+
+		<li <?php
+			if($loandid==6) echo 'class="xuanxiang_on"';
+		?>><a href="/index.php?s=/addon/WeiSite/WeiSite/Products/id/6.html">所有产品</a></li>
+		<?php
+				foreach($infofl as $k=>$v){
+					$vsss='';
+					if($v['id']==$loandid) $vsss='class="xuanxiang_on"';
+		?>
+    <li {$vsss}><a href="/index.php?s=/addon/WeiSite/WeiSite/Products/id/{$v.id}.html">{$v.title}</a></li>
+		<?php
+			}
+		?>
+  </ul>
+</div>
+<!-- 栏目end  -->
+
+
+
+<!-- 新品内容start -->
+<div class="xinpin">
+<?php
+	foreach($list_data_new as $k=>$v){
+			$kn=($k%2);
+			if(!$kn){
+?>
+
+<!-- 左浮动1 -->
+
+ <div class="xinpin_left" style="margin-bottom: 12px;">
+   <a href="/index.php?s=/addon/WeiSite/WeiSite/blnxiangqing/id/{$v.id}.html"><div class="left_img1" style="background: url(<?php
+	 		echo get_cover_url ( $v ['cover'] );
+	 	?>) no-repeat center;background-size: 6.8rem;"></div></a>
+   <div class="jianjie">
+     <span class="yingwenming" style="height: 19px;overflow: hidden;">{$v.yingwen}</span>
+     <span class="mingcheng" style="height: 19px;overflow: hidden;">{$v.title}</span>
+     <span class="jiage" style="height: 19px;overflow: hidden;"><?php
+			 $chicun=explode("\r\n",$v['chicun']);
+			 $chicun=explode('#',$chicun[0]);
+			 //dump($chicun);
+			 echo '￥'.$chicun[1].'/'.$chicun[0];
+			 ?></span>
+   </div>
+ </div>
+<?php
+}else{
+?>
+<!-- 右浮动1 -->
+ <div class="xinpin_right" style="margin-bottom: 12px;">
+   <a href="/index.php?s=/addon/WeiSite/WeiSite/blnxiangqing/id/{$v.id}.html"><div class="right_img1" style="background: url(<?php
+	 		echo get_cover_url ( $v ['cover'] );
+	 	?>) no-repeat center;background-size: 6.8rem;"></div></a>
+   <div class="jianjie">
+     <span class="yingwenming" style="height: 19px;overflow: hidden;">{$v.yingwen}</span>
+     <span class="mingcheng" style="height: 19px;overflow: hidden;">{$v.title}</span>
+     <span class="jiage" style="height: 19px;overflow: hidden;"><?php
+			 $chicun=explode("\r\n",$v['chicun']);
+			 $chicun=explode('#',$chicun[0]);
+			 //dump($chicun);
+			 echo '￥'.$chicun[1].'/'.$chicun[0];
+			 ?></span>
+   </div>
+ </div>
+
+
+<?php
+	}}
+?>
+</div>
+<!-- 新品内容end -->
+<span id="readmore" onclick="sslyss('/index.php?s=/addon/WeiSite/WeiSite/ProductsAjax/moidd/{$moooid}/ajaxid/');">加载更多</span>
+
+<!-- footer start -->
+<include file="Addons/WeiSite/View/default/TemplateIndex/ColorV1/foot.html" />

@@ -1,0 +1,17 @@
+<form style="
+    padding: 8px;
+" action="/index.php?s=/addon/WeiSite/WeiSite/uptx/" method="POST" name="myform" id="myform" enctype="multipart/form-data">
+<input type="file" name="files" id="file" style="margin-top: 10px;background-color: #fff;" /> 
+<br />
+<input type="button" onclick="chongzhisss();" value="提 交" style="margin-top: 20px;padding: 10px 30px;background-color: #00415D;color: #fff;border: none;" />
+</form>
+<script>
+function chongzhisss(){
+	var ggss=$('#file').val();
+	if(!ggss) {
+		alert('请选择图片！');
+		return false;
+	}
+	document.getElementById('myform').submit();
+}
+</script>

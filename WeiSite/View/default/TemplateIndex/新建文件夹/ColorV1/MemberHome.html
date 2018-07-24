@@ -1,0 +1,276 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="format-detection" content="telephone=no" />
+<title>会员中心-会员首页</title>
+<script>
+//- 设置html标签font-size 针对手机布局js
+(function (doc, win) {
+    var _root = doc.documentElement,
+        resizeEvent = 'orientationchange' in window ? 'orientationchange' : 'resize',
+        resizeCallback = function () {
+            var clientWidth = _root.clientWidth,
+                fontSize = 20;
+            if (!clientWidth) return;
+            //if(clientWidth < 640) {
+                fontSize = 20 * (clientWidth / 320);
+            /*} else {
+                fontSize = 20 * (640 / 320);
+            }*/
+            _root.style.fontSize = fontSize + 'px';
+        };
+    if (!doc.addEventListener) return;
+    win.addEventListener(resizeEvent, resizeCallback, false);
+    doc.addEventListener('DOMContentLoaded', resizeCallback, false);
+})(document, window);</script>
+<style type="text/css">
+*{
+	margin:0;
+	padding:0;
+	border:0;
+	color:#000;
+	font-family:"微软雅黑", Arial;
+	font-size:14px;
+}
+ul li{
+	list-style-type: none;
+}
+a{
+	text-decoration: none;
+	color:#000;
+}
+</style>
+<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+
+<script src="js/layer.js"></script>
+</head>
+
+<body>
+	<?php
+	setcookie('uptxsstel','/index.php?s=/addon/WeiSite/WeiSite/MemberHome.html');
+//echo file_exists('shearphoto_common/file/shearphoto_file/'.$user['id'].'_big.jpg');
+$nnntxsss='/tx/0.jpg';
+if(file_exists('shearphoto_common/file/shearphoto_file/'.$user['id'].'_big.jpg')){
+	$nnntxsss='shearphoto_common/file/shearphoto_file/'.$user['id'].'_big.jpg?'.time();
+}
+?>
+
+
+<style>
+.huiyuantoubu{
+	width:100%;
+	background:url(images/huiyuanbj.jpg) no-repeat center;background-size:100% 100%;background-position: center top;
+	height:301px;
+}
+
+.huiyuantoubu .fanhui{
+	position:absolute;
+	left:5%;
+	top:19px;
+}
+.huiyuantoubu .baizi{
+	font-size:16px;
+	color:#FFF;
+	text-align:center;
+	line-height:55px;
+}
+.huiyuantoubu .hezi{
+	margin-top:10px;
+}
+.huiyuantoubu .hezi .hytx.touxiang{
+	background: #fff url(images/lanaina.png) no-repeat right;
+    height: 107px;
+    width: 107px;
+	margin: 0 auto;
+	border-radius: 100%;
+	background-size: cover;
+	border: 1px solid #CCC;
+}
+
+
+.huiyuantoubu .zhulanmu.bj{
+	width:100%;
+	background-color:rgba(255,255,255,0.5);
+	height:74px;
+	margin-top:33px;
+}
+.huiyuantoubu .zhulanmu.bj .hylm{
+	margin: 0 auto;
+}
+.huiyuantoubu .zhulanmu.bj .hylm li{
+	float:left;
+	padding-left:15px;
+	padding-right:15px;
+	padding-top:15px;
+	padding-bottom:15px;
+}
+
+.huiyuantoubu .zhulanmu.bj .hylm li .tb1{
+	background:url(images/hysytb.png);
+	background-position: -0px -0px;
+    width: 23px; 
+	height: 27px;
+	margin: 0 auto;
+}
+.huiyuantoubu .zhulanmu.bj .hylm li .tb2{
+	background:url(images/hysytb.png);
+	background-position: -0px -37px;
+    width: 28px; 
+	height: 27px;
+	margin: 0 auto;
+}
+.huiyuantoubu .zhulanmu.bj .hylm li .tb3{
+	background:url(images/hysytb.png);
+	background-position: -0px -74px;
+    width: 22px; 
+	height: 27px;
+	margin: 0 auto;
+}
+
+/*清除浮动代码*/ 
+.clearfloat:after{display:block;clear:both;content:"";visibility:hidden;height:0} 
+.clearfloat{zoom:1} 
+
+
+.huiyuantoubu .hezi .hytx.touxiang {
+    background: #fff url({$nnntxsss}) no-repeat right;
+    background-size: cover;
+}
+
+</style>
+
+
+
+
+<div class="huiyuantoubu">
+   <div class="fanhui"><a onclick="history.go(-1)" style="cursor:pointer;"><img src="images/fh.png" width="9" height="16" /></a></div>
+  <div class="baizi">会员中心</div>
+  <div class="hezi">
+     <div class="hytx touxiang" onclick="ajaxuptx();"></div>
+     <P style="color:#FFF; text-align:center;">{$user.tel}</P>
+	 <p style="visibility: hidden;<?php
+		if(!$user['vip']) echo'color:yellow;';
+		else echo 'color:#fff;';
+		?> text-align:center;"><?php
+		if($user['vip']) echo'您已是';
+		else echo'升级为';
+	 ?>VIP会员购买可享受{$config.vipcegg}折扣</p>
+  </div>
+   <div class="zhulanmu bj" style="margin-top: 15px;overflow-x: auto;overflow-y: hidden;">
+       <ul class="hylm clearfloat" style="width: 360px;">
+         <a style="float:left;" class="clearfloat" href="/index.php?s=/addon/WeiSite/WeiSite/Myorder/index.html"><li style="background:url(images/shuxian.png) no-repeat right; height:46px;"><div class="tb1"></div>订单(<span class="jinzi" style="color:#B67F2F;"><?php
+			if($mys_num<9) echo $mys_num;
+			else echo '+';
+			?></span>)</li></a>
+			 <a style="float:left;" class="clearfloat"  href="/index.php?s=/addon/WeiSite/WeiSite/Myorder/dfk/yfk.html"><li style="background:url(images/shuxian.png) no-repeat right; height:46px;"><div class="tb2"></div>已付(<span class="jinzi" style="color:#B67F2F;"><?php
+				$nnnsssssyjk=$mys_num-$mys_dfk_num;
+				if($nnnsssssyjk<9) echo $nnnsssssyjk;
+				else echo '+';
+			 ?></span>)</li></a>
+         <a style="float:left;" class="clearfloat"  href="/index.php?s=/addon/WeiSite/WeiSite/Myorder/dfk/dfk.html"><li style="background:url(images/shuxian.png) no-repeat right; height:46px;"><div class="tb2"></div>待付(<span class="jinzi" style="color:#B67F2F;"><?php
+				
+				if($mys_dfk_num<9) echo $mys_dfk_num;
+				else echo '+';
+			 ?></span>)</li></a>
+         <a class="clearfloat" style="float:left;" href="/index.php?s=/addon/WeiSite/WeiSite/MyCoupons.html"><li style="background:url(images/shuxian.png) no-repeat left; height:46px;"><div class="tb3"></div>优惠券(<span class="jinzi" style="color:#B67F2F;"><?php
+				
+				if($dzsyhde_num<9) echo $dzsyhde_num;
+				else echo '+';
+			 ?></span>)</li></a>
+       </ul>
+   </div>
+</div>
+<div class="clearfloat"></div>
+</div>
+
+<!---------------------------- 主体列表start ---------------------------->
+<style>
+.liebiao .tubiao li{
+	padding: 0px 0px 0px 50px;
+    height: 60px;
+    line-height: 60px;
+	border-bottom:1px dashed #E1E1E1;
+}
+
+
+.sssrightbbb{
+	/*右边箭头*/
+	background: url(images/lanjinru.png);
+	background-repeat: no-repeat;
+	background-position: right;
+	padding-right: 16px;
+	margin-right: 18px!important;
+	float: right;
+    display: block;
+    height: 60px;
+    line-height: 60px;
+	/*padding-top:23px;*/
+}
+
+
+</style>
+<div class="liebiao">
+  <ul class="tubiao">
+  
+  <a href="/index.php?s=/addon/WeiSite/WeiSite/index.html"><li style="
+    background: url(data:image/png;base64,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) no-repeat left;
+    background-position: 16px 16px;    background-size: 26px 26px;
+">艾娜首页<span class="jr sssrightbbb"></span></li></a>
+  
+  
+  
+    <a href="/index.php?s=/addon/WeiSite/WeiSite/MyAccount/index.html"><li style="
+    background: url(images/huiyuanshouyetubiao.png?v33) no-repeat left;
+    background-position: 16px 16px;
+">我的余额<span class="jr sssrightbbb"></span></li></a>
+    <a href="/index.php?s=/addon/WeiSite/WeiSite/TransactionRecord/index.html"><li style="
+    background: url(images/huiyuanshouyetubiao.png?v33) no-repeat left;
+    background-position: 16px -69px;
+">交易记录<span class="jr sssrightbbb"></span></li></a>
+    <a href="/index.php?s=/addon/WeiSite/WeiSite/Accountinformation/index.html"><li style="
+    background: url(images/huiyuanshouyetubiao.png?v33) no-repeat left;
+    background-position: 16px -154px;
+">账号信息<span class="jr sssrightbbb"></span></li></a>
+    <a href="/index.php?s=/addon/WeiSite/WeiSite/zxcjj.html"><li style="
+    background: url(images/huiyuanshouyetubiao.png?v33) no-repeat left;
+    background-position: 16px -239px;
+">最新抽奖<span class="jr sssrightbbb"></span></li></a>
+    <a href="/index.php?s=/addon/WeiSite/WeiSite/LatestRecomm.html"><li style="
+    background: url(images/huiyuanshouyetubiao.png?v33) no-repeat left;
+    background-position: 16px -324px;
+">活动推荐<span class="jr sssrightbbb"></span></li></a>
+    <a href="/index.php?s=/addon/WeiSite/WeiSite/OnlineService.html"><li style="
+    background: url(images/huiyuanshouyetubiao.png?v33) no-repeat left;
+    background-position: 16px -409px;
+">在线客服<span class="jr sssrightbbb"></span></li></a>
+    <a href="/index.php?s=/addon/WeiSite/WeiSite/message.html"><li style="
+    background: url(images/huiyuanshouyetubiao.png?v33) no-repeat left;
+    background-position: 16px -494px;border-bottom: none;
+">会员留言<span class="jr sssrightbbb"></span></li></a>
+  </ul>
+</div>
+<!---------------------------- 主体列表end ---------------------------->
+<script>
+function ajaxuptx(){
+location.href = '/uptxnew.html';
+return false;
+
+//Ajax获取
+$.post('/index.php?s=/addon/WeiSite/WeiSite/uptx/', {}, function(str){
+    layer.open({
+		title:'上传头像',
+		shade: [0.8, '#393D49'],
+        type: 1,
+        content: str //注意，如果str是object，那么需要字符拼接。
+    });
+});
+
+}
+</script>
+<iframe src="/index.php?s=/addon/WeiSite/WeiSite/shooppcaa.html" frameborder="no" border="0" marginwidth="0" marginheight="0" scrolling="no" allowtransparency="yes" width="0" height="0" style="display:none;"></iframe>
+</body>
+</html>

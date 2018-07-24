@@ -1,0 +1,17 @@
+		<?php
+				foreach($infofl as $k=>$v){
+					$vsss='';
+					if($v['id']==$loandid) $vsss='class="xuanxiang_on"';
+		?>
+    <li {$vsss}><a href="<?php
+		echo $nnnsssurl[$v['id']];
+	?>">{$v.title}</a></li>
+		<?php
+			}
+		?>
+
+
+
+
+
+

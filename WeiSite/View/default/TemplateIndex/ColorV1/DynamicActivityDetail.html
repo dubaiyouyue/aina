@@ -1,0 +1,72 @@
+<include file="Addons/WeiSite/View/default/TemplateIndex/ColorV1/head.html" />
+
+<!-------------------- banner start -------------------->
+<div class="banner">
+  <img src="{$info.img}" width="100%" />
+</div>
+<!-------------------- banner end -------------------->
+
+
+
+<!--------------------最新推荐start------------------>
+
+<div class="biaoti">
+  <div class="biaoti-wenzi1">New Recommended</div>
+  <div class="biaoti-wenzi2">最新推荐</div>
+</div>
+<!--------------------最新推荐end------------------>
+
+
+<!-------------------- 栏目start -------------------->
+
+<div class="lanmu">
+  <ul class="xuanxiang xuanxiangnew-lij clearfloat">
+  <ul class="xuanxiang xuanxiangnew-lij clearfloat" style="
+    width: 165px;
+    margin: auto;
+">
+
+		<li><a href="/index.php?s=/addon/WeiSite/WeiSite/LatestRecomm.html">新品上市</a></li>
+		<li class="xuanxiang_on"><a href="<?php
+			if($nnurlss) echo $nnurlss;
+			else echo '/index.php?s=/addon/WeiSite/WeiSite/DynamicActivity.html';
+		?>">活动动态</a></li>
+  </ul>
+  </ul>
+</div>
+<!-------------------- 栏目end -------------------->
+
+<!-------------------- 滚动文字内容start -------------------->
+<div style="height: 1px; solid #ddd;width:100%;margin-bottom: 10px;background-color: #ddd;"></div>
+
+<!-------------------- 滚动文字内容end -------------------->
+
+<!-------------------- 内容start -------------------->
+
+<div class="content contentimg" style="
+    width: 15.227rem;
+    margin: auto;
+    margin-bottom: 15px;
+">
+<h3 style="
+    text-align: center;
+    padding: 15px 0px;
+    margin-top: -16px;
+">{$info.title}</h3>
+<p style="
+    text-align: center;
+    color: #aaa;
+    margin-top: -15px;
+    margin-bottom: 12px;
+    font-size: 12px;
+">{$info.cTime|time_format=###,'Y-m-d'}</p>
+{$info.content}
+
+
+
+</div>
+<!-------------------- 内容end -------------------->
+
+
+<!-------------------- footer start -------------------->
+<include file="Addons/WeiSite/View/default/TemplateIndex/ColorV1/foot.html" />

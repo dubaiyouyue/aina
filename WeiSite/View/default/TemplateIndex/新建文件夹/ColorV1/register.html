@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="format-detection" content="telephone=no" />
+<link href="css/css.css" type="text/css" rel="stylesheet" />
+
+<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+
+<script src="js/layer.js"></script>
+
+<title>会员注册</title>
+<script>
+//- 设置html标签font-size 针对手机布局js
+(function (doc, win) {
+    var _root = doc.documentElement,
+        resizeEvent = 'orientationchange' in window ? 'orientationchange' : 'resize',
+        resizeCallback = function () {
+            var clientWidth = _root.clientWidth,
+                fontSize = 20;
+            if (!clientWidth) return;
+            //if(clientWidth < 640) {
+                fontSize = 20 * (clientWidth / 320);
+            /*} else {
+                fontSize = 20 * (640 / 320);
+            }*/
+            _root.style.fontSize = fontSize + 'px';
+        };
+    if (!doc.addEventListener) return;
+    win.addEventListener(resizeEvent, resizeCallback, false);
+    doc.addEventListener('DOMContentLoaded', resizeCallback, false);
+})(document, window);
+</script>
+</head>
+<style>
+#sfdsdsxxjietishiyu{color: yellow;background-color: #000;padding: 5px;display:none;}.xiaox_yzm_r2 {
+    width: 148px;}.xiaox_yzm_l2 {
+    width: calc( 100% - 160px );
+    width: -webkit-calc( 100% - 160px );
+    width: -moz-calc( 100% - 160px );
+    width: -ms-calc( 100% - 160px );
+    width: -o-calc( 100% - 160px );}
+</style>
+<body>
+
+<header>
+</header>
+
+<!--+++++++++++登录页面头部+++++++++++-->
+
+<div class="xiaoxu_top">
+
+	<div class="xiaoxu_top_t">
+
+		<a onclick="history.go(-1)" style="cursor:pointer;"><img class="xx_retu" src="images/return.png" /></a>
+
+		会员注册
+
+	</div>
+
+	<div class="xiaoxu_top_b">
+
+		<img src="images/loading_logo.png" />
+
+	</div>
+
+</div>
+
+<!--+++++++++++注册页面头部结束+++++++++++-->
+
+<!--+++++++++++注册页面内容+++++++++++-->
+
+<div class="xiaoxu_loading_con" style="
+    margin-bottom: 30px;
+">
+
+	<form name="myform" id="myform" method="POST" action="/index.php?s=/addon/WeiSite/WeiSite/register.html" >
+
+		<div class="xiaoxu_zutel clearfloat">
+
+			<div class="xiaoxu_zutel_l"></div>
+
+			<div class="xiaoxu_zutel_r">
+
+			 <input class="xx_zutel" maxlength="11" onblur="if(this.value=='')value='手机号';" onfocus="if(this.value=='手机号')value='';" value="手机号" type="text" name="tel" value="手机号"  / >
+
+			</div>
+
+		</div>
+
+
+		<div class="xiaox_password xiaox_password1 clearfloat">
+
+			<div class="xiaox_password_l"></div>
+
+			<div class="xiaox_password_r">
+
+			<input id="showPwd" class="xx_zupassword " type="text" value="请输入密码"  />
+
+			<input id="pwd" maxlength="19" class="xx_zupassword "  name="password1" type="password" value="" style="display:none;" />
+
+			<script>
+				var showPwd = $("#showPwd"), pwd = $("#pwd");
+				showPwd.focus(function(){
+				   pwd.show().focus();
+				   showPwd.hide();
+				});
+
+				pwd.blur(function(){
+				   if(pwd.val()=="") {
+					   showPwd.show();
+					   pwd.hide();
+					}
+				});
+			</script>
+
+			</div>
+
+
+		</div>
+
+
+
+		<div class="xiaox_password xiaox_password2 clearfloat">
+
+			<div class="xiaox_password_l"></div>
+
+			<div class="xiaox_password_r">
+
+			<input id="showPwd2" class="xx_zupassword " type="text" value="请确认密码"  />
+
+			<input id="pwd2" maxlength="19" class="xx_zupassword "  name="password" type="password" value="" style="display:none;" />
+
+			<script>
+				var showPwd2 = $("#showPwd2"), pwd2 = $("#pwd2");
+				showPwd2.focus(function(){
+				   pwd2.show().focus();
+				   showPwd2.hide();
+				});
+
+				pwd2.blur(function(){
+				   if(pwd2.val()=="") {
+					   showPwd2.show();
+					   pwd2.hide();
+					}
+				});
+			</script>
+
+			</div>
+
+
+		</div>
+
+
+
+		<div class="xiaox_yzm xiaox_yzm1 clearfloat">
+
+			<div class="xiaox_yzm_l">
+			<input class="xxyamq xxyamq1" id="codeddd" onblur="if(this.value=='')value='验证码';" onfocus="if(this.value=='验证码')value='';" value="验证码" type="text" name="code" value="验证码"  / >
+			</div>
+
+			<div class="xiaox_yzm_r"><img onclick="this.src='/cachec/yzm.php?a=showseccode&update=' + Math.random()" src="/cachec/yzm.php" width="100%" height="100%"></div>
+
+		</div>
+
+<div id="sfdsdsxxjietishiyu">接收短信有延迟，请耐心等待。</div>
+
+		<div class="xiaox_yzm xiaox_yzm2 clearfloat">
+
+			<div class="xiaox_yzm_l xiaox_yzm_l2">
+			<input class="xxyamq xxyamq2"  onblur="if(this.value=='')value='短信验证码';" onfocus="if(this.value=='短信验证码')value='';" value="短信验证码" type="text" name="telcode" value="短信验证码"  / >
+			</div>
+
+			<div class="xiaox_yzm_r2" id="coddddok"><a href="javascript:;" style="display: block;" onclick="telconddd();">点击获取短信验证码</a></div>
+
+		</div>
+
+
+
+
+
+		<div class="xx_dl_bt" id="iiiizzzccc">
+
+			<input onClick="xiaoxuyz()" type="button"  style="background:none;" class="xiaoxu_button" value="注册" />
+
+		</div>
+
+<div class="xiaoxu_pppp clearfloat">
+
+			<a class="xiaoxu_pppp1" href="/index.php?s=/addon/WeiSite/WeiSite/login.html">已经有账号？直接登录</a>
+
+			
+
+		</div>
+
+	</form>
+<div  style="display:none;">
+<iframe id="myIframesss"></iframe></div>
+	<script>
+	
+	
+    //倒计时
+        //var intDiff = parseInt(60);//倒计时总秒数量
+        function timer(intDiff){
+			var intDiff = parseInt(intDiff);
+            window.setInterval(function(){
+            var day=0,
+                hour=0,
+                minute=0,
+                second=0;//时间默认值        
+            if(intDiff > 0){
+                day = Math.floor(intDiff / (60 * 60 * 24));
+                hour = Math.floor(intDiff / (60 * 60)) - (day * 24);
+                minute = Math.floor(intDiff / 60) - (day * 24 * 60) - (hour * 60);
+                second = Math.floor(intDiff) - (day * 24 * 60 * 60) - (hour * 60 * 60) - (minute * 60);
+            }
+			
+            if (minute <= 9) minute = '0' + minute;
+            if (second <= 9) second = '0' + second;
+            $('#day_show').html(day);
+            $('#hour_show').html(hour);
+            $('#minute_show').html(minute);
+           if (second!='00') $('#second_show').html(second);
+		   
+            if(intDiff==0) $('#coddddok').html('<a href="javascript:;" style="display: block;" onclick="telconddd();">点击获取短信验证码</a>');//location.href = '<?php echo $_SESSION['dangqian_url'];?>';
+            intDiff--;
+            }, 1000);
+        } 
+        /*$(function(){
+            timer(60);
+        });  */ 
+    //end
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	immm='<div style="height: 100%;background:url(data:image/gif;base64,R0lGODlhEAAQALMPAHp6evf394qKiry8vJOTk83NzYKCgubm5t7e3qysrMXFxe7u7pubm7S0tKOjo////yH/C05FVFNDQVBFMi4wAwEAAAAh+QQJCAAPACwAAAAAEAAQAAAETPDJSau9NRDAgWxDYGmdZADCkQnlU7CCOA3oNgXsQG2FRhUAAoWDIU6MGeSDR0m4ghRa7JjIUXCogqQzpRxYhi2HILsOGuJxGcNuTyIAIfkECQgADwAsAAAAABAAEAAABGLwSXmMmjhLAQjSWDAYQHmAz8GVQPIESxZwggIYS0AIATYAvAdh8OIQJwRAQbJkdjAlUCA6KfU0VEmyGWgWnpNfcEAoAo6SmWtBUtCuk9gjwQKeQAeWYQAHIZICKBoKBncTEQAh+QQJCAAPACwAAAAAEAAQAAAEWvDJORejGCtQsgwDAQAGGWSHMK7jgAWq0CGj0VEDIJxPnvAU0a13eAQKrsnI81gqAZ6AUzIonA7JRwFAyAQSgCQsjCmUAIhjDEhlrQTFV+lMGLApWwUzw1jsIwAh+QQJCAAPACwAAAAAEAAQAAAETvDJSau9L4QaBgEAMWgEQh0CqALCZ0pBKhRSkYLvM7Ab/OGThoE2+QExyAdiuexhVglKwdCgqKKTGGBgBc00Np7VcVsJDpVo5ydyJt/wCAAh+QQJCAAPACwAAAAAEAAQAAAEWvDJSau9OAwCABnBtQhdCQjHlQhFWJBCOKWPLAXk8KQIkCwWBcAgMDw4Q5CkgOwohCVCYTIwdAgPolVhWSQAiN1jcLLVQrQbrBV4EcySA8l0Alo0yA8cw+9TIgAh+QQFCAAPACwAAAAAEAAQAAAEWvDJSau9WA4AyAhWMChPwXHCQRUGYARgKQBCzJxAQgXzIC2KFkc1MREoHMTAhwQ0Y5oBgkMhAAqUw8mgWGho0EcCx5DwaAUQrGXATg6zE7bwCQ2sAGZmz7dEAAA7);background-repeat: no-repeat;background-position: center;"></div>';
+	//alert(dddssfffm());
+	//获取短信返回码
+	ajaxok=0;
+	function dddssfffm(){
+		var nnn;
+		//var ajaxok=0;
+		if(ajaxok) return false;
+		$.ajax( {
+			url: '/yunpian/ss.php?v'+Math.random(), //这里是静态页的地址
+			dataType: "json",
+			timeout : 60000,
+			//cache: false,
+			//async: false,
+			type: "GET", //静态页用get方法，否则服务器会抛出405错误
+			success: function(data){
+				
+				if((data.http_status_code)==400){
+					ajaxok=1;
+					nnn=data.msg;
+					if(!nnn) nnn=data.detail;
+				}
+				return nnn;
+			}
+		});
+		//alert(ajaxok);
+		if(!ajaxok) setTimeout('dddssfffm()',90000);
+		
+	}
+	
+	//判断发送短信验证码
+	function telconddd(){
+		var codeddd=$('#codeddd').val();
+		var shoujihao=$('.xx_zutel').val();
+			if(shoujihao=='' || shoujihao=='手机号' || shoujihao.length!=11 ){
+				layer.msg('请填11位手机号',{icon: 5,time:3000,shift:6,},
+					function(){
+					$(".xx_zutel").focus();
+					$('.xiaoxu_zutel').css('borderColor','red');
+					$('.xx_zutel').val('');
+					}
+
+				);
+				return '.xx_zutel';
+			}
+			if (isNaN(codeddd)) { 
+				layer.msg('请填写验证码',{icon: 5,time:3000,shift:6,},
+					function(){
+					$(".xxyamq1").focus();
+					$('.xiaox_yzm1').css('borderColor','red');
+					}
+
+				);
+		　　　　return false;
+		　　}
+				
+				$('#coddddok').html(immm);
+				
+				$.ajax( {
+						url: '/index.php?s=/addon/WeiSite/WeiSite/register/tel/'+shoujihao+'/codeddd/'+codeddd+'.html', //这里是静态页的地址
+						type: "GET", //静态页用get方法，否则服务器会抛出405错误
+						cache: false,
+						//async: false,
+						success: function(data){
+							//var result = $(data).find("另一个html页面的指定的一部分").html();
+							if(data=='ok') {
+								
+								$('#coddddok').html('<span style="color:red;">重新发送(<span id="second_show">60</span>)</span>');
+								
+								timer(60);
+								$('#sfdsdsxxjietishiyu').css('display','block');
+								//$('#coddddok').html('<a href="javascript:;" style="display: block;" onclick="telconddd();">短信验证码</a>');
+								//myIframesss.src = "/yunpian/ss.php";
+								var nnnns=dddssfffm();
+								if(nnnns){
+									alert('短信发送失败：'+nnnns+' 请您稍后再操作');
+									/*
+									layer.confirm('短信发送失败：'+nnnns, {
+										title:false,
+										closeBtn: 0,
+									  btn: ['确定'] //按钮
+									});
+									*/
+								}
+							}
+							if(data=='eoo') {
+								layer.msg('验证码错误！',{icon: 5,time:3000,shift:6,},
+									function(){
+									$(".xxyamq1").focus();
+									$('.xiaox_yzm1').css('borderColor','red');
+									}
+
+								);
+								$('#coddddok').html('<a href="javascript:;" style="display: block;" onclick="telconddd();">短信验证码</a>');}
+							if(data=='hoo') {
+								layer.msg('手机号已经注册',{icon: 5,time:3000,shift:6,},
+									function(){
+										$(".xx_zutel").focus();
+										$('.xiaoxu_zutel').css('borderColor','red');
+										$('.xx_zutel').val('');
+									}
+
+								);
+								$('#coddddok').html('<a href="javascript:;" style="display: block;" onclick="telconddd();">短信验证码</a>');}
+						}
+				});
+		
+			//alert(codeddd);
+	}
+	
+	//失去焦点
+
+		$("input").blur(function(){
+
+			$($(this).parent().parent()).css('borderColor','#000');
+		});
+
+
+	function shiqujj(){
+		//alert('321321');
+	}
+
+
+		function  xiaoxuyz(){
+
+			var shoujihao=$('.xx_zutel').val();
+
+			var mima_show=$('#showPwd').val();
+
+			var mima_pwd=$('#pwd').val();
+
+			var mima_show2=$('#showPwd2').val();
+
+			var mima_pwd2=$('#pwd2').val();
+
+			var yzm=$('.xxyamq').val();
+
+			var yzm2=$('.xxyamq2').val();
+
+			//alert(mima_pwd);
+
+			if(shoujihao=='' || shoujihao=='手机号' || shoujihao.length!=11 ){
+
+			layer.msg('请填11位手机号',{icon: 5,time:3000,shift:6,},
+				function(){
+				$(".xx_zutel").focus();
+				$('.xiaoxu_zutel').css('borderColor','red');
+				$('.xx_zutel').val('');
+				}
+
+			);
+
+			return '.xx_zutel';
+
+			}
+
+			if (mima_pwd==''){
+
+				layer.msg('请填写密码',{icon: 4,time:3000,shift:6,},
+
+					function(){
+					$("#showPwd").focus();
+					$('.xiaox_password1').css('borderColor','red');
+					}
+
+				);
+
+				return '#showPwd';
+
+			}
+
+
+
+			if (mima_pwd2==''){
+
+				layer.msg('请输入密码',{icon: 4,time:3000,shift:6,},
+
+					function(){
+					$("#showPwd2").focus();
+					$('.xiaox_password2').css('borderColor','red');
+					}
+
+				);
+
+				return '#showPwd2';
+
+			}
+
+
+			if (mima_pwd2!=mima_pwd || mima_pwd2==''){
+
+				layer.msg('两次输入的密码不一致',{icon: 4,time:3000,shift:6,},
+
+					function(){
+					$("#pwd2").focus();
+					$('#pwd2').val('');
+					$('.xiaox_password2').css('borderColor','red');
+					}
+
+				);
+
+				return '#showPwd2';
+
+			}
+
+
+			if(yzm=='' || yzm=='验证码' ){
+
+
+				//alert('456321');
+
+				layer.msg('请填写验证码',{icon: 5,time:3000,shift:6,},
+
+					function(){
+					$(".xxyamq1").focus();
+					$('.xiaox_yzm1').css('borderColor','red');
+					}
+
+				);
+
+
+				return '.xxyamq';
+
+			}
+
+			if(yzm2=='' || yzm2=='短信验证码' ){
+
+
+				//alert('456321');
+
+				layer.msg('请填写验证码',{icon: 5,time:3000,shift:6,},
+
+					function(){
+					$(".xxyamq2").focus();
+					$('.xiaox_yzm2').css('borderColor','red');
+					}
+
+				);
+
+
+				return '.xxyamq2';
+
+			}
+				
+				$('#iiiizzzccc').html(immm);
+				$.ajax( {
+						url: '/index.php?s=/addon/WeiSite/WeiSite/register/telcodesss/'+yzm2+'.html', //这里是静态页的地址
+						type: "GET", //静态页用get方法，否则服务器会抛出405错误
+						success: function(data){
+							//var result = $(data).find("另一个html页面的指定的一部分").html();
+							if(data=='ok') document.getElementById('myform').submit();
+							if(data=='eoo') {
+								layer.msg('短信验证码错误！',{icon: 5,time:3000,shift:6,},
+									function(){
+									$(".xxyamq1").focus();
+									$('.xiaox_yzm1').css('borderColor','red');
+									}
+
+								);
+								$('#iiiizzzccc').html('<input onClick="xiaoxuyz()" type="button" class="xiaoxu_button" value="注册" />');
+								
+								}
+						}
+				});
+
+
+			
+
+
+
+		}
+
+
+	</script>
+
+
+</div>
+
+<!--+++++++++++注册页面内容+++++++++++-->
+
+
+<div style="display:none;">{$config.code}</div>
+</body>
+
+</html>

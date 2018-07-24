@@ -1,0 +1,93 @@
+<include file="Addons/WeiSite/View/default/TemplateIndex/ColorV1/head.html" />
+
+<!-- banner start -->
+<div class="banner">
+  <img src="{$infoimg}" width="100%" />
+</div>
+<!-- banner end -->
+
+
+
+<!--------------------最新推荐start------------------>
+
+<div class="biaoti">
+  <div class="biaoti-wenzi1">New Recommended</div>
+  <div class="biaoti-wenzi2">最新推荐</div>
+</div>
+<!--------------------最新推荐end------------------>
+
+
+<!-- 栏目start -->
+
+<div class="lanmu">
+  <ul class="xuanxiang xuanxiangnew-lij clearfloat" style="
+    width: 165px;
+    margin: auto;
+">
+
+		<li class="xuanxiang_on"><a href="/index.php?s=/addon/WeiSite/WeiSite/LatestRecomm.html">新品上市</a></li>
+		<li><a href="<?php
+			if($nnurlss) echo $nnurlss;
+			else echo '/index.php?s=/addon/WeiSite/WeiSite/DynamicActivity.html';
+		?>">活动动态</a></li>
+  </ul>
+</div>
+<!-- 栏目end  -->
+
+
+
+<!-- 新品内容start -->
+<div class="xinpin">
+<?php
+	foreach($s as $k=>$v){
+			$kn=($k%2);
+			if(!$kn){
+?>
+
+<!-- 左浮动1 -->
+
+ <div class="xinpin_left" style="margin-bottom: 12px;">
+   <a href="/index.php?s=/addon/WeiSite/WeiSite/blnxiangqing/id/{$v.id}.html"><div class="left_img1" style="background: url(<?php
+	 		echo get_cover_url ( $v ['cover'] );
+	 	?>) no-repeat center;background-size: 6.8rem;"></div></a>
+   <div class="jianjie">
+     <span class="yingwenming" style="height: 19px;overflow: hidden;">{$v.yingwen}</span>
+     <span class="mingcheng" style="height: 19px;overflow: hidden;">{$v.title}</span>
+     <span class="jiage" style="height: 19px;overflow: hidden;"><?php
+			 $chicun=explode("\r\n",$v['chicun']);
+			 $chicun=explode('#',$chicun[0]);
+			 //dump($chicun);
+			 echo '￥'.$chicun[1].'/'.$chicun[0];
+			 ?></span>
+   </div>
+ </div>
+<?php
+}else{
+?>
+<!-- 右浮动1 -->
+ <div class="xinpin_right" style="margin-bottom: 12px;">
+   <a href="/index.php?s=/addon/WeiSite/WeiSite/blnxiangqing/id/{$v.id}.html"><div class="right_img1" style="background: url(<?php
+	 		echo get_cover_url ( $v ['cover'] );
+	 	?>) no-repeat center;background-size: 6.8rem;"></div></a>
+   <div class="jianjie">
+     <span class="yingwenming" style="height: 19px;overflow: hidden;">{$v.yingwen}</span>
+     <span class="mingcheng" style="height: 19px;overflow: hidden;">{$v.title}</span>
+     <span class="jiage" style="height: 19px;overflow: hidden;"><?php
+			 $chicun=explode("\r\n",$v['chicun']);
+			 $chicun=explode('#',$chicun[0]);
+			 //dump($chicun);
+			 echo '￥'.$chicun[1].'/'.$chicun[0];
+			 ?></span>
+   </div>
+ </div>
+
+
+<?php
+	}}
+?>
+</div>
+<!-- 新品内容end -->
+
+
+<!-- footer start -->
+<include file="Addons/WeiSite/View/default/TemplateIndex/ColorV1/foot.html" />

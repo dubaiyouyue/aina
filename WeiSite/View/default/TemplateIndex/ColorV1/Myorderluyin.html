@@ -1,0 +1,358 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="format-detection" content="telephone=no" />
+<title>会员中心-我的订单</title>
+<script>	
+//- 设置html标签font-size
+(function (doc, win) {
+    var _root = doc.documentElement,
+        resizeEvent = 'orientationchange' in window ? 'orientationchange' : 'resize',
+        resizeCallback = function () {
+            var clientWidth = _root.clientWidth,
+                fontSize = 20;
+            if (!clientWidth) return;
+            //if(clientWidth < 640) {
+                fontSize = 20 * (clientWidth / 320);
+            /*} else {
+                fontSize = 20 * (640 / 320);
+            }*/
+            _root.style.fontSize = fontSize + 'px';
+        };
+    if (!doc.addEventListener) return;
+    win.addEventListener(resizeEvent, resizeCallback, false);
+    doc.addEventListener('DOMContentLoaded', resizeCallback, false);
+})(document, window);
+</script>
+<style type="text/css">
+*{
+	margin:0;
+	padding:0;
+	border:0;
+	color:#000;
+	font-family:"微软雅黑", Arial;
+	font-size:14px;
+}
+ul li{
+	list-style-type: none;
+}
+a{
+	text-decoration: none;
+	color:#000;
+}
+</style>
+<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+
+<script src="js/layer.js"></script>
+
+</head>
+
+<body><script>
+ddmmyy();
+function ddmmyy(){
+	//询问框
+	layer.confirm('<div style="text-align:center;">复制订单号，为好友录制语音祝福！<br />订单号：{$mysnewww}<br /></div>', {
+		title:'订购成功',
+		closeBtn: 0,
+		btn: ['前往录音','我的订单'] //按钮
+	}, function(){
+		location.href = '{$config.luyinlianj}';
+	}, function(){
+		location.href = '/index.php?s=/addon/WeiSite/WeiSite/Myordernew/index.html';
+	});
+	return false;
+} 
+<?php
+	/*if(!$config['cjzssddggzzggmm']) echo 'location.href = \'/index.php?s=/addon/WeiSite/WeiSite/Myorder.html\';';
+	else echo 'ddmmyy();';*/
+?>
+
+
+</script>
+<!---------------------------- 文字我的订单start ---------------------------->
+<style>
+body{
+	width:100%;
+	background-color:#EEE;
+}
+.top{
+	height:2.25rem;
+	width:100%;
+	background-color:#00415D;
+	margin-bottom:0.75rem;
+}
+.top .fanhui{
+	position:absolute;
+	left:5%;
+	top:0.7rem;
+}
+.top .baizi{
+	font-size:16px;
+	color:#FFF;
+	text-align:center;
+	line-height:2.25rem;
+}
+
+</style>
+<div class="top">
+   <div class="fanhui"><a  onclick="history.go(-1)"  style="cursor:pointer;"><img src="images/fh.png" width="9" height="16" /></a></div>
+   <div class="baizi">我的订单</div>
+</div>
+<!---------------------------- 文字我的订单end ---------------------------->
+
+
+<!---------------------------- 选项栏目start ---------------------------->
+<style>
+.lanmu{
+	width: 100%;
+    height:auto;
+    overflow:auto;
+	text-align: center;
+}
+.xuanxiangnew-lij {text-align: center;}
+.xuanxiangnew-lij li{display:inline-block;}
+.xuanxiang li{
+	/*float:left;*/ 
+/*	margin-right:10px; 
+*/	margin-bottom:10px; 
+	line-height:30px; 
+	font-size:14px; 
+	text-align:center; 
+	padding:0px 8px 0px 8px;
+}
+
+.xuanxiang li:hover,.xuanxiang_on{
+	background-color:#00415D;
+}
+.xuanxiang li:hover,.xuanxiang_on a{
+	color:#FFF; 
+}
+/*清除浮动代码*/ 
+.clearfloat:after{display:block;clear:both;content:"";visibility:hidden;height:0} 
+.clearfloat{zoom:1} 
+</style>
+
+ <div class="lanmu">
+  <ul class="xuanxiang xuanxiangnew-lij clearfloat">
+    <li <?php
+		if($dfk===0) echo 'class="xuanxiang_on"';
+	?>><a href="/index.php?s=/addon/WeiSite/WeiSite/Myorder/index.html">全部</a></li>
+    <li <?php
+		if($dfk==='dfk') echo 'class="xuanxiang_on"';
+	?>><a href="/index.php?s=/addon/WeiSite/WeiSite/Myorder/dfk/dfk.html">待付款</a></li>
+    <li <?php
+		if($dfk==='dsh') echo 'class="xuanxiang_on"';
+	?>><a href="/index.php?s=/addon/WeiSite/WeiSite/Myorder/dfk/dsh.html">待收货</a></li>
+    <li <?php
+		if($dfk==='dfkok') echo 'class="xuanxiang_on"';
+	?>><a href="/index.php?s=/addon/WeiSite/WeiSite/Myorder/dfk/dfkok.html">已完结</a></li>
+  </ul>
+ </div>
+<!---------------------------- 选项栏目end ---------------------------->
+
+<?php
+	if(empty($mys)) echo '暂无订单。';
+?>
+
+
+<!-----------------------------我的订单全部内容start----------------------------->
+<style>
+/********************我的订单start**********************/
+.ddnr{
+	width:100%;
+	background-color:#FFF;
+    padding-top:10px;
+	padding-bottom:20px;
+}
+.ddnr p{
+	padding-bottom:5px;
+}
+.ddnr p .claaa{
+	font-size:12px;
+	color:#AAA;
+	padding-right:10px;
+}
+.ddnr p .cl777{
+	color:#666;
+	font-size:12px;
+}
+
+
+.ddnr .wdddxiangxi{
+	background:url(images/gwtb.png) no-repeat left;
+	height:45px;
+	margin-left:10px;
+	margin-top:8px;
+	margin-bottom:8px;
+}
+.ddnr .wdddxiangxi .wdddddbh{
+	padding-left:60px;
+	color:#AAA;
+	font-size:12px;
+}
+.ddnr .wdddxiangxi .wdddddje{
+	padding-left:60px;
+	color:#AAA;
+	font-size:12px;
+	padding-top:3px;
+}
+.ddnr .wdddxiangxi .wddddfk{
+	padding-left:60px;
+	color:#AAA;
+	font-size:12px;
+	padding-top:3px;
+}
+.ddnr .wd{
+	margin-top:15px;
+	text-align:right;
+	margin-right:10px;
+}
+.ddnr .wd .wdddxq{
+	font-size:12px;
+	border:1px solid #000;
+	text-align:center;
+	padding:5px 8px 5px 8px;
+}
+
+.ddnr .wd .wdqxdd{
+	font-size:12px;
+	border:1px solid #AAA;
+	color:#AAA;
+	padding:5px 8px 5px 8px;
+	margin-left:13px;
+}
+
+.ddnr .wd .wdljfk{
+	font-size:12px;
+	background-color:#00415D;
+	color:#FFF;
+	padding:5px 8px 5px 8px;
+	margin-left:13px;
+}
+/********************我的订单start**********************/
+</style>
+
+
+
+  <!-------------- 待付款start --------------->
+  <?php
+	foreach($mys as $k=>$v){
+  ?>
+<div class="ddnr" id="qqqq{$v.id}">
+   <p style="border-bottom:1px solid #E1E1E1; width:90%; margin: 0 auto;"><span class="claaa">下单时间</span><span class="cl777">{$v.ctime|time_format=###,'Y-m-d'}</span></p>
+   <div class="wdddxiangxi" style="background: url(<?php
+	 		echo get_cover_url ( $v ['pic'] );
+	 	?>) no-repeat left;background-size: 60px 100%;height: 100%;">
+      <div class="wdddddbh">订单编号<span class="ysbh" style="color:#666; font-size:12px; padding-left:8px;">{$v.dingdanbianhao}</span></div>
+      <div class="wdddddje">订单金额<span class="hei" style="color:#000; font-size:12px; padding-left:8px;">￥{$v.zongjine}</span>
+        <span class="bh" style="color:#AAA; font-size:12px;">（含运费：￥{$config.yunfei}）</span></div>
+      <div class="wddddfk">订单状态<span class="ysbh" style="color:#666; font-size:12px; padding-left:8px;"><?php
+		if(!$v['fuk']) echo '待付款';
+		else echo '已付款';
+	  ?></span></div>
+   </div>
+   <div style="border-bottom:1px dashed #E1E1E1; width:90%; margin: 0 auto; padding-top:10px;"></div>
+   <div class="wd">
+      <a href="/index.php?s=/addon/WeiSite/WeiSite/OrderDetails/id/<?php
+		//$idddn=explode(',',$v['sid']);
+		echo $v['id'];//$idddn['0'];
+	  ?>.html"><span class="wdddxq">订单详情</span></a>
+      <?php
+		if(!$v['fuk']){
+	  ?><span class="wdqxdd" onclick="sssww({$v.id});">取消订单</span>
+      <a onclick="ssddsqqqss({$v.id});"><span class="wdljfk">立即付款</span></a>
+	  <?php
+		}if($v['fuk'] && !$v['queren']){
+	  ?>
+	  <span class="wdqxdd" id="qqqqssss{$v.id}" onclick="ssswwss({$v.id});">确认收货</span>
+	  <?php
+		}
+	  ?>
+   </div>
+</div>
+<?php
+}
+?>
+  <!-------------- 待付款end --------------->
+  
+  
+  
+<script>
+function ssddsqqqss(id){
+	$('#qqqq'+id).remove();
+	location.href ='/index.php?s=/addon/WeiSite/WeiSite/wwwffkkkid/id/{$v.id}.html';
+}
+//取消订单
+function sssww(id){
+	//询问框
+	layer.confirm('确定取消订单吗？', {
+	  btn: ['确定','取消'] //按钮
+	}, function(){
+	  
+
+
+	layer.closeAll();
+	$.ajax( {
+		url: 'http://aina.test.resonance.net.cn/index.php?s=/addon/WeiSite/WeiSite/Myorder/quxiao/'+id+'.html', //这里是静态页的地址
+		type: "GET", //静态页用get方法，否则服务器会抛出405错误
+		//dataType: "json",
+		//cache: false,
+		//async: false,
+		beforeSend: function(){
+		 // Handle the beforeSend event
+		 $('#qqqq'+id).remove();
+		},
+		success: function(data){
+			//var result = $(data).find("另一个html页面的指定的一部分").html();
+			
+		}
+	});	}, function(){
+	  //
+	});
+}
+//确认收货
+function ssswwss(id){
+	//询问框
+	layer.confirm('确定确认收货吗？', {
+	  btn: ['确定','取消'] //按钮
+	}, function(){layer.closeAll();
+	$.ajax( {
+		url: 'http://aina.test.resonance.net.cn/index.php?s=/addon/WeiSite/WeiSite/Myorder/quren/'+id+'.html', //这里是静态页的地址
+		type: "GET", //静态页用get方法，否则服务器会抛出405错误
+		//dataType: "json",
+		//cache: false,
+		//async: false,
+		beforeSend: function(){
+		 // Handle the beforeSend event
+		 $('#qqqqssss'+id).remove();
+		},
+		success: function(data){
+			//var result = $(data).find("另一个html页面的指定的一部分").html();
+			//location.href = '/index.php?s=/addon/WeiSite/WeiSite/Myorder/dfk/dfkok.html';
+		}
+	});	}, function(){
+	  //
+	});
+}
+</script>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+<!-----------------------------我的订单全部内容end------------------------------->
+
+
+
+<include file="Addons/WeiSite/View/default/TemplateIndex/ColorV1/footm.html" />

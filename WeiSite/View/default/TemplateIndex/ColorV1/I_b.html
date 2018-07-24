@@ -1,0 +1,79 @@
+<style>
+@charset "utf-8";
+/* CSS Document by jacy use in weisite */
+.container{ background:none}
+header{ text-align:center}
+.banner{ width:100%; overflow:hidden; position:relative; margin:0;}
+.banner ul{ position:absolute; left:0; top:0; z-index:10; -webkit-animation:}
+.banner ul li{ float:left; display:table-cell; position:relative}
+.banner li a{ width:100%; height:100%; display:block;}
+.banner li .title{  color:#fff; line-height:30px; padding-left:10px; position:absolute; left:0; bottom:0; width:100%; z-index:1000; display:none}
+.identify{text-align:center; position:absolute; bottom:0; right:0; z-index:100; height:30px;}
+.identify em{ display:inline-block; margin:10px 5px;border: 1px solid #B4802C;width: 10px;height: 10px;background: #fff;}
+.identify em.cur{ background-color:#B4802C}
+
+.icon_lists{ text-align:center; margin:20px 0}
+.icon_lists .item{ width:33.3%; float:left; margin-bottom:20px; color:#333}
+.icon_lists .item .icon{ border-radius:40px; padding:20px; width:40px; height:40px; display:block; margin:0 auto 10px;}
+.icon_lists .item img{ width:40px; height:40px;}
+</style>
+    <script type="text/javascript" src="/Addons/WeiSite/View/default/TemplateIndex/ColorV1/js/prefixfree.min.js"></script>
+    <script type="text/javascript" src="/Addons/WeiSite/View/default/TemplateIndex/ColorV1/js/flipsnap.min.js"></script>
+	<script>
+	var ww=$(window).width();
+	//banner
+	var w=358;
+	var h=273;
+	var b=0.9;
+	var newsssheigtg=(ww*b*h)/w;
+new_widht_baifenbi_kuandu=1</script>
+    <script type="text/javascript" src="/Addons/WeiSite/View/default/TemplateIndex/ColorV1/js/mobile_module.js?v=111"></script>
+    <script type="text/javascript" src="/Addons/WeiSite/View/default/TemplateIndex/ColorV1/js/admin_common.js"></script>
+<div class="container">
+            <section class="banner">
+                <ul>
+
+
+<?php
+  $info['tu_huan']=explode(',',$info['tu_huan']);
+  foreach($info['tu_huan'] as $k=>$v){
+
+      $isss++;
+      echo '<li><a href=""><img src="'.get_cover_url ( $v ).'"></a></li>';
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+?>
+
+
+						</ul>
+        <span class="identify">
+		<?php
+			for($i=0;$i<$isss;$i++){
+		?>
+        <em <?php
+		if(!$i) echo 'class="cur"';
+		?>></em>
+<?php
+}
+?>
+		</span>
+            </section></div><script type="text/javascript">
+    $(function(){
+        $.WeiPHP.initBanner(true,5000);
+        $.WeiPHP.setRandomColor('.random_color');
+    })
+
+</script>

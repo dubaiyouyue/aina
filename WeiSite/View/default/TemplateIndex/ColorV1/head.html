@@ -1,0 +1,349 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<script>var ua = navigator.userAgent.toLowerCase();
+var isWeixin = ua.indexOf('micromessenger') != -1;
+var isAndroid = ua.indexOf('android') != -1;
+var isIos = (ua.indexOf('iphone') != -1) || (ua.indexOf('ipad') != -1);
+if (!isWeixin && !isAndroid && !isIos) {
+	//location.href = '/index.php?s=/addon/WeiSite/WeiSite/preview.html';
+}</script>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="format-detection" content="telephone=no" />
+<title>{$xltitle}</title>
+<META NAME="Keywords" CONTENT="{$keyword}">
+<META NAME="Description" CONTENT="{$intro}">
+
+<style>
+*{
+	margin:0;
+	padding:0;
+	border:0;
+	color:#000;
+	font-family:"微软雅黑", Arial;
+	font-size:14px;
+}
+ul li{
+	list-style-type: none;
+}
+a{
+	text-decoration: none;
+	color:#000;
+}
+html,body{min-height:100%;}
+/************************header start*******************************/
+.header{
+	width:100%;
+	height: 33px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	border-bottom: 1px solid #E1E1E1;z-index: 10000005;
+    position: relative;    background-color: #fff;
+}
+.header .logo{
+	width: 187px;
+	margin: 0 auto;
+}
+.header .menu{
+	position: relative;
+	top:-26px;
+	margin-left: 12px;
+}
+.header .cart_icon{
+	width: 1.65rem;
+	position: absolute;
+	right: 0.15rem;
+	top:0.5542rem;
+	margin-right: 0.6rem;
+}
+.header .search{
+	position:absolute;
+	right: 2.65rem;
+	top: 0.525rem;
+}
+.contentimg img{max-width: 100%;}
+/************************header end*******************************/
+/*弹出菜单*/
+.ddllsszz{color: #B67F2F;
+    text-decoration: underline;
+    margin-right: 20px;}
+#ppptcdiv-ddd{    width: 100%;display:none;
+    height: 100%;
+    background: rgba(73, 132, 177, 0.4);
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    z-index: 10000001;}
+.ppptcdiv{    position: fixed;
+    left: -225px;
+    top: 0px;
+    background-color: #fff;
+    width: 225px;
+    height: 100%;
+    z-index: 10000008;
+    padding-top: 53px;}
+	.ppptcdiv li{
+	    padding: 12px;
+    margin-left: 12px;
+    border-bottom: 1px dashed #ddd;
+	}
+
+	.ppptcdiv a{width: 95px;
+    display: inline-block;}
+	.ppptcdiv ul{width: 145px;}
+.parent-element-x {
+      background:url(../images/result.png);
+	  background-position: 0px 0px;height: 17px;
+    width: 17px;
+    display: inline-block;
+    right: 10px;
+    position: absolute;
+    top: 62px;
+}
+.parent-element-1 {
+      background:url(../images/result.png);
+	  background-position: 10px -18px;
+	  background-repeat: no-repeat;
+		padding-left: 36px;
+	padding-top: 6px;
+    padding-bottom: 6px;
+}
+ .parent-element-1:hover,.parent-element-1a {
+	 color:#fff;
+      background:#00415D url(../images/result.png);
+	  background-position: 10px -45px;
+	  background-repeat: no-repeat;
+    padding-left: 36px;
+	
+
+    padding-top: 6px;
+    padding-bottom: 6px;
+	
+}
+.parent-element-3 {
+      background:url(../images/result.png);
+	  background-position: 10px -72px;background-repeat: no-repeat;
+    padding-left: 36px;	padding-top: 6px;
+    padding-bottom: 6px;
+
+}
+.parent-element-3:hover,.parent-element-3a {color:#fff;
+      background:#00415D url(../images/result.png);
+	  background-position: 10px -99px;background-repeat: no-repeat;
+    padding-left: 36px;    padding-top: 6px;
+    padding-bottom: 6px;
+}
+.parent-element-5 {
+      background:url(../images/result.png);
+	  background-position: 10px -129px;background-repeat: no-repeat;
+    padding-left: 36px;	padding-top: 6px;
+    padding-bottom: 6px;
+}
+.parent-element-5:hover,.parent-element-5a  {color:#fff;
+      background:#00415D url(../images/result.png);
+	  background-position: 10px -159px;background-repeat: no-repeat;
+    padding-left: 36px;    padding-top: 6px;
+    padding-bottom: 6px;
+}
+.parent-element-7 {
+      background:url(../images/result.png);
+	  background-position: 10px -192px;background-repeat: no-repeat;
+    padding-left: 36px;	padding-top: 6px;
+    padding-bottom: 6px;
+}
+.parent-element-7:hover,.parent-element-7a {color:#fff;
+      background:#00415D url(../images/result.png);
+	  background-position: 10px -222px;background-repeat: no-repeat;
+    padding-left: 36px;    padding-top: 6px;
+    padding-bottom: 6px;
+}
+.parent-element-9 {
+      background:url(../images/result.png);
+	  background-position: 10px -250px;background-repeat: no-repeat;
+    padding-left: 36px;	padding-top: 6px;
+    padding-bottom: 6px;
+}
+.parent-element-9:hover,.parent-element-9a {color:#fff;
+      background:#00415D url(../images/result.png);
+	  background-position: 10px -278px;background-repeat: no-repeat;
+    padding-left: 36px;    padding-top: 6px;
+    padding-bottom: 6px;
+}
+.parent-element-11 {
+      background:url(../images/result.png);
+	  background-position: 10px -305px;background-repeat: no-repeat;
+    padding-left: 36px;padding-top: 6px;
+    padding-bottom: 6px;
+}
+.parent-element-11:hover,.parent-element-11a {color:#fff;
+      background:#00415D url(../images/result.png);
+	  background-position: 10px -334px;background-repeat: no-repeat;
+    padding-left: 36px;    padding-top: 6px;
+    padding-bottom: 6px;
+}
+.parent-element-13 {
+      background:url(../images/result.png);
+	  background-position: 10px -364px;background-repeat: no-repeat;
+    padding-left: 36px;padding-top: 6px;
+    padding-bottom: 6px;
+}
+.parent-element-13:hover {color:#fff;
+      background:#00415D url(../images/result.png);
+	  background-position: 10px -390px;background-repeat: no-repeat;
+    padding-left: 36px;    padding-top: 6px;
+    padding-bottom: 6px;
+}
+#index-s-input{position: absolute;z-index: 10000007;
+    top: 0.45rem;
+	display:none;
+    border: 1px solid #00415D;
+    padding: 0.25rem;
+    right: 4.1rem;
+    width: 9.25rem;
+    }
+    .footer{
+    	width: 100%;
+    	margin-bottom: 20px;
+    }
+    .footer .huidise{
+    	width: 100%;
+    	height: 35px;
+    	background-color: #E1E1E1;
+    	margin-bottom: 10px;
+    }
+    .footer .huidise .wz_left{
+    	text-align: left;
+    	line-height: 35px;
+        margin-left: 20px;
+    }
+    .footer .huidise .wz_left a{
+    	color:#00415D;
+    }
+    .footer .huidise .wz_left .wz_right{
+        float: right;
+        margin-right: 20px;
+        display: inline-block;
+    }
+    .footer .huidise .wz_right a{
+    	color:#B67F2F;
+    }
+    .footer p{
+    	color: #B67F2F;
+    	text-align: center;
+    }
+		/*查看更多*/
+		#readmore{    display: block;
+    padding: 10px 0px;
+		color: #999;
+    text-align: center;
+    background-color: #eee;
+    width: 15.227rem;
+    margin: auto;
+    margin-bottom: 15px;}
+</style>
+<link rel="stylesheet" media="all" href="css/{$loandcss}.css" />
+<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.0/jquery.min.js"></script>
+<script>
+//- 设置html标签font-size 针对手机布局js
+(function (doc, win) {
+    var _root = doc.documentElement,
+        resizeEvent = 'orientationchange' in window ? 'orientationchange' : 'resize',
+        resizeCallback = function () {
+            var clientWidth = _root.clientWidth,
+                fontSize = 20;
+            if (!clientWidth) return;
+            //if(clientWidth < 640) {
+                fontSize = 20 * (clientWidth / 320);
+            /*} else {
+                fontSize = 20 * (640 / 320);
+            }*/
+            _root.style.fontSize = fontSize + 'px';
+        };
+    if (!doc.addEventListener) return;
+    win.addEventListener(resizeEvent, resizeCallback, false);
+    doc.addEventListener('DOMContentLoaded', resizeCallback, false);
+})(document, window);
+	immm='<div style="height: 100%;background:url(data:image/gif;base64,R0lGODlhEAAQALMPAHp6evf394qKiry8vJOTk83NzYKCgubm5t7e3qysrMXFxe7u7pubm7S0tKOjo////yH/C05FVFNDQVBFMi4wAwEAAAAh+QQJCAAPACwAAAAAEAAQAAAETPDJSau9NRDAgWxDYGmdZADCkQnlU7CCOA3oNgXsQG2FRhUAAoWDIU6MGeSDR0m4ghRa7JjIUXCogqQzpRxYhi2HILsOGuJxGcNuTyIAIfkECQgADwAsAAAAABAAEAAABGLwSXmMmjhLAQjSWDAYQHmAz8GVQPIESxZwggIYS0AIATYAvAdh8OIQJwRAQbJkdjAlUCA6KfU0VEmyGWgWnpNfcEAoAo6SmWtBUtCuk9gjwQKeQAeWYQAHIZICKBoKBncTEQAh+QQJCAAPACwAAAAAEAAQAAAEWvDJORejGCtQsgwDAQAGGWSHMK7jgAWq0CGj0VEDIJxPnvAU0a13eAQKrsnI81gqAZ6AUzIonA7JRwFAyAQSgCQsjCmUAIhjDEhlrQTFV+lMGLApWwUzw1jsIwAh+QQJCAAPACwAAAAAEAAQAAAETvDJSau9L4QaBgEAMWgEQh0CqALCZ0pBKhRSkYLvM7Ab/OGThoE2+QExyAdiuexhVglKwdCgqKKTGGBgBc00Np7VcVsJDpVo5ydyJt/wCAAh+QQJCAAPACwAAAAAEAAQAAAEWvDJSau9OAwCABnBtQhdCQjHlQhFWJBCOKWPLAXk8KQIkCwWBcAgMDw4Q5CkgOwohCVCYTIwdAgPolVhWSQAiN1jcLLVQrQbrBV4EcySA8l0Alo0yA8cw+9TIgAh+QQFCAAPACwAAAAAEAAQAAAEWvDJSau9WA4AyAhWMChPwXHCQRUGYARgKQBCzJxAQgXzIC2KFkc1MREoHMTAhwQ0Y5oBgkMhAAqUw8mgWGho0EcCx5DwaAUQrGXATg6zE7bwCQ2sAGZmz7dEAAA7);background-repeat: no-repeat;background-position: center;"></div>';
+</script>
+</head>
+
+<body>
+<!-- 顶部导航 start -->
+<style>#open img{height:1.75rem;}.header{
+height: 1.65rem;
+    background: url(/images/logo1.png);
+    background-repeat: no-repeat;
+    background-size: 7.3rem auto;
+    background-position: 3.5rem center;
+}</style>
+<div class="header" style="background: #fff url(/images/1/logo.gif);
+    background-repeat: no-repeat;
+    background-size: 7.3rem auto;
+    background-position: 3.5rem center;position: fixed;"">
+ <!--<div class="logo"><a href="#"><img src="images/logo1.png" width="154" height="25" /></a></div>-->
+ <div class="menu" style="top:0px;"><a href="javascript:;" id="open"><img src="images/1/menu.gif" /></a></div>
+ <div class="search" id="search"><img src="images/1/search.gif" style="width:1.25rem;height:1.65rem;" /></div>
+ <a href="/index.php?s=/addon/WeiSite/WeiSite/shooppcaa.html"><div class="cart_icon"><img src="images/1/cart.gif"  style="width:1.35rem;height:1.7rem"/>
+	
+	<?php
+		$ggwwnumber=$ggwwnumber+0;
+		if($ggwwnumber>9) echo '<span id="dsafggzzs" style="position:absolute;left: 0.85rem;font-size: 0.6rem;bottom: 0.66rem;color: #00415D;">+</span>';
+		else echo '<span id="dsafggzzs" style="position:absolute;left: 0.85rem;font-size: 0.66rem;bottom: 0.6rem;color: #00415D;">'.$ggwwnumber.'</span>';
+	?>
+	
+	
+
+ </div></a>
+
+
+</div>
+<!-- 顶部导航 end -->
+
+<!--输入框-->
+<input type="text" name="firstname" id="index-s-input" style="height: 0.95rem;" />
+
+<!--end-->
+
+<!--弹出菜单-->
+<div class="ppptcdiv">
+	<ul>
+		<li><?php
+		if($_COOKIE["tel"]){
+			echo '<span><a href="/index.php?s=/addon/WeiSite/WeiSite/MemberHome.html">个人中心</a></span>';
+		}else{
+	 ?><span><a href="/index.php?s=/addon/WeiSite/WeiSite/login.html" style="display: inline;" class="ddllsszz">登录</a></span> <span><a href="/index.php?s=/addon/WeiSite/WeiSite/register.html" style="display: inline;" class="ddllsszz">注册</a></span>
+		
+		<?php
+		}?>
+		
+		</li>
+		<li><a href="/index.php?s=/addon/WeiSite/WeiSite/index.html" class="parent-element-1 <?php
+				if($loandcss=='index') echo 'parent-element-1a';
+			?>">首页</a></li>
+
+
+		<li><a href="/index.php?s=/addon/WeiSite/WeiSite/LatestRecomm.html" class="parent-element-3 <?php
+				if($loandcss=='LatestRecomm' || $loandcss=='DynamicActivity') echo 'parent-element-3a';
+			?>">最新推荐</a></li>
+		<li><a href="/index.php?s=/addon/WeiSite/WeiSite/Products.html" class="parent-element-5 <?php
+				if($loandcss=='Products' || $loandcss=='blnxiangqing') echo 'parent-element-5a';
+			?>">产品名录</a></li>
+		<li><a href="/index.php?s=/addon/WeiSite/WeiSite/BookingNotesXz.html" class="parent-element-7 <?php
+				if($loandcss=='BookingNotesXz') echo 'parent-element-7a';
+			?>">购物指南</a></li>
+		<li><a href="/index.php?s=/addon/WeiSite/WeiSite/BrandStory.html" class="parent-element-9 <?php
+				if(in_array($loandcss,array('ContactUs','Cooperation','BakingRoom','BrandStory'))) echo 'parent-element-9a';
+			?>">关于艾娜</a></li>
+		<li><a href="/index.php?s=/addon/WeiSite/WeiSite/OnlineService.html" class="parent-element-11 <?php
+				if($loandcss=='OnlineService' || $loandcss=='message') echo 'parent-element-11a';
+			?>">客服中心</a></li>
+		<li><a href="/index.php?s=/addon/WeiSite/WeiSite/MemberHome.html" class="parent-element-13">会员中心</a></li>
+	</ul>
+	<span class="parent-element-x" id="colsoe" onclick="cloos();"></span>
+</div>
+<div id="ppptcdiv-ddd" onclick="cloos();"></div>
+<!--end-->
+<div style="width:100%;height:65px;"></div>

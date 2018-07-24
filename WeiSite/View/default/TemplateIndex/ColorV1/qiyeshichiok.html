@@ -1,0 +1,273 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="format-detection" content="telephone=no" />
+<title>企业试吃 艾娜西点</title>
+<script>
+//- 设置html标签font-size
+(function (doc, win) {
+    var _root = doc.documentElement,
+        resizeEvent = 'orientationchange' in window ? 'orientationchange' : 'resize',
+        resizeCallback = function () {
+            var clientWidth = _root.clientWidth,
+                fontSize = 20;
+            if (!clientWidth) return;
+            //if(clientWidth < 640) {
+                fontSize = 20 * (clientWidth / 320);
+            /*} else {
+                fontSize = 20 * (640 / 320);
+            }*/
+            _root.style.fontSize = fontSize + 'px';
+        };
+    if (!doc.addEventListener) return;
+    win.addEventListener(resizeEvent, resizeCallback, false);
+    doc.addEventListener('DOMContentLoaded', resizeCallback, false);
+})(document, window);
+</script>
+<style>
+*{
+	margin:0;
+	padding:0;
+}
+
+a {
+    text-decoration: none;
+}
+
+ul, li{
+    list-style-type: none;
+}
+
+body{
+	font-size:14px;
+	font-family: Arial,"Microsoft Yahei";
+}
+/*清除浮动*/
+.clearfix:after{content:".";display:block;height:0;clear:both;visibility:hidden}
+.clearfix{*+height:1%;}
+</style>
+</head>
+
+<body>
+<style>
+.datu{
+	width:100%;
+	height:auto;
+}
+</style>
+<div class="datu"><img src="images/zhuangshitu.jpg" width="100%" /></div>
+
+
+<style>
+.box1, .box2, .box3, .box4{
+	padding:1.25rem 1rem 0.5rem 1rem;
+	color:#C1885D;
+}
+.box1 .title{
+	font-size:18px;
+	font-weight:bold;
+	text-align:center;
+}
+.box1 .yw{
+	font-size:14px;
+	font-weight:bold;
+	text-align:center;
+	margin-bottom:0.75rem;
+}
+.box1 p{
+	text-indent:2em;
+}
+
+
+.box2 .wz2{
+	font-size:15px;
+	font-weight:bold;
+	border-bottom:1px solid #C1885D;
+	padding-bottom:0.25rem;
+	margin-bottom:0.5rem;
+}
+.box2 .tishi{
+	margin-top:0.5rem;
+}
+.box2 .tishi .wz3{
+	font-size:15px;
+	font-weight:bold;
+}
+.input_txt{
+    border: 1px #ccc solid;
+    height: 1.75rem;
+    line-height: 1.75rem;
+	font-family:"Microsoft YaHei";
+	color:#bbb;
+	padding-left:0.5rem;
+	font-size:13px;
+    width:100%;
+	border-bottom: none;
+	margin-bottom:0px;
+}
+
+
+.box4 .title{
+	border-bottom:1px solid #C1885D;
+	padding-bottom:0.25rem;
+	margin-bottom:1rem;
+	font-size:18px;
+	font-weight:bold;
+	color:#C1885D;
+}
+.box4 .bt{
+	font-size:15px;
+	font-weight:bold;
+	color:#C1885D;
+	margin-bottom:0.25rem;
+}
+textarea,input {
+    /*宽度多出2px bug*/
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.shenqing{
+	width: 100%;
+    overflow: hidden;
+	margin-top:-1px;
+}
+</style>
+<div class="box1">
+    <div class="title">企业申请免费试吃</div>
+    <div class="yw">Aina's time FM</div>
+    <div class="wz1">尊敬的客户</div>
+    <P>您好！感谢您参与艾娜西点的免费品尝活动！</P>
+	<br />
+    <P>请您仔细阅读以下活动规则，并按活动要求填写申请，艾娜将为您提供优质的品尝体验，祝您品尝愉快！</P>
+</div>
+
+<div class="box2">
+   <div class="wz2">如果您所在的公司：</div>
+   <div style="	border-bottom:1px solid #C1885D; padding-bottom:0.5rem;">
+      <P>1.未曾参与过艾娜西点的免费品尝活动且参与人数在8人以上；</P>
+	  <P>2.可提供用于免费品尝活动的独立区域；</P>
+	  <P>3.可提供时间让艾娜工作人员为您提供品尝及讲解服务；</P>
+	  <P>4.关注艾娜公众号；</P>
+	  <P>5.申请公司办公地址在配送范围内；</P>
+	  <P>6.如您公司有采购需求，请向我们的工作人员进行了解；</P>
+   </div>
+   <div class="tishi">
+      <p class="wz3">提示：</p>
+      <P class="wz3">您的品尝申请，艾娜工作人员筛选后，会在5个工作日内与您取得联系。</P>
+<P class="wz3">如有查询及疑问，请致电{$config.tel}</P>
+   </div>
+</div>
+
+
+
+<form name="myform" id="myform" method="POST" action="/index.php?s=/addon/WeiSite/WeiSite/qiyeshichi.html">
+<div class="box3">
+    
+  <p><input class="input_txt"  name="gongsimingcheng" type="text" id="gongsimingcheng" value="公司名称" onfocus="if(this.value == this.defaultValue) this.value = ''" onblur="if(this.value == '') this.value = this.defaultValue"></p> 
+  
+  <p><input class="input_txt"  name="suozaiquyu" type="text" id="suozaiquyu" value="公司所在区域" onfocus="if(this.value == this.defaultValue) this.value = ''" onblur="if(this.value == '') this.value = this.defaultValue" /></p>
+  
+  <p><input class="input_txt"  name="gongsidizhi" type="text"  id="gongsidizhi" value="公司地址" onfocus="if(this.value == this.defaultValue) this.value = ''" onblur="if(this.value == '') this.value = this.defaultValue"></p> 
+     
+  <p><input class="input_txt"  name="gongsibumen" type="text" id="gongsibumen" value="公司部门" onfocus="if(this.value == this.defaultValue) this.value = ''" onblur="if(this.value == '') this.value = this.defaultValue"></p> 
+  
+  <p><input class="input_txt"  name="lianxiren" type="text" id="lianxiren" value="联系人" onfocus="if(this.value == this.defaultValue) this.value = ''" onblur="if(this.value == '') this.value = this.defaultValue" /></p>
+  
+  <p><input class="input_txt"  name="lianxidianhua" type="text"  id="lianxidianhua" value="联系电话" onfocus="if(this.value == this.defaultValue) this.value = ''" onblur="if(this.value == '') this.value = this.defaultValue"></p> 
+     
+  <p><input class="input_txt"  name="shijiananpai" type="text" id="shijiananpai" value="时间安排" onfocus="if(this.value == this.defaultValue) this.value = ''" onblur="if(this.value == '') this.value = this.defaultValue" /></p>
+  
+  <p><input style="border-bottom: 1px #ccc solid;" class="input_txt"  name="gongsiguimo" type="text"  id="gongsiguimo" value="公司规模" onfocus="if(this.value == this.defaultValue) this.value = ''" onblur="if(this.value == '') this.value = this.defaultValue"></p> 
+                   
+   <div class="shenqing">
+   <input type="button" value="提交申请" style="background:#C1885D;color:#fff;height:1.75rem; width:100%; border:0; font-size:14px; 
+   font-family:'Microsoft Yahei'; font-weight:bold;" onclick="xxpd();" />
+   </div>
+</div></form>
+<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.0/jquery.min.js"></script>
+<script>
+alert('企业免费试吃报名活动申请提交成功！');
+location.href = '/index.php?s=/addon/WeiSite/WeiSite/index.html';
+
+document.getElementById('gongsimingcheng').focus();
+	function  xxpd(){
+	
+		var gongsimingcheng=$('#gongsimingcheng').val();
+		var suozaiquyu=$('#suozaiquyu').val();		
+		var gongsidizhi=$('#gongsidizhi').val();	
+		var gongsibumen=$('#gongsibumen').val();	
+		var lianxiren=$('#lianxiren').val();	
+		var lianxidianhua=$('#lianxidianhua').val();
+		var shijiananpai=$('#shijiananpai').val();
+		var gongsiguimo=$('#gongsiguimo').val();
+		
+		if(!gongsimingcheng || gongsimingcheng=='公司名称'){
+			alert('请填写公司名称');
+			document.getElementById('gongsimingcheng').focus();
+			return false;
+		}
+		if(!suozaiquyu || suozaiquyu=='公司所在区域'){
+			alert('请填写公司所在区域');
+			document.getElementById('suozaiquyu').focus();
+			return false;
+		}
+		if(!gongsidizhi || gongsidizhi=='公司地址'){
+			alert('请填写公司地址');
+			document.getElementById('gongsidizhi').focus();
+			return false;
+		}
+		if(!gongsibumen || gongsibumen=='公司部门'){
+			alert('请填写公司部门');
+			document.getElementById('gongsibumen').focus();
+			return false;
+		}
+		if(!lianxiren || lianxiren=='联系人'){
+			alert('请填写联系人');
+			document.getElementById('lianxiren').focus();
+			return false;
+		}
+		if(!lianxidianhua || lianxidianhua=='联系电话'){
+			alert('请填写联系电话');
+			document.getElementById('lianxidianhua').focus();
+			return false;
+		}
+		if(!shijiananpai || shijiananpai=='时间安排'){
+			alert('请填写时间安排');
+			document.getElementById('shijiananpai').focus();
+			return false;
+		}
+		if(!gongsiguimo || gongsiguimo=='公司规模'){
+			alert('请填写公司规模');
+			document.getElementById('gongsiguimo').focus();
+			return false;
+		}
+		document.getElementById('myform').submit();
+	}
+</script>
+
+
+
+
+
+
+
+
+<div class="box4">
+   <div class="title">联系方式<span style="font-size:12px; margin-left:0.25rem;">CONTACT INFORMATION</span></div>
+   <div class="bt">配送范围</div>
+   <div class="psfw"><img src="images/peisongfanwei.jpg" width="100%" /></div>
+   <P style="margin-top:0.5rem;color:#C1885D;">
+      <span style="display:inline-block;">TEL：{$config.tel}</span>
+      <span style="display:inline-block; margin-left:0.5rem;">客服微信：{$config.qyscainakefu}</span>
+   </P>
+</div>
+
+</body>
+</html>

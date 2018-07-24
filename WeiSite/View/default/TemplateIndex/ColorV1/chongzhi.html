@@ -1,0 +1,26 @@
+<form style="padding: 8px;" action="/index.php?s=/addon/WeiSite/WeiSite/chongzhi/" method="POST" name="myform" id="myform">
+<input type="number" name="jiner"  id="file" style="width:300px;background-color: #fff;padding: 10px 0px;margin-bottom: 8px;" /> 
+<br />
+<span  id="chongzhichongzhissss" >
+<input type="button" value="提 交" onclick="chongzhisss();" style="margin-top: 12px;padding: 10px 30px;background-color: #00415D;color: #fff;border: none;" /></span>
+</form>
+<script>
+$('#chongzhichongzhi').html('充值');
+$('#chongzhichongzhi').css('backgroundColor','#00415D');
+function chongzhisss(){
+	var je=parseFloat($('#file').val());
+	
+	if(!je){
+		alert('请填写充值金额！');
+		return false;
+	}
+	if(je<parseFloat('{$config.chongzhizuidijine}')){
+		alert('充值金额不能低于{$config.chongzhizuidijine}元！');
+		return false;
+	}
+	
+	$('#chongzhichongzhissss').html('<span style="color:red;">正在跳转支付..请稍等...</span>');
+	document.getElementById('myform').submit();
+	}
+	
+</script>

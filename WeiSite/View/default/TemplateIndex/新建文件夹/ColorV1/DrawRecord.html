@@ -1,0 +1,184 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="format-detection" content="telephone=no" />
+<title>会员中心-抽奖记录</title>
+
+<script>	
+//- 设置html标签font-size
+(function (doc, win) {
+    var _root = doc.documentElement,
+        resizeEvent = 'orientationchange' in window ? 'orientationchange' : 'resize',
+        resizeCallback = function () {
+            var clientWidth = _root.clientWidth,
+                fontSize = 20;
+            if (!clientWidth) return;
+            //if(clientWidth < 640) {
+                fontSize = 20 * (clientWidth / 320);
+            /*} else {
+                fontSize = 20 * (640 / 320);
+            }*/
+            _root.style.fontSize = fontSize + 'px';
+        };
+    if (!doc.addEventListener) return;
+    win.addEventListener(resizeEvent, resizeCallback, false);
+    doc.addEventListener('DOMContentLoaded', resizeCallback, false);
+})(document, window);
+</script>
+
+<style type="text/css">
+*{
+	margin:0;
+	padding:0;
+	border:0;
+	font-family:"微软雅黑", Arial;
+	font-size:14px;
+}
+ul li{
+	list-style-type: none;
+}
+a{
+	text-decoration: none;
+	color: #000;
+}
+</style>
+</head>
+
+<body>
+<!---------------------------- 文字抽奖记录start ---------------------------->
+<style>
+.top{
+	height:2.25rem;
+	width:100%;
+	background-color:#00415D;
+	margin-bottom:0.75rem;
+}
+.top .fanhui{
+	position:absolute;
+	left:5%;
+	top:0.7rem;
+}
+.top .baizi{
+	font-size:16px;
+	color:#FFF;
+	text-align:center;
+	line-height:2.25rem;
+}
+</style>
+<div class="top">
+   <div class="fanhui"><a onclick="history.go(-1)" style="cursor:pointer;"><img src="images/fh.png" width="9" height="16" /></a></div>
+   <div class="baizi">抽奖记录</div>
+</div>
+<!---------------------------- 文字抽奖记录end ---------------------------->
+
+
+<!-------------------- 栏目start -------------------->
+<style>
+.lanmu{
+	width: 100%;
+    height:auto;
+    overflow:auto;
+	text-align: center;
+}
+.xuanxiangnew-lij {text-align: center;}
+.xuanxiangnew-lij li{display:inline-block;}
+.xuanxiang li{
+	/*float:left;*/ 
+/*	margin-right:10px; 
+*/	margin-bottom:10px; 
+	line-height:30px; 
+	font-size:14px; 
+	text-align:center; 
+	padding:0px 8px 0px 8px;
+}
+.xuanxiang li:hover,.xuanxiang_on{
+	background-color:#00415D;
+}
+.xuanxiang li:hover,.xuanxiang_on a{
+	color:#FFF; 
+}
+.ddsssppjj{    width: 15rem;
+    margin: auto;
+    background-color: #ddd;
+    margin-bottom: 12px;
+    padding: 5px;
+    border-bottom: 2px solid #4984B1;}.cjjsspcolor{color: red;}
+	.sssddbbbooo{width: 15rem;
+    margin: auto;    margin-bottom: 68px;}.jjjxxxccss{background-color: #4984B1;
+    text-align: center;
+    padding: 11px;
+    color: #fff;
+    margin-top: 8px;}.dddshhhaaalp{    display: inline-block;
+    color: yellow;
+    background-color: #00415d;
+    padding: 3px 5px;}
+</style>
+<div class="lanmu" style="margin-top:10px;">
+  <ul class="xuanxiang xuanxiangnew-lij">
+    <li><a href="/index.php?s=/addon/WeiSite/WeiSite/MyCoupons.html">我的优惠券</a></li>
+    <li <?php
+		if(!$ssfffyiij) echo'class="xuanxiang_on"';
+	?>><a href="/index.php?s=/addon/WeiSite/WeiSite/DrawRecord.html">我的礼品</a></li>
+	<li <?php
+		if($ssfffyiij) echo'class="xuanxiang_on"';
+	?>><a href="/index.php?s=/addon/WeiSite/WeiSite/DrawRecord/ssfffyiij/ok.html">已兑换</a></li>
+  </ul>
+</div>
+<!-------------------- 栏目end  -------------------->
+
+
+
+<!-------------------- 抽奖内容start-------------------->
+<p style="
+    width: 15rem;
+    margin: auto;
+    padding-bottom: 12px;
+    border-top: 1px solid #eee;
+    color: red;
+">礼品兑换有效期至：{$tongzhiggnryxqccjjj}</p>
+<div class="cjjlnr">
+	<?php
+		if(empty($c)) echo '暂无兑换奖品哦。';
+		foreach($c as $k=>$v){
+			$kk++;
+		?>
+	<div class="ddsssppjj" style="background:#f0f0f0 url(<?php
+	 		echo get_cover_url ( $v ['pic'] );
+	 	?>);background-position:right;background-repeat:no-repeat;">
+	<p>编号：{$kk}</p>
+	<p>时间：{$v.ctime|time_format=###,'Y-m-d'}</p>
+	<p>奖品：{$v.centen}</p>
+	<p>兑换码：<span class="cjjsspcolor" <?php
+		if($ssfffyiij) echo'style="color:#999;"';
+	?>><?php
+		if($ssfffyiij) echo'已兑换奖品 ';
+	?>{$v.duim}</span></p>
+	<?php
+		if(!$ssfffyiij && $v['goumai'] && !$v['guoqi']){
+		?>
+		<p><a href="/index.php?s=/addon/WeiSite/WeiSite/lipinduihuangoumai/goumai/<?php
+echo str_ireplace("#","iswtfcom",$v['goumai']);
+?>iswtfcom{$v.id}.html" class="dddshhhaaalp">兑换奖品</a></p>
+		<?php
+			}if($v['guoqi']){
+		?>
+		<p><a style="color: #fff;" class="dddshhhaaalp">已经过期</a></p>
+		<?php }?>
+	</div>
+	<?php
+	}?>
+	<div class="sssddbbbooo">
+	<p>剩余抽奖次数：{$sy}</p>
+	<?php
+		if($sy){
+			echo '<a href="/index.php?s=/addon/WeiSite/WeiSite/LuckDraw.html"><p class="jjjxxxccss">继续抽奖</p></a>';
+		}
+	?>
+	</div>
+</div>
+<!-------------------- 抽奖内容end  -------------------->
+<include file="Addons/WeiSite/View/default/TemplateIndex/ColorV1/footm.html" />

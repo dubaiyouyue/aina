@@ -1,0 +1,129 @@
+<extend name="Base/common" />
+<block name="body">
+  <style text='text/css'>
+.image_material{
+    border: 1px dashed #ddd;
+    width: 308px;
+    height: 196px;
+     background: #eee;
+    text-align: center;
+    color: #333;
+    display: block;
+    float: left;
+    margin-left:50px;
+   position:relative;
+}
+.image_material .select_image{line-height: 196px; display:block; height:200px;}
+.image_material .delete{ position:absolute; bottom:3px; left:3px; display:none}
+</style>
+  <!-- 标签页导航 -->
+  <div class="span9 page_message">
+    <section id="contents">
+      <include file="Addons/_nav" />
+      <div class="tab-content"> 
+        <!-- 表单 -->
+      
+        <form id="form" action="/index.php?s=/addon/Huiyuan/Huiyuan/daorudata.html" method="post" enctype="multipart/form-data">
+          
+         <h3>导入Excel表：</h3><br />
+		 <p>上传会员excel数据文件</P><P><input type="file" name="file_stu" /></P><br />
+		 <p style="color:red;">从第二行开始导入数据</p>
+		 <p style="color:red;font-weight: bold;">手机号A列 余额B列</p>
+		 <p><img src="/23432432432.png" ></p>
+		 <a href="/duser.xls" target="_blank" style="text-decoration: underline;color:red;">示例Excle表下载</a>
+		 <br /><br />
+           <input class="btn" type="submit"  value="导入会员" />
+           
+      
+        
+      </form>
+      </div>
+    </section>
+  </div>
+</block>
+<block name="script">
+  <link href="__STATIC__/datetimepicker/css/datetimepicker.css?v={:SITE_VERSION}" rel="stylesheet" type="text/css">
+  <php>if(C('COLOR_STYLE')=='blue_color') echo '
+    <link href="__STATIC__/datetimepicker/css/datetimepicker_blue.css?v={:SITE_VERSION}" rel="stylesheet" type="text/css">
+    ';</php>
+  <link href="__STATIC__/datetimepicker/css/dropdown.css?v={:SITE_VERSION}" rel="stylesheet" type="text/css">
+  <script type="text/javascript" src="__STATIC__/datetimepicker/js/bootstrap-datetimepicker.min.js"></script> 
+  <script type="text/javascript" src="__STATIC__/datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js?v={:SITE_VERSION}" charset="UTF-8"></script> 
+  <script type="text/javascript">
+  $(function(){
+	 var str_image='<div class="appmsg_item"><div class="main_img"><img src="{$data.cover_url}" width="200px" height="200px"/></div></div><div class="hover_area"></div>';
+	 var material_image="{$data.image_material}";
+	 if(material_image != 0){
+		 $('.image_wrap').html(str_image).show();
+		 $('.select_image').hide();
+		 $('.image_material .delete').show();
+	 }
+	initUploadImg({width:100,height:100,callback:function(){
+    $('.image_wrap').html('').hide();
+    $('.select_image').show();
+    $('.image_material .delete').hide();
+    $('input[name="image_material"]').val(0);
+  }});
+	initUploadFile();
+   
+   $('.time').datetimepicker({
+        format: 'yyyy-mm-dd hh:ii',
+        language:"zh-CN",
+        minView:0,
+        autoclose:true
+    });
+    $('.date').datetimepicker({
+        format: 'yyyy-mm-dd',
+        language:"zh-CN",
+        minView:2,
+        autoclose:true
+    });	
+    showTab();
+	
+	$('.toggle-data').each(function(){
+		var data = $(this).attr('toggle-data');
+		if(data=='') return true;		
+		
+	     if($(this).is(":selected") || $(this).is(":checked")){
+			 change_event(this)
+		 }
+	});
+	
+	$('.toggle-data').bind("click",function(){ change_event(this) });
+
+  $('.image_material .delete').click(function(){
+    $('.image_wrap').html('').hide();
+    $('.select_image').show();
+    $('.image_material .delete').hide();
+    $('input[name="image_material"]').val(0);
+  })
+
+
+});
+  function selectImageCallback(_this){
+    $('.image_wrap').html($(_this).html()).show();
+    $('.select_image').hide();
+    $('.image_material .delete').show();
+    $('input[name="image_material"]').val($(_this).data('id'));
+    $("input[name='image_id']").val(0);
+    $('.upload-pre-item2').hide();
+    $.Dialog.close();
+  }
+  function selectText(){
+		$.WeiPHP.openSelectLists("{:U('Material/text_lists')}",1,'选择素材',function(data){
+			if(data && data.length>0){
+				for(var i=0;i<data.length;i++){
+					var id=data[i]['id'];
+					if(id){
+						$.post("{:U('Material/get_content_by_id')}",{'id':id},function(d){
+							$("textarea[name='content']").text(d);
+						})
+					}
+				}
+			}
+		})
+	}
+
+
+</script> 
+</block>

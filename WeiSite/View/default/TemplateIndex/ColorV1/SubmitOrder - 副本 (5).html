@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="format-detection" content="telephone=no" />
+<title>会员中心-提交下单</title>
+<META NAME="Author" CONTENT="<?php echo time();?>">
+<!-------------- css start -------------->
+<!--全部css-->
+<link href="css/style.css" type="text/css" rel="stylesheet" />
+<!-------------- css end ---------------->
+
+<!-------------- js start -------------->
+<!--手机布局rem-->
+<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="js/rem.js"></script>
+<script src="js/laydate/laydate.js"></script>
+<script src="js/layer.js"></script>
+<!--<script src="js/layer.mobile-v1.7/layer/layer.js"></script>-->
+<!-------------- js end ---------------->
+
+
+</head>
+
+<body><script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=X8u8xx9GzO88EIydfLbTsvbK"></script>
+	
+	
+<!---------------------------- 文字提交下单start ---------------------------->
+<div class="top" style="margin-bottom:0.75rem;">
+   <div class="fanhui"><a  onclick="history.go(-1)"  style="cursor:pointer;"><img src="images/fh.png" width="9" height="16" /></a></div>
+   <div class="baizi">提交下单</div>
+</div>
+<!---------------------------- 文字提交下单end ---------------------------->
+
+
+
+<!---------------------------- 提交下单内容start ---------------------------->
+<div class="address_selection">
+<form action="" method="get">
+    <P>地址选择</P>
+    
+	<?php
+
+	$vipzjjnn=$vipzjjnn+0;
+	$viphyzjne=$viphyzjne+0;
+	$mpeisong=0;
+	$yunfei=$yunfei+0;
+		$zjne=$zjne+0;
+		$znum=$znum+0;
+		foreach($dzs as $k=>$v){
+			if(!$k) {
+				$ssdddd='address1';
+				$dzsssff=$v['xingm'].' '.$v['tel'].' '.$v['dz'];
+			}
+			else $ssdddd='address2';
+	?>
+	<div class="{$ssdddd}">
+		<div class="danxuan1" style=" padding-right:5px;display: inline-block;">
+			<input name="radio" peisong="{$v.fanwei}" id="sfdsfsd{$v.id}" onclick="sssdz({$v.id});" type="radio" value="{$v.xingm} {$v.tel} {$v.dz}" <?php
+			
+			if($v['mor']==1) {
+				echo 'checked="checked"';
+				$mpeisong=$v['fanwei'];
+			}
+			?> />
+		</div>{$v.xingm}<span class="telphone">{$v.tel}</span><span class="dizhi">{$v.dz}</span>
+		<?php
+			if($v['fanwei']){
+		echo '<span style="color: #AAA;">配送范围内</span>';
+		
+			}else {
+			echo '<span style="color:red;">配送范围外</span>';
+			}
+		?>
+	</div>
+
+    <?php
+		}
+	?>
+  <a onclick="shouhuodizi();" id="ddssjjddzzzz"><div class="new_address">+使用新地址</div></a>
+</form>
+</div>
+
+<style>
+#ddsszzzddzztt{width: 100%;color: red;font-size: 12px;margin-bottom: 6px;display:none;}
+/*重新定义宽度*/
+.tjxd_spxx .tjxd_spxx.xm .one,.tjxd_spxx .tjxd_spxx.cc .oneshpping{
+	width: 4.8rem;display: inline-block;padding-left:0.5rem;
+}
+.tjxd_spxx .tjxd_spxx.cc .oneshpping{width: 4.2rem;}
+.tjxd_spxx .tjxd_spxx.xm .two,.oneshpping2{
+	width: 2.5rem;display: inline-block;    text-align: center;
+}
+.tjxd_spxx .tjxd_spxx.xm .three,.oneshpping3{
+	width: 3.25rem;display: inline-block;    text-align: center;
+}.tjxd_spxx .tjxd_spxx.xm .four,.oneshpping4{
+	width: 3.65rem;display: inline-block;    text-align: center;
+}.address_selection{margin-top: 3.15rem;}.layui-layer-hui .layui-layer-content {
+    padding: 20PX;
+    text-align: center;
+}/*.layui-layer {margin-left: -114px;left: 50%!important;}*/
+</style>
+<div class="tjddwz">商品信息</div>
+<div class="tjxd_spxx">
+   <div class="tjxd_spxx xm">	
+		<div class="one">订购商品</div>
+		
+		<div class="two">数量</div>
+		
+		<div class="three">单价</div>
+		
+		<div class="four">小计</div>	
+  </div>
+  
+  
+  
+<?php
+	foreach($sp as $k=>$v){
+		//总数量
+		//$znum=$znum+$v['num'];
+		//总金额
+		//$zjne=$zjne+($v['num']*$v['jiage']);
+?>
+  <div class="tjxd_spxx cc">
+      <span class="cpm oneshpping">{$v.title}</span>
+      
+      
+	  <span class="oneshpping2">{$v.num}</span>
+	
+	<span class="oneshpping3">{$v.jiage}</span>
+
+	<span class="oneshpping4"><?php
+		echo $v['jiage']*$v['num'];
+	?></span>
+
+	  <span class="chicun oneshpping">尺寸：{$v.chicun}</span>
+
+	 
+  </div>
+ <?php
+ }
+ ?>
+  
+  
+  
+  
+  
+  
+  
+  
+</div>
+
+<?php
+	if($dzsyhde){
+?>
+<div class="clip_coupons">优惠券：
+  <div class="fxkys" style="display: inline-block;"><input onclick="yyhhhqq({$dzsyhde});" name="adsfads" id="adsfads" type="checkbox" value=""  /></div>
+  <span class="jinzi">使用优惠券</span> <a href="/index.php?s=/addon/WeiSite/WeiSite/MyCouponsNew.html">【选择优惠券】</a>
+</div>
+
+<?php
+	}if($syu>=($zjne+$yunfei)){
+?>
+<div class="clip_coupons">
+  <div class="fxkys" style="display: inline-block;"><input onclick="yyhhhqqs()" id="adsfadss" type="checkbox" value="" name="adsfadss" /></div>
+  <label for="adsfadss"><span class="jinzi">使用余额 {$syu}元 付款</span></label>
+</div>
+
+<?php
+}else{
+?>
+<div class="clip_coupons"><p>使用余额付款：</p>
+  <span class="jinzi"><a href="/index.php?s=/addon/WeiSite/WeiSite/MyAccount.html" style="color: red;text-decoration: underline;font-size: 14px;">充值余额</a> 后可用余额付款，现余额{$syu}元</span>
+  <?php
+	
+			$nnpnxxeezs=$config['chongzhisongjine'];
+			//$nnpnxxeezs=str_ireplace("\r\n",'#',$nnpnxxeezs);
+			//$nnpnxxeezs=str_ireplace("充",'',$nnpnxxeezs);
+			$nnpnxxeezs=explode("\r\n",$nnpnxxeezs);
+			foreach ($nnpnxxeezs as $kall=>$vall) {
+				$vall = str_ireplace(' ','',$vall);
+				$vall = str_ireplace('#','送',$vall);
+				echo '<p style="font-size: 12px;color: green;">'.$vall.'</p>';
+			}
+	
+  ?>
+  <p style="font-size: 12px;color: green;">VIP折扣: <?php echo $config['vipcegg'];?>折</p>
+ 
+</div>
+<?php
+}if($config['randomdaofu'] && ($syu<($zjne+$yunfei))){
+?>
+<div class="clip_coupons">其他付款方式：
+  <div class="fxkys" style="display: inline-block;"><input onclick="randomdaofu()" id="randomdaofu" type="checkbox" value="" name="randomdaofu" /></div>
+  <span class="jinzi">货到付款</span>
+  <div class="fxkys" style="display: inline-block;"><input onclick="randomdaofufffs()" id="randomdaofuffs" type="checkbox" value="" name="randomdaofuffs" /></div>
+  <span class="jinzi">微信支付</span>
+</div>
+
+<?php
+}?>
+
+
+
+<form name="myform" id="myform" action="index.php?s=/addon/WeiSite/WeiSite/SubmitOrder/jsok/ok.html" method="POST">
+<!-------------------- 配送时间start ------------------------>
+<div class="shanghezi" style="padding:0.5rem; border-top: 1px solid #ccc;width: 95%;
+    margin: 0 auto;
+    padding-left: 0px;
+    padding-right: 0px;
+    margin-top: 15px;">
+ <div class="shanghezi-pssj" style="
+	font-size:14px;
+	background:url(images/393922CF-6B62-EF6B-965A-BFCCDA67C242.png) no-repeat left;
+	padding-left: 24px;
+	margin-bottom: 10px;
+	height: 30px;
+	line-height: 36px;
+	">配送时间</div>
+    
+ <div class="shanghezi-xzpsrq" style="font-size:13px; padding-bottom:0.5rem;"><span style="width: 92px;display: inline-block;display:none;">选择配送日期：</span><input class="laydate-icon" placeholder="选择配送日期：" id="paaasssrrii" name="paaasssrrii" type="text" style="padding: 6px 6px; width: 272px;border: 1px solid #ddd;background-color: #fff;" /></div>
+ 
+ <div class="shanghezi-shouxuan" style="font-size:13px;  padding-bottom:0.5rem;"><span style="width: 92px;display: inline-block;">首选时间段：</span><select name="sssxxssdd"
+  style="padding: 6px 6px;     width: 194px;border: 1px solid #ddd;background-color: #fff;">
+   
+
+   <?php
+	$configcodessbbss=explode("\r\n",$config['codessbbss']);
+	foreach($configcodessbbss as $k=>$v){
+		echo '<option>'.$v.'</option>';
+	}
+   ?>
+   
+   
+ </select>
+ </div>
+ 
+ <div class="shanghezi-beixuan" style="font-size:13px;padding-bottom:0.5rem;"><span style="width: 92px;display: inline-block;">备选时间段：</span><select name="bssxxxssd" 
+ style="padding: 6px 6px;     width: 194px;border: 1px solid #ddd;background-color: #fff;">
+   <?php
+	$codefdasfass=explode("\r\n",$config['codefdasfass']);
+	foreach($codefdasfass as $k=>$v){
+		echo '<option>'.$v.'</option>';
+	}
+   ?>
+ </select>
+ </div>
+ 
+ <div class="shanghezi-beizhu" style="font-size:13px; "><span style="width: 92px;display: inline-block;">订单备注：</span><input name="bdddbz" type="text" maxlength="8" placeholder="如祝福语(8字以内)" value="<?php echo $_SESSION['bdddbzxlddgllldzsyhdduuu'];?>"
+ style="width: 180px;border: 1px solid #ddd;background-color: #fff;padding: 6px 6px;" /></div>
+</div>
+<!-------------------- 配送时间end ------------------------>
+
+
+
+<!-------------------- 配送方式start ------------------------>
+<div class="xiahezi" style="padding:0.5rem; border-top: 1px solid #ccc;width: 95%;
+    margin: 0 auto;
+    padding-left: 0px;
+    padding-right: 0px;
+    margin-top: 15px;">
+ <div class="xiahezi-psfs" style="font-size:14px; 
+ background: url(images/C9711163-FBC5-B5DD-242D-EDB27012ED6A.png@48h_48w_0e_1l.png) no-repeat left;
+    background-repeat: no-repeat;padding-left: 38px;padding-top: 0.3rem; padding-bottom: 0.3rem;
+">配送方式</div>
+
+<div id="ddsszzzddzztt">收货地址超出配送范围，请到相关门店自提！</div>
+
+  <div class="xiahezi-fxkys" id="sdfssssainapeis" style="display: inline-block; padding-left:2rem;"><input id="sdfssssainapeissssss" name="peissfaina" type="radio" value="1" checked="checked"  />
+  <span class="xiahezi-ainaps" style="font-size:14px;">艾娜配送</span></div>
+  
+  <div class="xiahezi-ziti" style="display: <?php
+	
+	if(!$config['zhandianzitigongno']) echo 'none';
+	else echo 'inline-block';
+  ?>;"><input id="radioBox2" name="peissfaina" type="radio" value="2"  />
+  <span class="xiahezi-ainazt" style="font-size:14px;">站点自提</span></div>
+</div>
+<!-------------------- 配送方式end ------------------------>
+<input type="hidden" id="dz" name="dz" value="{$dzsssff}" />
+<input type="hidden" id="yhq" name="yhq" />
+<input type="hidden" id="yue" name="yue" />
+<input type="hidden" id="fanwei" value="{$mpeisong}" name="fanwei" />
+<input type="hidden" id="hdfk" name="hdfk" />
+</form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="jiagemingxi">
+  <p class="xfje">需付款金额：<span class="kong1" style="padding-left:8px;"></span>￥<span id="sssbbje">{$vipzjjnn}</span></p>
+  <?php
+	//if($dzsyhde){
+?><P class="kqyh">卡券优惠：<span class="kong2" style="padding-left:9px;"></span>-￥<span id="kkqqyyh">0</span></P>
+  <div class="xiaoyhq" style="text-align:right; padding-top:5px; padding-right:10px;"><img src="images/xiaoyhq.png" width="50" height="31" /></div><?php
+//}
+?>
+	<P class="yf">(余额付款)VIP优惠：<span class="kong3"></span>-￥<span id="vipppyyhhhh"><?php 
+	if($config['vipcegg']) echo sprintf("%.2f", ((10-$config['vipcegg'])/10*$zjne));
+	else echo 0;
+	?></span></P>
+  <P class="yf">运费：<span class="kong3" style="padding-left:21px;"></span>￥<span id="yyffffuu">0</span></P>
+  <P class="zj">共<span class="shuzi" style="color:#00415D; font-size:12px;" id="zonggongduosjjjsp">{$znum}</span>件商品<span class="kong4" style="padding-left:8px;"></span>微信支付：<span class="shifu" style="color:#00415D; font-size:14px;">￥<span id="sfje"><?php
+	echo $zjne;
+  ?></span></span>
+  余额支付：<span class="shifu" style="color:#00415D; font-size:14px;">￥<span id="sfjesss">{$vipzjne}</span></span></P>
+</div>
+
+<div class="tjxdan" id="ddssjjddzzzssssddddz"><a href="javascript:;" onclick="sdfsdfsd();">提交下单</a></div>
+<!---------------------------- 提交下单内容end ---------------------------->
+
+
+
+
+<script>
+	immm='<div style="height: 39px;background:url(data:image/gif;base64,R0lGODlhEAAQALMPAHp6evf394qKiry8vJOTk83NzYKCgubm5t7e3qysrMXFxe7u7pubm7S0tKOjo////yH/C05FVFNDQVBFMi4wAwEAAAAh+QQJCAAPACwAAAAAEAAQAAAETPDJSau9NRDAgWxDYGmdZADCkQnlU7CCOA3oNgXsQG2FRhUAAoWDIU6MGeSDR0m4ghRa7JjIUXCogqQzpRxYhi2HILsOGuJxGcNuTyIAIfkECQgADwAsAAAAABAAEAAABGLwSXmMmjhLAQjSWDAYQHmAz8GVQPIESxZwggIYS0AIATYAvAdh8OIQJwRAQbJkdjAlUCA6KfU0VEmyGWgWnpNfcEAoAo6SmWtBUtCuk9gjwQKeQAeWYQAHIZICKBoKBncTEQAh+QQJCAAPACwAAAAAEAAQAAAEWvDJORejGCtQsgwDAQAGGWSHMK7jgAWq0CGj0VEDIJxPnvAU0a13eAQKrsnI81gqAZ6AUzIonA7JRwFAyAQSgCQsjCmUAIhjDEhlrQTFV+lMGLApWwUzw1jsIwAh+QQJCAAPACwAAAAAEAAQAAAETvDJSau9L4QaBgEAMWgEQh0CqALCZ0pBKhRSkYLvM7Ab/OGThoE2+QExyAdiuexhVglKwdCgqKKTGGBgBc00Np7VcVsJDpVo5ydyJt/wCAAh+QQJCAAPACwAAAAAEAAQAAAEWvDJSau9OAwCABnBtQhdCQjHlQhFWJBCOKWPLAXk8KQIkCwWBcAgMDw4Q5CkgOwohCVCYTIwdAgPolVhWSQAiN1jcLLVQrQbrBV4EcySA8l0Alo0yA8cw+9TIgAh+QQFCAAPACwAAAAAEAAQAAAEWvDJSau9WA4AyAhWMChPwXHCQRUGYARgKQBCzJxAQgXzIC2KFkc1MREoHMTAhwQ0Y5oBgkMhAAqUw8mgWGho0EcCx5DwaAUQrGXATg6zE7bwCQ2sAGZmz7dEAAA7);background-repeat: no-repeat;background-position: center;"></div>';
+
+
+
+laydate({
+	elem: '#paaasssrrii',
+    min: laydate.now({$random}),
+	istime: true, 
+	format: 'YYYY-MM-DD',
+	<?php if($random) echo 'istoday: false,';?>
+	festival: true, //显示节日
+	choose: function(datas){ //选择日期完毕的回调
+        //alert('得到：'+datas);
+    }
+	//-1代表昨天，-2代表前天，以此类推
+    //max: laydate.now(+1) //+1代表明天，+2代表后天，以此类推
+});
+
+
+
+
+<?php
+	if($_SESSION['MyCouponsNewUsy']) echo '$("#adsfads").click();';
+?>
+
+if($('#zonggongduosjjjsp').text()=='0'){
+	layer.confirm('当前购物车空空的哦，请先选购商品呢', {
+		closeBtn: 0,
+		title:false,
+	  btn: ['去看看'] //按钮
+	}, function(){
+	  //layer.msg('的确很重要', {icon: 1});
+		location.href = '/index.php?s=/addon/WeiSite/WeiSite/index.html';
+	});
+}
+
+ //nnnwwwyyyiiiddd='{$_SESSION['MyCouponsNewUsy']}';
+function shouhuodizi(){
+$('#ddssjjddzzzz').html(immm);
+//Ajax获取
+$.post('/index.php?s=/addon/WeiSite/WeiSite/shouhuodizinew/', {}, function(str){
+    layer.open({
+		title:'添加新地址',
+		shade: [0.8, '#393D49'],
+        type: 1,
+		area: ['320px','414px'],
+        content: str //注意，如果str是object，那么需要字符拼接。 area: ['500px', '300px']
+    });
+});
+
+}
+///index.php?s=/addon/WeiSite/WeiSite/SubmitOrder/jsok/ok.html
+function sssdz(n){
+	var dz=$('#sfdsfsd'+n).val();
+	var peisong=$('#sfdsfsd'+n).attr('peisong');
+	//alert(peisong);
+	//console.log(peisong);
+	peisssfff(peisong);
+	
+	if(peisong) $('#fanwei').val(peisong);
+	if(dz) $('#dz').val(dz);
+}
+function yyhhhqqs(n){
+	var sf=document.getElementById("adsfadss").checked;
+	if(sf) $('#yue').val(sf);
+	else $('#yue').val('');
+}
+function randomdaofu(){
+	//货到付款
+	var wx=document.getElementById("randomdaofuffs").checked;
+	var sf=document.getElementById("randomdaofu").checked;
+	if(!wx && !sf) document.getElementById("randomdaofuffs").checked=true;
+	if(sf) {document.getElementById("randomdaofuffs").checked=false;
+			$('#hdfk').val(sf);}
+	else $('#hdfk').val('');
+}
+
+function randomdaofufffs(){
+	//微信支付
+	var wx=document.getElementById("randomdaofuffs").checked;
+	var sf=document.getElementById("randomdaofu").checked;
+	if(!wx && !sf) document.getElementById("randomdaofu").checked=true;
+	if(sf) {document.getElementById("randomdaofu").checked=false;
+			$('#hdfk').val('');}
+	else $('#hdfk').val(true);
+}
+document.getElementById("randomdaofuffs").checked=true;
+
+
+function yyhhhqq(n){
+	var sf=document.getElementById("adsfads").checked;
+	if(sf) $('#yhq').val(sf);
+	else $('#yhq').val('');
+	var sj=parseFloat($('#sfje').text());
+	var sjss=parseFloat($('#sfjesss').text());
+	
+	if(sf) {
+		$('#sfjesss').text(parseFloat(sjss-n).toFixed(2));
+		$('#sfje').text(parseFloat(sj-n).toFixed(2));
+		$('#kkqqyyh').text(n);
+		//if(nnnwwwyyyiiiddd!='{$_SESSION['MyCouponsNewUsy']}')location.href = '/index.php?s=/addon/WeiSite/WeiSite/MyCouponsNew.html';
+	}
+	else {
+		//nnnwwwyyyiiiddd=0;
+		$('#kkqqyyh').text(0);
+		$('#sfje').text(parseFloat(sj+n).toFixed(2));
+		$('#sfjesss').text(parseFloat(sjss+n).toFixed(2));
+		
+	}
+}
+function sdfsdfsd(){
+	var ffssfanweissong=$('#fanwei').val();
+	//alert(ffssfanweissong);
+	var sfffpessfnnnn='<?php
+			echo $config['zhandianzitigongno'];?>';
+	
+	if(!ffssfanweissong || ffssfanweissong=='0' || ffssfanweissong==''){
+		//alert(ffssfanweissong);
+		
+		if(!sfffpessfnnnn || sfffpessfnnnn=='0' || sfffpessfnnnn==''){
+			alert('网站已关闭站点自提，请选择配送范围内地址。');
+			return false;
+		}
+	}
+	if(!sfffpessfnnnn || sfffpessfnnnn=='0' || sfffpessfnnnn==''){
+		document.getElementById("sdfssssainapeissssss").checked=true;
+		//$("#sdfssssainapeissssss").attr("checked",true);
+	}
+	if(!$('#paaasssrrii').val()){
+		//alert('请选择配送日期！');
+		
+			layer.confirm('亲，请选择配送日期才能提交订单哦', {
+			  btn: ['好的'],
+				title:false,
+				closeBtn: 0,
+				area: '320px'
+				
+			}, function(){
+				layer.closeAll();
+				
+			  //按钮【按钮一】的回调
+			});
+		
+		
+		return false;
+	}
+	if(!$('#dz').val()){
+		layer.confirm('请添加收获地址', {
+			title:'提示',
+			closeBtn: 0,
+			btn: ['确定'] //按钮
+		}, function(){
+			layer.closeAll(); 
+			//location.href = '/index.php?s=/addon/WeiSite/WeiSite/Accountinformation.html';
+		});
+		return false;
+	}
+	$('#ddssjjddzzzssssddddz').html(immm);
+	$('#ddssjjddzzzssssddddz').css({'minWidth':'82px','textAlign':'center','backgroundColor':'#FFF'});
+
+	document.getElementById('myform').submit();
+	//var dz=$('#dz').val();
+	layer.msg('正在跳转到支付页面...请稍等...', {
+	  time: 2000000 //2秒关闭（如果不配置，默认是3秒）
+	}, function(){
+	  //do something
+	}); 
+}
+
+
+	//是否在配送范围内
+	function peisssfff(peisong){
+		var yunfeiii='{$yunfei}';
+		var mpeisongss=peisong;
+		//console.log(yunfeiii);
+		//console.log(mpeisongss);
+		
+		if(yunfeiii==0 && mpeisongss==0){
+			/*layer.config({
+
+				skin:'layer-ext-moon',
+
+				extend:'skin/moon/style.css'
+
+			});*/
+			//layer.closeAll();
+			//alert('您的收货地址在配送范围外，请到相关门店自提商品。');
+			$('#ddsszzzddzztt').css('display','block');
+			
+			$("input[name='peissfaina']").eq(1).removeAttr("checked");
+            $("input[name='peissfaina']").eq(0).removeAttr("checked");
+			$('#sdfssssainapeis').css('display','none');
+			//$("#sdfssssainapeissssss").attr("checked",false); 
+			$("#radioBox2").attr("checked","checked"); 
+			//document.getElementById('radioBox2').checked=true;
+			
+			//$('#ddssjjddzzzssssddddz').html('<span style="color:yellow;">超出配送范围无法下单购买</span>');
+			//layer.open({
+			  //type: 0,
+			 // content: '您的收货地址在配送范围外，暂时无法购买！目前只能购买在配送范围内的产品。' //这里content是一个普通的String
+			//});
+			
+			
+			layer.confirm('您的收货地址在配送范围外，<?php
+	if(!$config['zhandianzitigongno']) echo '网站已关闭站点自提，请选择配送范围内地址。';
+	else echo '请到相关门店自提商品。';
+  ?>', {
+			  btn: ['知道了'],
+				title:false,
+				closeBtn: 0,
+				area: '320px'
+				
+			}, function(){
+				layer.closeAll();
+				
+			  //按钮【按钮一】的回调
+			});
+			
+			return false;
+		}
+		else if(mpeisongss==0){
+			$('#yyffffuu').text('{$yunfei}');
+			$('#sdfssssainapeis').css('display','inline-block');
+			//var sj=parseFloat($('#sfje').text());
+			//if(sj<0) sj=0.01;
+			var n=parseFloat('{$yunfei}');
+			var yhq=parseFloat($('#kkqqyyh').text());
+			var sssooonewzjne=parseFloat('{$zjne}')+n-yhq;
+			var sssooonewvipzjne=parseFloat('{$vipzjne}')+n-yhq;
+			
+			
+			var zzjjjjj='{$zjne}';
+			if(zzjjjjj=='0') {
+				sssooonewzjne=0;
+				sssooonewvipzjne=0;
+				if(n){
+					sssooonewzjne=n;
+					sssooonewvipzjne=n;
+				}
+			}
+			
+			
+			$('#sfje').text(sssooonewzjne);
+			
+			//if(sssooonewvipzjne=='NaN') sssooonewvipzjne=0;
+			//var sfjesss=parseFloat($('#sfjesss').text());
+			//var n=parseFloat('{$yunfei}');
+			$('#sfjesss').text(sssooonewvipzjne);
+			return false;
+		}
+		else if(mpeisongss){
+			$('#sdfssssainapeis').css('display','inline-block');
+			$('#ddsszzzddzztt').css('display','none');
+			$('#ddssjjddzzzssssddddz').html('<a href="javascript:;" onclick="sdfsdfsd();">提交下单</a>');
+			$('#yyffffuu').text('0');
+			//var sj=parseFloat($('#sfje').text());
+			//if(sj<0) sj=0.01;
+			var n=0;//parseFloat('{$yunfei}');
+			var yhq=parseFloat($('#kkqqyyh').text());
+			var sssooonewzjne=parseFloat('{$zjne}')-n-yhq;
+			var sssooonewvipzjne=parseFloat('{$vipzjne}')-n-yhq;
+			
+			var zzjjjjj='{$zjne}';
+			if(zzjjjjj=='0') {
+				sssooonewzjne=0;
+				sssooonewvipzjne=0;
+			}
+			
+			$('#sfje').text(sssooonewzjne);
+			
+			//if(sssooonewvipzjne=='NaN') sssooonewvipzjne=0;
+			//var sfjesss=parseFloat($('#sfjesss').text());
+			//var n=parseFloat('{$yunfei}');
+			$('#sfjesss').text(sssooonewvipzjne);
+			
+			return false;
+		}
+		
+	}
+	peisssfff('{$mpeisong}');
+
+
+</script>
+
+
+<style>
+body .footer {
+    margin-top: 90px;
+}
+</style>
+
+<include file="Addons/WeiSite/View/default/TemplateIndex/ColorV1/footm.html" />

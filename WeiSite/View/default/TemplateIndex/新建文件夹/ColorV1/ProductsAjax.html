@@ -1,0 +1,52 @@
+<!-- 新品内容start -->
+<div class="xinpin">
+<?php
+	foreach($list_data_new as $k=>$v){
+			$kn=($k%2);
+			if(!$kn){
+?>
+
+<!-- 左浮动1 -->
+
+ <div class="xinpin_left" style="margin-bottom: 12px;">
+ <a href="/index.php?s=/addon/WeiSite/WeiSite/blnxiangqing/id/{$v.id}.html">
+   <div class="left_img1" style="background: url(<?php
+	 		echo get_cover_url ( $v ['cover'] );
+	 	?>) no-repeat center;background-size: 6.8rem;"></div></a>
+   <div class="jianjie">
+     <span class="yingwenming" style="height: 19px;overflow: hidden;">{$v.yingwen}</span>
+     <span class="mingcheng" style="height: 19px;overflow: hidden;">{$v.title}</span>
+     <span class="jiage" style="height: 19px;overflow: hidden;"><?php
+			 $chicun=explode("\r\n",$v['chicun']);
+			 $chicun=explode('#',$chicun[0]);
+			 //dump($chicun);
+			 echo '￥'.$chicun[1].'/'.$chicun[0];
+			 ?></span>
+   </div>
+ </div>
+<?php
+}else{
+?>
+<!-- 右浮动1 -->
+ <div class="xinpin_right" style="margin-bottom: 12px;">
+ <a href="/index.php?s=/addon/WeiSite/WeiSite/blnxiangqing/id/{$v.id}.html">
+   <div class="right_img1" style="background: url(<?php
+	 		echo get_cover_url ( $v ['cover'] );
+	 	?>) no-repeat center;background-size: 6.8rem;"></div></a>
+   <div class="jianjie">
+     <span class="yingwenming" style="height: 19px;overflow: hidden;">{$v.yingwen}</span>
+     <span class="mingcheng" style="height: 19px;overflow: hidden;">{$v.title}</span>
+     <span class="jiage" style="height: 19px;overflow: hidden;"><?php
+			 $chicun=explode("\r\n",$v['chicun']);
+			 $chicun=explode('#',$chicun[0]);
+			 //dump($chicun);
+			 echo '￥'.$chicun[1].'/'.$chicun[0];
+			 ?></span>
+   </div>
+ </div>
+
+
+<?php
+	}}
+?>
+</div>

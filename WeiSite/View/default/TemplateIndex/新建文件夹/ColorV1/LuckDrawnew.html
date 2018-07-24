@@ -1,0 +1,407 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="format-detection" content="telephone=no" />
+<title>幸运大抽奖</title>
+<!-------------- css start -------------->
+<!--全部css-->
+<link href="css/style.css" type="text/css" rel="stylesheet"  />
+<!-------------- css end ---------------->
+
+<!-------------- js start -------------->
+<!--手机布局rem-->
+<script src="js/rem.js"></script>
+
+<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.0/jquery.min.js"></script>
+<script src="js/layer.js"></script>
+<!-------------- js end ---------------->   
+</head>
+
+<body style="background-color: #303984;padding-bottom: 30px;">
+<!---------------------------- 文字幸运大抽奖start ---------------------------->
+<div class="top">
+   <div class="fanhui"><a onclick="history.go(-1)" style="cursor:pointer;"><img src="images/fh.png" width="9" height="16" /></a></div>
+   <div class="baizi">幸运大抽奖</div>
+</div>
+<!---------------------------- 文字幸运大抽奖end ---------------------------->
+
+
+<!---------------------------- 上半部分内容start ---------------------------->
+<div class="shangbufen" style="margin-top:2.25rem;">
+  <div class="jihuibj">你有<span class="fangda" style="color:#FFE441; font-size:15px;" id="cjccsss">{$cjccsss}</span>次机会</div>
+  <div class="liwuhe"></div>
+  
+<style>.hdddpmain4{width:4.7rem;}
+.lottery-unit-0 {
+    background: #ffe442 url(<?php
+		echo get_cover_url ( $s ['onepic'] );
+	?>);
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.lottery-unit-1 {
+    background: #ffe442 url(<?php
+		echo get_cover_url ( $s ['twopic'] );
+	?>);
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.lottery-unit-2 {
+    background: #ffe442 url(<?php
+		echo get_cover_url ( $s ['frepic'] );
+	?>);
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.lottery-unit-3 {
+    background: #ffe442 url(<?php
+		echo get_cover_url ( $s ['foupic'] );
+	?>);
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.lottery-unit-4 {
+    background: #ffe442 url(<?php
+		echo get_cover_url ( $s ['fivpic'] );
+	?>);
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.lottery-unit-5 {
+    background: #ffe442 url(<?php
+		echo get_cover_url ( $s ['sixpic'] );
+	?>);
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.lottery-unit-6 {
+    background: #ffe442 url(<?php
+		echo get_cover_url ( $s ['svepic'] );
+	?>);
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.lottery-unit-7 {
+    background: #ffe442 url(<?php
+		echo get_cover_url ( $s ['egipic'] );
+	?>);
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.active {
+    background-color: #49d2ff;
+}.newjpjjj{margin-top:-1px;}
+</style>
+	<div class="cjnewbgmainwaipadding"><div class="cjnewbgmain">
+	
+        <!--<div id="lottery" prize_site="1" prize_id="2" prize_name="十二等奖">←←临时测试-->
+                 
+			<div id="lottery">
+					
+				<div class="lottery-unit lottery-unit-0">{$s.onetext}</div>
+				<div class="lottery-unit lottery-unit-1">{$s.twotext}</div>
+				<div class="lottery-unit lottery-unit-2">{$s.fretext}</div>
+				<div class="lottery-unit lottery-unit-3">{$s.foutext}</div>
+				<div class="lottery-unit lottery-unit-4">{$s.fivtext}</div>
+				<div class="lottery-unit lottery-unit-5">{$s.sixtext}</div>
+				<div class="lottery-unit lottery-unit-6">{$s.svetext}</div>
+				<div class="lottery-unit lottery-unit-7">{$s.egitext}</div>
+				<div class="lottery-unit-an"></div>
+			</div>
+					 </div>
+                </div>
+        
+       
+        
+        <script type="text/javascript">
+		cjccsss='{$cjccsss}';
+		
+function ddmmyy(){
+	//询问框
+	layer.confirm('今天抽奖机会已经用完了', {
+		title:'提示',
+		closeBtn: 0,
+		btn: ['注册领取','首页'] //按钮
+	}, function(){
+		location.href = '/index.php?s=/addon/WeiSite/WeiSite/register.html';
+	}, function(){
+		location.href = '/index.php?s=/addon/WeiSite/WeiSite/index.html';
+	});
+	return false;
+}
+	if(cjccsss==0) ddmmyy();
+function sssttss(texts){
+	layer.confirm(texts, {
+		title:'抽奖结果',
+		closeBtn: 0,
+		btn: ['注册领取','继续抽奖'] //按钮
+		 }, function(){
+			location.href = '/index.php?s=/addon/WeiSite/WeiSite/register.html';
+		}, function(){
+			//$(".lottery-unit-an").click();
+			$('.lottery-unit-an').click();
+	});
+}
+            var lottery = {
+                index: 0, //当前转动到哪个位置，起点位置
+                count: 0, //总共有多少个位置
+                timer: 0, //setTimeout的ID，用clearTimeout清除
+                speed: 20, //初始转动速度
+                times: 0, //转动次数
+                cycle: 50, //转动基本次数：即至少需要转动多少次再进入抽奖环节
+                prize: 0, //中奖位置
+                init: function(id) {
+                    if ($("#" + id).find(".lottery-unit").length > 0) {
+                        $lottery = $("#" + id);
+                        $units = $lottery.find(".lottery-unit");
+                        this.obj = $lottery;
+                        this.count = $units.length;
+                        $lottery.find(".lottery-unit-" + this.index).addClass("active");
+                    }
+                },
+                roll: function() {
+                    var index = this.index;
+                    var count = this.count;
+                    var lottery = this.obj;
+                    $(lottery).find(".lottery-unit-" + index).removeClass("active");
+                    index += 1;
+                    if (index > count - 1) {
+                        index = 0;
+                    }
+                    $(lottery).find(".lottery-unit-" + index).addClass("active");
+                    this.index = index;
+                    return false;
+                },
+                stop: function(index) {
+                    this.prize = index;
+                    return false;
+                }
+            };
+
+            function roll() {
+                lottery.times += 1;
+                lottery.roll();
+                var prize_site = $("#lottery").attr("prize_site");
+                if (lottery.times > lottery.cycle + 10 && lottery.index == prize_site) {
+                    var prize_id = $("#lottery").attr("prize_id");
+                    var prize_name = $("#lottery").attr("prize_name");
+                    //alert("前端中奖位置："+prize_site+"\n"+"中奖名称："+prize_name+"\n中奖id："+prize_id)
+					sssttss('奖项：'+prize_name);
+                    clearTimeout(lottery.timer);
+                    lottery.prize = -1;
+                    lottery.times = 0;
+                    click = false;
+
+                } else {
+                    if (lottery.times < lottery.cycle) {
+                        lottery.speed -= 10;
+                    } else if (lottery.times == lottery.cycle) {
+                        var index = Math.random() * (lottery.count) | 0;
+                        lottery.prize = index;
+                    } else {
+                        if (lottery.times > lottery.cycle + 10 && ((lottery.prize == 0 && lottery.index == 7) || lottery.prize == lottery.index + 1)) {
+                            lottery.speed += 110;
+                        } else {
+                            lottery.speed += 20;
+                        }
+                    }
+                    if (lottery.speed < 40) {
+                        lottery.speed = 40;
+                    }
+                    lottery.timer = setTimeout(roll, lottery.speed);
+                }
+                return false;
+            }
+
+            var click = false;
+
+            $(function() {
+                lottery.init('lottery');
+                $(".lottery-unit-an").click(function() {
+					//alert('fdsafdasf');
+                     if (click) {
+                        return false;
+                    } else {
+                        lottery.speed = 100;
+						
+							if(cjccsss<1){
+								ddmmyy();
+								/*layer.confirm('今天抽奖机会已经用完了', {
+									title:false,
+									closeBtn: 0,
+								  btn: ['确定'] //按钮
+								});*/
+								return false;
+							}
+									cjccsss=cjccsss-1;
+									$('#cjccsss').text(cjccsss);
+							$.ajax( {
+								url: '/index.php?s=/addon/WeiSite/WeiSite/LuckDrawnew/codeddd/ok/id/{$cjccsssid}.html&v='+ Math.random(), //这里是静态页的地址
+								dataType: "json",
+								async: false,
+								type: "GET", //静态页用get方法，否则服务器会抛出405错误
+								success: function(data){
+									if(data.cjzs=='no'){
+										ddmmyy();
+										/*layer.confirm('今天抽奖机会已经用完了', {
+											title:false,
+											closeBtn: 0,
+										  btn: ['确定'] //按钮
+										});*/
+										return false;
+									}
+									//alert(data)
+									if(data.cjzs=='nologin') {
+										//询问框
+										ddmmyy();
+										/*
+										layer.confirm('请先登录！', {
+											title:'提示',
+											closeBtn: 0,
+											btn: ['确定'] //按钮
+										}, function(){
+											location.href = '/index.php?s=/addon/WeiSite/WeiSite/login.html';
+										});*/
+											//location.href = '/index.php?s=/addon/WeiSite/WeiSite/login.html';
+										return false;
+									}
+									$("#lottery").attr("prize_site", data.prize_site);
+									$("#lottery").attr("prize_id", data.prize_id);
+									$("#lottery").attr("prize_name", data.prize_name);
+									roll();
+									click = true;
+
+									return false;
+								}
+							});
+							
+						/*	
+						//获取奖品，也可以在这里判断是否登陆状态
+                        $.post('/index.php?s=/addon/WeiSite/WeiSite/LuckDrawnew/codeddd/ok.html&v='+ Math.random(), function(data) {
+							//alert('fdasfadsfdsa');
+                            $("#lottery").attr("prize_site", data.prize_site);
+                            $("#lottery").attr("prize_id", data.prize_id);
+                            $("#lottery").attr("prize_name", data.prize_name);
+                            roll();
+                            click = true;
+                            return false;
+                        }, "json")
+						*/
+						
+								//临时测试
+								/*roll();
+								click = true;
+								return false;*/
+								//end
+                    }
+                });
+            })
+        </script>
+  
+</div>
+<!---------------------------- 上半部分内容end ---------------------------->
+
+
+	
+<!----------------------------活动奖品 下半部分内容start ---------------------------->
+
+<!--头部背景-->
+<div class="top-main-bbb-main">
+	<span class="top-main-bbb" style="height:1rem;line-height: 1rem;">活动奖品</span>
+</div>
+
+
+
+<div class="newjpjjj">
+	
+	
+	
+	
+	
+	
+	<div class="hdddpmain">
+		<span class="hdddpmain1"><img src="<?php
+		echo get_cover_url ( $s ['onepic'] );
+	?>" width="100%" height="100%"></span>
+		<div class="hdddpmain3">
+			<p>一等奖</p>
+			<p>{$s.onetext}</p>
+		</div>
+		<span class="hdddpmain4">剩余：{$s.onenum}个</span>
+	</div>
+	
+	<!--重复复制部分-->
+	<div class="hdddpmain">
+		<span class="hdddpmain1"><img src="<?php
+		echo get_cover_url ( $s ['twopic'] );
+	?>" width="100%" height="100%"></span>
+		<div class="hdddpmain3">
+			<p>二等奖</p>
+			<p>{$s.twotext}</p>
+		</div>
+		<span class="hdddpmain4">剩余：{$s.twonum}个</span>
+	</div>	<div class="hdddpmain">
+		<span class="hdddpmain1"><img src="<?php
+		echo get_cover_url ( $s ['frepic'] );
+	?>" width="100%" height="100%"></span>
+		<div class="hdddpmain3">
+			<p>三等奖</p>
+			<p>{$s.fretext}</p>
+		</div>
+		<span class="hdddpmain4">剩余：{$s.frenum}个</span>
+	</div>	<div class="hdddpmain">
+		<span class="hdddpmain1"><img src="<?php
+		echo get_cover_url ( $s ['foupic'] );
+	?>" width="100%" height="100%"></span>
+		<div class="hdddpmain3">
+			<p>四等奖</p>
+			<p>{$s.foutext}</p>
+		</div>
+		<span class="hdddpmain4">剩余：{$s.founum}个</span>
+	</div>	
+    	<div class="hdddpmain">
+		<span class="hdddpmain1"><img src="<?php
+		echo get_cover_url ( $s ['fivpic'] );
+	?>" width="100%" height="100%"></span>
+		<div class="hdddpmain3">
+			<p>五等奖</p>
+			<p>{$s.fivtext}</p>
+		</div>
+		<span class="hdddpmain4">剩余：{$s.fivnum}张</span>
+	</div>	<div class="hdddpmain">
+		<span class="hdddpmain1"><img src="<?php
+		echo get_cover_url ( $s ['sixpic'] );
+	?>" width="100%" height="100%"></span>
+		<div class="hdddpmain3">
+			<p>六等奖</p>
+			<p>{$s.sixtext}</p>
+		</div>
+		<span class="hdddpmain4">剩余：{$s.sixnum}张</span>
+	</div>	<div class="hdddpmain">
+		<span class="hdddpmain1"><img src="<?php
+		echo get_cover_url ( $s ['svepic'] );
+	?>" width="100%" height="100%"></span>
+		<div class="hdddpmain3">
+			<p>七等奖</p>
+			<p>{$s.svetext}</p>
+		</div>
+		<span class="hdddpmain4">剩余：{$s.svenum}张</span>
+	</div>
+	<!--end copy-->
+	<span style="text-align: center;display: block;">备注：通用劵不可累积使用</span>
+	
+	
+	
+	
+</div>
+
+<!--底部背景-->
+<div class="top-main-bbb-bottom"></div>
+<!---------------------------- 下半部分内容end ---------------------------->
+<div style="display:none;">{$config.code}</div>
+</body>
+</html>

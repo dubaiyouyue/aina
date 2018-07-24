@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>订单管理</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="format-detection" content="telephone=no" />
+</head>
+<style>
+*{padding:0px;margin:0px;}
+p{margin:10px;}body{padding: 12px;}
+.dd1{padding: 8px 9px;
+    background-color: #00415d;
+    color: yellow;margin-top:20px;margin-bottom:30px;}
+.dd0{
+    padding: 8px 9px;margin-bottom:30px;
+    background-color: #FF910C;
+    color: blue;
+}.ddok{    background-color: #fff;
+    color: #000;
+    border: 1px solid #eee;}.ss{padding: 9px;
+    background-color: #fff;
+    color: blue;}
+	.qr{       <?php
+				if(!$mmoo) echo 'cursor: pointer; border: 1px solid #fff;';
+			?>
+    width: 120px;
+    text-align: center;
+    padding: 5px 0px;}.fhbbjj{background:red;color:#fff;}
+</style>
+<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.0/jquery.min.js"></script>
+<script type="text/javascript">
+        //获取系统时间，将时间以指定格式显示到页面。
+        function systemTime()
+        {
+                //获取系统时间。
+                var dateTime=new Date();
+				var y=dateTime.getFullYear();
+				var m=dateTime.getMonth();
+				var d=dateTime.getDate();
+                var hh=dateTime.getHours();
+                var mm=dateTime.getMinutes();
+                var ss=dateTime.getSeconds();
+                
+                //分秒时间是一位数字，在数字前补0。
+                mm = extra(mm);
+                ss = extra(ss);
+                
+                //将时间显示到ID为time的位置，时间格式形如：19:18:02
+                document.getElementById("time").innerHTML=y+'-'+m+'-'+d+' '+hh+":"+mm+":"+ss;
+                
+                //每隔1000ms执行方法systemTime()。
+                setTimeout("systemTime()",1000);
+        }
+        
+        //补位函数。
+        function extra(x)
+        {
+                //如果传入数字小于10，数字前补一位0。
+                if(x < 10)
+                {
+                        return "0" + x;
+                }
+                else
+                {
+                        return x;
+                }
+        }
+</script>
+<body onload="systemTime()">
+<p>现在时间：<span id="time"></span> <a href="/index.php?s=/addon/WeiSite/WeiSite/chushi.html">最新订单</a> <a href="/index.php?s=/addon/WeiSite/WeiSite/chushi/mmoo/yjqr.html">已经确认</a> <a href="/index.php?s=/addon/WeiSite/WeiSite/chushi/mmoo/wcfh.html">完成发货订单</a> <a href="/index.php?s=/addon/WeiSite/WeiSite/chushi/mmoo/quxiao.html">取消的</a></p>
+<?php
+	foreach($ds as $k=>$v){
+		$kk++;
+		?>
+		<div id="fh{$v.id}" class="dd<?php echo ($k%2); if($v['qrdd']==2) echo ' ddok';?>">
+			<span class="ss">#{$kk}</span>
+			<p>编号：{$v.dingdanbianhao}</p>
+			<p>地址：{$v.shouhuodz} <?php
+				if(!$mmoo) echo '<a href="javascript:;" onclick="del_sure('.$v['id'].')" style="color:#fff;">取消订单</a>';?></p>
+			<p class="qr" id="qr{$v.id}" <?php
+				if(!$mmoo) echo 'onclick="qr('.$v['id'].');"';
+				if($v['qrdd']==2) echo 'style="border:none;"';
+			?>><?php
+				if($v['qrdd']==2) echo '已经确认';
+				else if($v['qrdd']==3) echo '已经取消';
+				else echo '确认订单';
+			?></p>
+			<p>{$v.goumaisp}</p>
+			<p>付款：{$v.fuk}</p>
+			<p>祝福语：{$v.bdddbz}</p>
+			<p>配送方式：<?php
+				if($v['peissfaina']==2) echo '站点自提';
+				else echo '艾娜配送';
+			?></p>
+			<p>备选时间段：{$v.bssxxxssd}</p>
+			<p>首选时间段：{$v.sssxxssdd}</p>
+			<p>配送日期：{$v.paaasssrrii}</p>
+					
+					
+					
+			
+			
+			
+			<p>送货员：{$v.beizhu}</p>
+			<p>下单时间：<?php
+            echo date("Y-m-d H:m:s",$v['ctime']);
+          ?></p>
+			<p class="qr fhbbjj"<?php
+				if(!$mmoo) echo 'onclick="fh('.$v['id'].');"';
+			?>><?php
+				if($v['zhuantai']==1) echo '已经发货';
+				else if($mmoo=='yjqr') echo '未发货';
+				else if($v['qrdd']==3) echo '已经取消';
+				else echo '完成》发货';
+			?></p>
+		</div>
+		
+		<?php
+	}
+?>
+
+
+
+
+
+
+
+
+
+
+<script>
+function del_sure(id){
+	var gnl=confirm("你真的确定要取消订单吗?");
+	if (gnl==true){
+		$.ajax( {
+			url: '/index.php?s=/addon/WeiSite/WeiSite/chushi/mmoo/qx/id/'+id+'.html', //这里是静态页的地址
+			type: "GET", //静态页用get方法，否则服务器会抛出405错误
+			//dataType: "json",
+			//cache: false,
+			//async: false,
+			beforeSend: function(){
+			 // Handle the beforeSend event
+			},
+			success: function(data){
+				$('#fh'+id).remove();
+				//var result = $(data).find("另一个html页面的指定的一部分").html();
+			}
+		});
+		return true;
+	}
+	else{
+		return false;
+	}
+}
+function qr(id){
+	$.ajax( {
+		url: '/index.php?s=/addon/WeiSite/WeiSite/chushi/mmoo/qr/id/'+id+'.html', //这里是静态页的地址
+		type: "GET", //静态页用get方法，否则服务器会抛出405错误
+		//dataType: "json",
+		//cache: false,
+		//async: false,
+		beforeSend: function(){
+		 // Handle the beforeSend event
+		},
+		success: function(data){
+			$('#qr'+id).text('已经确认');
+			$('#fh'+id).addClass('ddok');
+			//var result = $(data).find("另一个html页面的指定的一部分").html();
+		}
+	});
+}
+function fh(id){
+	var qr=$('#qr'+id).text();
+	if(qr=='确认订单'){
+		alert('请先确认订单！');
+		return false;
+	}
+	$.ajax( {
+		url: '/index.php?s=/addon/WeiSite/WeiSite/chushi/mmoo/fh/id/'+id+'.html', //这里是静态页的地址
+		type: "GET", //静态页用get方法，否则服务器会抛出405错误
+		//dataType: "json",
+		//cache: false,
+		//async: false,
+		beforeSend: function(){
+		 // Handle the beforeSend event
+		},
+		success: function(data){
+			$('#fh'+id).remove();
+			//var result = $(data).find("另一个html页面的指定的一部分").html();
+		}
+	});
+}
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>

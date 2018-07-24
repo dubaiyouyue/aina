@@ -1,0 +1,50 @@
+<?php
+	if(empty($mys)) exit;
+	
+?>
+
+
+  <!-------------- 待付款start --------------->
+  <?php
+	foreach($mys as $k=>$v){
+  ?>
+<div class="ddnr" id="qqqq{$v.id}">
+   <p style="border-bottom:1px solid #E1E1E1; width:90%; margin: 0 auto;"><span class="claaa">下单时间</span><span class="cl777">{$v.ctime|time_format=###,'Y-m-d'}</span></p>
+   <div class="wdddxiangxi" style="background: url(<?php
+	 		echo get_cover_url ( $v ['pic'] );
+	 	?>) no-repeat left;background-size: 60px 100%;height: 100%;">
+      <div class="wdddddbh">订单编号<span class="ysbh" style="color:#666; font-size:12px; padding-left:8px;">{$v.dingdanbianhao}</span></div>
+      <div class="wdddddje">订单金额<span class="hei" style="color:#000; font-size:12px; padding-left:8px;">￥{$v.zongjine}</span>
+        <span class="bh" style="color:#AAA; font-size:12px;">（含运费：￥{$config.yunfei}）</span></div>
+      <div class="wddddfk">订单状态<span class="ysbh" style="color:#666; font-size:12px; padding-left:8px;"><?php
+		if(!$v['fuk']) echo '待付款';
+		else echo $v['fuk'];
+		if($v['fuk']){
+		if($v['qrdd']==3) echo'，订单已经取消！';
+		else if($v['qrdd']!=2 && $v['queren']!=1) echo'，请等待商家确认订单';
+		if($v['qrdd']==2 && $v['queren']!=1) echo '，商家已经确认订单，请等待收货';
+		if($v['queren']==1) echo'，已完结';}
+	  ?></span></div>
+   </div>
+   <div style="border-bottom:1px dashed #E1E1E1; width:90%; margin: 0 auto; padding-top:10px;"></div>
+   <div class="wd">
+      <a href="/index.php?s=/addon/WeiSite/WeiSite/OrderDetails/id/<?php
+		//$idddn=explode(',',$v['sid']);
+		echo $v['id'];//$idddn['0'];
+	  ?>.html"><span class="wdddxq">订单详情</span></a>
+      <?php
+		if(!$v['fuk']){
+	  ?><span class="wdqxdd" onclick="sssww({$v.id});">取消订单</span>
+      <a onclick="ssddsqqqss({$v.id});"><span class="wdljfk">立即付款</span></a>
+	  <?php
+		}if($v['fuk'] && !$v['queren']){
+	  ?>
+	  <span class="wdqxdd" id="qqqqssss{$v.id}" onclick="ssswwss({$v.id});">确认收货</span>
+	  <?php
+		}
+	  ?>
+   </div>
+</div>
+<?php
+}
+?>

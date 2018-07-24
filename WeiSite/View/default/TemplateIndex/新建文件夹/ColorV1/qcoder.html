@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="format-detection" content="telephone=no" />
+<title>微信扫描二维码支付</title>
+<META NAME="Author" CONTENT="1463733322">
+<!-------------- css start -------------->
+<!--全部css-->
+<link href="css/style.css" type="text/css" rel="stylesheet" />
+<!-------------- css end ---------------->
+
+<!-------------- js start -------------->
+<!--手机布局rem-->
+<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="js/rem.js"></script>
+<script src="js/laydate/laydate.js"></script>
+<script src="js/layer.js"></script>
+<!--<script src="js/layer.mobile-v1.7/layer/layer.js"></script>-->
+<!-------------- js end ---------------->
+
+
+</head>
+
+<body>
+<!---------------------------- 文字提交下单start ---------------------------->
+<div class="top" style="margin-bottom:0.75rem;">
+   <div class="fanhui"><a  onclick="history.go(-1)"  style="cursor:pointer;"><img src="images/fh.png" width="9" height="16" /></a></div>
+   <div class="baizi">微信扫描二维码支付</div>
+</div>
+<!---------------------------- 文字提交下单end ---------------------------->
+
+<div id="qccimg" style="
+    margin-top: 3rem;
+    text-align: center;
+"><img src="data:image/gif;base64,R0lGODlhEAAQALMPAHp6evf394qKiry8vJOTk83NzYKCgubm5t7e3qysrMXFxe7u7pubm7S0tKOjo////yH/C05FVFNDQVBFMi4wAwEAAAAh+QQJCAAPACwAAAAAEAAQAAAETPDJSau9NRDAgWxDYGmdZADCkQnlU7CCOA3oNgXsQG2FRhUAAoWDIU6MGeSDR0m4ghRa7JjIUXCogqQzpRxYhi2HILsOGuJxGcNuTyIAIfkECQgADwAsAAAAABAAEAAABGLwSXmMmjhLAQjSWDAYQHmAz8GVQPIESxZwggIYS0AIATYAvAdh8OIQJwRAQbJkdjAlUCA6KfU0VEmyGWgWnpNfcEAoAo6SmWtBUtCuk9gjwQKeQAeWYQAHIZICKBoKBncTEQAh+QQJCAAPACwAAAAAEAAQAAAEWvDJORejGCtQsgwDAQAGGWSHMK7jgAWq0CGj0VEDIJxPnvAU0a13eAQKrsnI81gqAZ6AUzIonA7JRwFAyAQSgCQsjCmUAIhjDEhlrQTFV+lMGLApWwUzw1jsIwAh+QQJCAAPACwAAAAAEAAQAAAETvDJSau9L4QaBgEAMWgEQh0CqALCZ0pBKhRSkYLvM7Ab/OGThoE2+QExyAdiuexhVglKwdCgqKKTGGBgBc00Np7VcVsJDpVo5ydyJt/wCAAh+QQJCAAPACwAAAAAEAAQAAAEWvDJSau9OAwCABnBtQhdCQjHlQhFWJBCOKWPLAXk8KQIkCwWBcAgMDw4Q5CkgOwohCVCYTIwdAgPolVhWSQAiN1jcLLVQrQbrBV4EcySA8l0Alo0yA8cw+9TIgAh+QQFCAAPACwAAAAAEAAQAAAEWvDJSau9WA4AyAhWMChPwXHCQRUGYARgKQBCzJxAQgXzIC2KFkc1MREoHMTAhwQ0Y5oBgkMhAAqUw8mgWGho0EcCx5DwaAUQrGXATg6zE7bwCQ2sAGZmz7dEAAA7" />
+</div>
+<div style="
+    text-align: center;
+">
+	<p>请用微信扫描二维码支付</p>
+	<p style="color:red;">微信支付过程中请勿关闭此页面！</p>
+</div>
+
+<script>
+	function ajaxqimg(){
+		$.ajax( {
+			url: '/weixin/example/native.php', //这里是静态页的地址
+			type: "GET", //静态页用get方法，否则服务器会抛出405错误
+			//dataType: "json",
+			//cache: false,
+			//async: false,
+			beforeSend: function(){
+			 // Handle the beforeSend event
+			},
+			success: function(data){
+				$('#qccimg').html('<img src="'+data+'" />');
+				setTimeout('cxddd()',15000);
+				//var result = $(data).find("另一个html页面的指定的一部分").html();
+			},
+			error: function() {
+				ajaxqimg();
+			}
+		});
+	}
+	setTimeout('ajaxqimg()',3000);
+	
+	function cxddd(){
+		$.ajax( {
+			url: '/index.php?s=/addon/WeiSite/WeiSite/qcoder/dz/ok.html', //这里是静态页的地址
+			type: "GET", //静态页用get方法，否则服务器会抛出405错误
+			//dataType: "json",
+			//cache: false,
+			async: false,
+			beforeSend: function(){
+			 // Handle the beforeSend event
+			},
+			success: function(data){
+				if(data=='1') {
+					//alert('ok');
+					location.href = '/index.php?s=/addon/WeiSite/WeiSite/chongzhi/chongzhiok/ok.html';
+					return false;
+				}
+				if(data=='2') {
+					//alert('ok');
+					location.href = '/index.php?s=/addon/WeiSite/WeiSite/ggwwwwok/index.html';
+					return false;
+				}
+				else setTimeout('cxddd()',5000);
+				//$('#qccimg').html('<img src="'+data+'" />');
+				//var result = $(data).find("另一个html页面的指定的一部分").html();
+			}
+		});
+	}
+	
+</script>
+
+
+
+<style>
+body .footer {
+    margin-top: 90px;
+}
+</style>
+
+<style>
+ .footer{
+    	width: 100%;
+    	margin-bottom: 20px;
+    }
+    .footer .huidise{
+    	width: 100%;
+    	height: 35px;
+    	background-color: #E1E1E1;
+    	margin-bottom: 10px;
+    }
+    .footer .huidise .wz_left{
+    	text-align: left;
+    	line-height: 35px;
+        margin-left: 20px;
+    }
+    .footer .huidise .wz_left a{
+    	color:#00415D;
+    }
+    .footer .huidise .wz_left .wz_right{
+        float: right;
+        margin-right: 20px;
+        display: inline-block;
+    }
+    .footer .huidise .wz_right a{
+    	color:#B67F2F;
+    }
+    .footer p{
+    	color: #B67F2F;
+    	text-align: center;
+    }
+</style>
+<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.0/jquery.min.js"></script>
+<div class="footer">
+   <div class="huidise">
+     <p class="wz_left">
+	 <a href="/index.php?s=/addon/WeiSite/WeiSite/MemberHome.html">个人中心</a>&nbsp;|&nbsp;<a href="/index.php?s=/addon/WeiSite/WeiSite/tuichu.html">退出</a>     <span class="wz_right"><a id="newsgoTop" href="javascript:;">返回顶部</a></span>
+     </p>
+   </div>
+     <p>咨询电话：<a href="tel:0771-2365313#mp.weixin.qq.com" style="color: #B67F2F;text-decoration:underline;text-decoration: none;">0771-2365313</a></p>
+	 <p>地址：南宁青秀万达广场二层2009号商铺艾娜西点</p>
+     <p>COPYRIGHT © 2016 艾娜西点</p>
+</div>
+<!-------------------- footer end -------------------->
+
+
+<!--js-->
+
+<script>
+					nyyyyn=1;
+function sslyss(sur){
+$("#readmore").text('加载中...');
+$.ajax( {
+        url: sur+nyyyyn+'.html', //这里是静态页的地址
+        type: "GET", //静态页用get方法，否则服务器会抛出405错误
+        success: function(data){
+          //alert(data);
+			if(!data){
+				$("#readmore").text('没有了');
+				return false;
+			}
+            //var result = $(data).find("另一个html页面的指定的一部分").html();
+            $("#readmore").before(data);
+			$("#readmore").text('加载更多');
+			nyyyyn=nyyyyn+1;
+        }
+});
+//alert(nyyyyn);
+}
+
+$(document).ready(function() {
+    //返回顶部
+    $('#newsgoTop').click(function() {
+        $('body').animate({ scrollTop: 0 },300);
+    });
+
+    $('#search').click(function() {
+        //$('#index-s-input').animate({top:'9px'},800,ssshjsd);
+		var npp=$('#index-s-input').css('display');
+		if(npp=='none'){
+			$('#index-s-input').fadeIn(300,ssshjsd);
+		}else{
+			var keyw=$('#index-s-input').val();
+			if(!keyw) alert('请输入搜索关键词');
+			else location.href = '/index.php?s=/addon/WeiSite/WeiSite/souss/keyw/'+keyw+'.html';
+		}
+    });
+
+    $('#open').click(function() {
+        $('.ppptcdiv').animate({left:'0px'},200);
+		$('#ppptcdiv-ddd').css('display','block');
+    });
+});
+function cloos(){
+	$('.ppptcdiv').animate({left:'-225px'},200);
+	$('#ppptcdiv-ddd').css('display','none');
+}
+function ssshjsd(){
+	$("#index-s-input").focus();
+}
+
+
+</script>
+<div style="display:none;"><script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1258677774'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1258677774' type='text/javascript'%3E%3C/script%3E"));</script></div>
+</body>
+</html>

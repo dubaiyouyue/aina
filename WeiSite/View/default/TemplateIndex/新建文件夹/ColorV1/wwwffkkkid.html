@@ -1,0 +1,219 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="format-detection" content="telephone=no" />
+<title>会员中心-提交下单</title>
+<!-------------- css start -------------->
+<!--全部css-->
+<link href="css/style.css" type="text/css" rel="stylesheet" />
+<!-------------- css end ---------------->
+
+<!-------------- js start -------------->
+<!--手机布局rem-->
+<script src="js/rem.js"></script>
+<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+
+<script src="js/layer.js"></script>
+<!-------------- js end ---------------->
+
+
+</head>
+
+<body>
+<!---------------------------- 文字提交下单start ---------------------------->
+<div class="top" style="margin-bottom:0.75rem;">
+   <div class="fanhui"><a onclick="history.go(-1)" style="cursor:pointer;"><img src="images/fh.png" width="9" height="16" /></a></div>
+   <div class="baizi">提交下单</div>
+</div>
+<!---------------------------- 文字提交下单end ---------------------------->
+
+
+
+<!---------------------------- 提交下单内容start ---------------------------->
+<div class="address_selection">
+<form action="" method="get">
+    <P>地址选择</P>
+    
+	<?php
+		foreach($dzs as $k=>$v){
+			if(!$k) {
+				$ssdddd='address1';
+				$dzsssff=$v['xingm'].' '.$v['tel'].' '.$v['dz'];
+			}
+			else $ssdddd='address2';
+	?>
+	<div class="{$ssdddd}">
+		<div class="danxuan1" style=" padding-right:5px;display: inline-block;">
+			<input name="radio" id="sfdsfsd{$v.id}" onclick="sssdz({$v.id});" type="radio" value="{$v.xingm} {$v.tel} {$v.dz}" <?php
+			if($v['mor']==1) echo'checked="checked"';
+			?> />
+		</div>{$v.xingm}<span class="telphone">{$v.tel}</span><span class="dizhi">{$v.dz}</span>
+	</div>
+
+    <?php
+		}
+	?>
+  <a href="/index.php?s=/addon/WeiSite/WeiSite/Accountinformation.html"><div class="new_address">+使用新地址</div></a>
+</form>
+</div>
+
+<style>
+/*重新定义宽度*/
+.tjxd_spxx .tjxd_spxx.xm .one,.tjxd_spxx .tjxd_spxx.cc .oneshpping{
+	width: 4.8rem;display: inline-block;padding-left:0.5rem;
+}
+.tjxd_spxx .tjxd_spxx.cc .oneshpping{width: 4.2rem;}
+.tjxd_spxx .tjxd_spxx.xm .two,.oneshpping2{
+	width: 2.5rem;display: inline-block;    text-align: center;
+}
+.tjxd_spxx .tjxd_spxx.xm .three,.oneshpping3{
+	width: 3.25rem;display: inline-block;    text-align: center;
+}.tjxd_spxx .tjxd_spxx.xm .four,.oneshpping4{
+	width: 3.65rem;display: inline-block;    text-align: center;
+}.address_selection{margin-top: 3.15rem;}
+</style>
+<div class="tjddwz">商品信息</div>
+<div class="tjxd_spxx">
+   <div class="tjxd_spxx xm">	
+		<div class="one">订购商品</div>
+		
+		<div class="two">数量</div>
+		
+		<div class="three">单价</div>
+		
+		<div class="four">小计</div>	
+  </div>
+  
+  
+  
+<?php
+	foreach($sp as $k=>$v){
+		//总数量
+		//$znum=$znum+$v['num'];
+		//总金额
+		//$zjne=$zjne+($v['num']*$v['jiage']);
+?>
+  <div class="tjxd_spxx cc">
+      <span class="cpm oneshpping">{$v.title}</span>
+      
+      
+	  <span class="oneshpping2">{$v.num}</span>
+	
+	<span class="oneshpping3">{$v.jiage}</span>
+
+	<span class="oneshpping4"><?php
+		echo $v['jiage']*$v['num'];
+	?></span>
+
+	  <span class="chicun oneshpping">尺寸：{$v.chicun}</span>
+
+	 
+  </div>
+ <?php
+ }
+ ?>
+  
+  
+  
+  
+  
+  
+  
+  
+</div>
+
+<?php
+	if($dzsyhde){
+?>
+<div class="clip_coupons">
+  <div class="fxkys" style="display: inline-block;"><input onclick="yyhhhqq({$dzsyhde});" name="adsfads" id="adsfads" type="checkbox" value=""  /></div>
+  <span class="jinzi">使用优惠券</span>
+</div>
+
+<?php
+	}if($syu>($zjne+$yunfei)){
+?>
+<div class="clip_coupons">
+  <div class="fxkys" style="display: inline-block;"><input onclick="yyhhhqqs()" id="adsfadss" type="checkbox" value="" name="adsfadss" /></div>
+  <span class="jinzi">使用余额 {$syu}元 付款</span>
+</div>
+
+<?php
+}?>
+
+<div class="jiagemingxi">
+  <p class="xfje">需付款金额：<span class="kong1" style="padding-left:8px;"></span>￥{$zjne}</p>
+  <P class="kqyh">卡券优惠：<span class="kong2" style="padding-left:9px;"></span>-￥<span id="kkqqyyh">0</span></P>
+  <div class="xiaoyhq" style="text-align:right; padding-top:5px; padding-right:10px;"><img src="images/xiaoyhq.png" width="50" height="31" /></div>
+  <P class="yf">运费：<span class="kong3" style="padding-left:21px;"></span>￥{$yunfei}</P>
+  <P class="zj">共<span class="shuzi" style="color:#00415D; font-size:12px;">{$znum}</span>件商品<span class="kong4" style="padding-left:8px;"></span>实付金额：<span class="shifu" style="color:#00415D; font-size:14px;">￥<span id="sfje"><?php
+	echo $zjne+$yunfei;
+  ?></span></span></P>
+</div>
+
+<div class="tjxdan"><a href="javascript:;" onclick="sdfsdfsd();">提交下单</a></div>
+<!---------------------------- 提交下单内容end ---------------------------->
+<form name="myform" id="myform" action="index.php?s=/addon/WeiSite/WeiSite/wwwffkkkid/jsok/ok.html" method="POST" style="display:none;">
+<input type="text" id="dz" name="dz" value="{$dzsssff}" />
+<input type="text" id="yhq" name="yhq" />
+<input type="text" id="yue" name="yue" />
+</form>
+
+
+<script>
+///index.php?s=/addon/WeiSite/WeiSite/SubmitOrder/jsok/ok.html
+function sssdz(n){
+	var dz=$('#sfdsfsd'+n).val();
+	//alert(dz);
+	$('#dz').val(dz);
+}
+function yyhhhqqs(n){
+	var sf=document.getElementById("adsfadss").checked;
+	$('#yue').val(sf);
+}
+function yyhhhqq(n){
+	var sf=document.getElementById("adsfads").checked;
+	$('#yhq').val(sf);
+	var sj=parseInt($('#sfje').text());
+	if(sf) {
+		
+		$('#sfje').text(sj-n);
+		$('#kkqqyyh').text(n);
+	}
+	else {
+		$('#kkqqyyh').text(0);
+		$('#sfje').text(sj+n);
+	}
+}
+function sdfsdfsd(){
+	if(!$('#dz').val()){
+		layer.confirm('请添加收获地址', {
+			title:'提示',
+			closeBtn: 0,
+			btn: ['去添加地址'] //按钮
+		}, function(){
+			location.href = '/index.php?s=/addon/WeiSite/WeiSite/Accountinformation.html';
+		});
+		return false;
+	}
+	document.getElementById('myform').submit();
+	//var dz=$('#dz').val();
+	layer.msg('正在跳转到支付页面...请稍等...', {
+	  time: 200000 //2秒关闭（如果不配置，默认是3秒）
+	}, function(){
+	  //do something
+	}); 
+}
+</script>
+
+
+
+
+
+
+</body>
+</html>

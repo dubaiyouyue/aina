@@ -1,0 +1,115 @@
+<include file="Addons/WeiSite/View/default/TemplateIndex/ColorV1/headines.html" />
+
+<!-- start -->
+
+	<!--幻灯片-->
+	<include file="Addons/WeiSite/View/default/TemplateIndex/ColorV1/I_b_s.html" />
+	<!--end-->
+<style>
+.newclasstuij{
+    position: absolute;
+    top: 0px;
+    right: 0px;
+	margin-bottom: 2px;
+}
+.newclasstuij li{
+	height: 1.9rem;
+    /*background: red;*/
+    width: 9.05rem;
+}
+</style>
+	<div style="height:6rem;position:relative; border-top:1px solid #E1E1E1; border-bottom:1px solid #E1E1E1;">
+		<a href="/index.php?s=/addon/WeiSite/WeiSite/Products.html">
+		<img src="/images/1/all.gif" style="width: 6.9rem;height: 6rem;"/></a>
+		<img src="/images/1/fenlei.gif" style="width: 8.8rem;height: 5.5rem;margin-bottom: 0.25rem;"/>
+		<ul class="newclasstuij">
+		<a href="<?php
+	 		echo $config ['shouyeshouzuodangaolianjie'];
+	 	?>"><li></li></a>
+		<a href="<?php
+	 		echo $config ['shouyeoushixidianlianjie'];
+	 	?>"><li></li></a>
+		<a href="<?php
+	 		echo $config ['shouyeyouyaxiawuchalianjie'];
+	 	?>"><li></li></a>
+		</ul>
+	</div>
+
+<!-- end -->
+
+
+
+<!-- 最新活动start -->
+<div class="zxhd">
+  <a href="{$config.yunfezzzi}"><img src="<?php
+	 		echo get_cover_url ( $config ['choujcoverss'] );
+	 	?>" width="100%" height="" /></a>
+</div>
+<!-- 最新活动end -->
+
+
+
+<style>
+.newli-back-ppdiv{text-align: right;}
+.newli-back-numdiv{
+background: url(../images/1/biaohaobg.jpg);
+    background-size: 100%;
+}
+
+</style>
+<!-- 新品推荐start -->
+
+
+<div class="new_products">
+ <h1>HOT新品推荐</h1>
+
+ <?php
+	//dump($tj);
+	foreach($tj as $k=>$v){
+		$kn=$k+1;
+		if($kn<10) $kn='0'.$kn;
+		if(!($k%2)){
+		
+ ?>
+ 
+ 
+<!--奇数编号start-->
+	 <a href="/index.php?s=/addon/WeiSite/WeiSite/blnxiangqing/id/{$v.id}.html"><div class="newli-back bj bj1" style="    background: url(<?php
+	 		echo get_cover_url ( $v ['cover'] );
+	 	?>);background-repeat: no-repeat;
+    background-position: center;background-size: 7.7rem 7.25rem;">
+		<div class="newli-back-numdiv"><!--编号-->
+			<span class="newli-back-numbenr">{$kn}</span>
+		</div>
+		<div class="newli-back-ppdiv"><!--价格-->
+			<span class="newli-back-pspo">{$v['tjtitle']}</span>
+			<span class="newli-back-pspott">￥{$v['tjjiage']}</span>
+		</div>
+		<p class="newli-back-wnezi-bottom">{$v['tjintro']}</p>
+	</div></a>
+	<!--end-->
+<?php
+}else{
+?>
+	<!--偶数编号start /* style="background:url(images/xuyuanchi.png);background-repeat: no-repeat;background-position: center;"*/-->
+		<a href="/index.php?s=/addon/WeiSite/WeiSite/blnxiangqing/id/{$v.id}.html"><div class="newli-back bj bj2" style="    background: url(<?php
+	 		echo get_cover_url ( $v ['cover'] );
+	 	?>);background-repeat: no-repeat;
+    background-position: center;background-size: 7.7rem 7.25rem;">
+			<div class="newli-back-numdiv newli-back-numdiv-right"><!--编号-->
+				<span class="newli-back-numbenr">{$kn}</span>
+			</div>
+			<div class="newli-back-ppdiv"><!--价格-->
+				<span class="newli-back-pspo">{$v['tjtitle']}</span>
+				<span class="newli-back-pspott">￥{$v['tjjiage']}</span>
+			</div>
+			<p class="newli-back-wnezi-bottom">{$v['tjintro']}</p>
+		</div></a>
+	<!--end-->
+<?php
+}}
+?>
+
+</div>
+<!-- 新品推荐end -->
+<include file="Addons/WeiSite/View/default/TemplateIndex/ColorV1/foot.html" />

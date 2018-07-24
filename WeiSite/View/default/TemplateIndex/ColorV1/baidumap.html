@@ -1,0 +1,46 @@
+  <script type="text/javascript" src="http://api.map.baidu.com/api?v=1.2"></script>
+  <script type="text/javascript" src="http://api.map.baidu.com/library/GeoUtils/1.2/src/GeoUtils_min.js"></script>
+
+  <div style="width:100%;height:300px;margin:auto;" id="container"></div>
+
+
+<script type="text/javascript">
+  var map = new BMap.Map("container");
+  var pt = new BMap.Point(108.3763,22.837387);
+  var mkr = new BMap.Marker(pt);
+  var ply; //多边形
+  map.centerAndZoom(pt, 13);
+  map.enableScrollWheelZoom(); //开启滚动缩放
+  map.enableContinuousZoom(); //开启缩放平滑
+  //初始化为多边形1
+  polygon1();
+  //生成多边形1
+  function polygon1() {
+    var pts = [];
+ 
+	{$config.songhuofanwei}
+	
+    ply = new BMap.Polygon(pts);
+    //演示：将面添加到地图上
+    map.clearOverlays();
+    map.addOverlay(ply);
+  }
+  
+  //map.addEventListener("click", function (e) {
+    mkr.setPosition(map.addEventListener.point);
+    map.addOverlay(mkr);
+    //将点击的点的坐标显示在页面上
+    //document.getElementById("lng").value = '116.410926';//e.point.lng;
+    //document.getElementById("lat").value = '39.917089';//e.point.lat;
+    //InOrOutPolygon('108.3763', '22.837387');
+  //});
+  function InOrOutPolygon(lng, lat){
+    var pt = new BMap.Point(lng, lat);
+    var result = BMapLib.GeoUtils.isPointInPolygon(pt, ply);
+    if (result == true) {
+      //document.getElementById("result").innerHTML = 1;//"点在多边形内";
+    } else {
+      //document.getElementById("result").innerHTML = 0;//"点在多边形外";
+    }
+  }
+</script> 

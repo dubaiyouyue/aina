@@ -1,0 +1,51 @@
+<include file="Addons/WeiSite/View/default/TemplateIndex/ColorV1/head.html" />
+
+<!-- banner start -->
+<div class="banner">
+  <img src="{$info.img}" width="100%" />
+</div>
+<!-- banner end -->
+
+
+
+<!-- 购物指南start -->
+
+<div class="biaoti">
+  <div class="biaoti-wenzi1">Shopping Guide</div>
+  <div class="biaoti-wenzi2">购物指南</div>
+</div>
+<!-- 购物指南end -->
+
+
+<!-- 栏目start -->
+
+<div class="lanmu">
+  <ul class="xuanxiang xuanxiangnew-lij clearfloat">
+		<?php
+				foreach($infofl as $k=>$v){
+					$vsss='';
+					if($v['id']==$loandid) $vsss='class="xuanxiang_on"';
+		?>
+    <li {$vsss}><a href="/index.php?s=/addon/WeiSite/WeiSite/BookingNotesXz/id/{$v.id}.html">{$v.title}</a></li>
+		<?php
+			}
+		?>
+  </ul>
+</div>
+<!-- 栏目end  -->
+
+
+
+<!-- 内容start -->
+
+<div class="explain contentimg">
+  {$info.content}
+
+</div>
+<div style="margin-left: 10px;margin-right: 10px;margin-bottom: 50px;">
+<include file="Addons/WeiSite/View/default/TemplateIndex/ColorV1/baidumap.html" />
+</div>
+
+<!-- 内容end -->
+
+<include file="Addons/WeiSite/View/default/TemplateIndex/ColorV1/foot.html" />

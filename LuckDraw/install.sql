@@ -1,0 +1,48 @@
+CREATE TABLE IF NOT EXISTS `wp_luckdraw` (
+`id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '主键',
+`jp1p`  int(10) UNSIGNED NULL  COMMENT '奖品1图片',
+`jp1w`  varchar(255) NULL  COMMENT '奖品1文字',
+`jp1l`  char(50) NULL  COMMENT '奖品1类型',
+`jp1s`  varchar(255) NULL  COMMENT '奖品1实物/代金券(请填写纯数字)',
+`jp1g`  int(10) NULL  COMMENT '奖品1概率（填写小数）',
+`jp2p`  int(10) UNSIGNED NULL  COMMENT '奖品2图片',
+`jp3p`  int(10) UNSIGNED NULL  COMMENT '奖品3图片',
+`jp4p`  int(10) UNSIGNED NULL  COMMENT '奖品4图片',
+`jp5p`  int(10) UNSIGNED NULL  COMMENT '奖品5图片',
+`jp6p`  int(10) UNSIGNED NULL  COMMENT '奖品6图片',
+`jp7p`  int(10) UNSIGNED NULL  COMMENT '奖品7图片',
+`jp8p`  int(10) UNSIGNED NULL  COMMENT '奖品8图片',
+`jp2w`  varchar(255) NULL  COMMENT '奖品2文字',
+`jp2l`  char(50) NULL  COMMENT '奖品2类型',
+`jp2s`  varchar(255) NULL  COMMENT '奖品2实物/代金券(请填写纯数字)',
+`jp2g`  int(10) NULL  COMMENT '奖品2概率（填写小数）',
+`jp3w`  varchar(255) NULL  COMMENT '奖品3文字',
+`jp3l`  char(50) NULL  COMMENT '奖品3类型',
+`jp3s`  varchar(255) NULL  COMMENT '奖品3实物/代金券(请填写纯数字)',
+`jp3g`  int(10) NULL  COMMENT '奖品3概率（填写小数）',
+PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARACTER SET=utf8 COLLATE=utf8_general_ci CHECKSUM=0 ROW_FORMAT=DYNAMIC DELAY_KEY_WRITE=0;
+INSERT INTO `wp_model` (`name`,`title`,`extend`,`relation`,`need_pk`,`field_sort`,`field_group`,`attribute_list`,`template_list`,`template_add`,`template_edit`,`list_grid`,`list_row`,`search_key`,`search_list`,`create_time`,`update_time`,`status`,`engine_type`,`addon`) VALUES ('luckdraw','抽奖','0','','1','["jp1p","jp1w","jp1l","jp1s","jp1g","jp2p","jp2w","jp2l","jp2s","jp2g","jp3p","jp3w","jp3l","jp3s","jp3g","jp4p","jp5p","jp6p","jp7p","jp8p"]','1:基础','','','','','','10','','','1460009519','1460012266','1','MyISAM','LuckDraw');
+INSERT INTO `wp_attribute` (`name`,`title`,`field`,`type`,`value`,`remark`,`is_show`,`extra`,`model_id`,`is_must`,`status`,`update_time`,`create_time`,`validate_rule`,`validate_time`,`error_info`,`validate_type`,`auto_rule`,`auto_time`,`auto_type`) VALUES ('jp1p','奖品1图片','int(10) UNSIGNED NULL','picture','','','1','','0','1','1','1460011300','1460011300','','3','','regex','','3','function');
+INSERT INTO `wp_attribute` (`name`,`title`,`field`,`type`,`value`,`remark`,`is_show`,`extra`,`model_id`,`is_must`,`status`,`update_time`,`create_time`,`validate_rule`,`validate_time`,`error_info`,`validate_type`,`auto_rule`,`auto_time`,`auto_type`) VALUES ('jp1w','奖品1文字','varchar(255) NULL','string','','','1','','0','0','1','1460011364','1460011364','','3','','regex','','3','function');
+INSERT INTO `wp_attribute` (`name`,`title`,`field`,`type`,`value`,`remark`,`is_show`,`extra`,`model_id`,`is_must`,`status`,`update_time`,`create_time`,`validate_rule`,`validate_time`,`error_info`,`validate_type`,`auto_rule`,`auto_time`,`auto_type`) VALUES ('jp1l','奖品1类型','char(50) NULL','select','','','1','1:实物\r\n2:代金券','0','0','1','1460011410','1460011410','','3','','regex','','3','function');
+INSERT INTO `wp_attribute` (`name`,`title`,`field`,`type`,`value`,`remark`,`is_show`,`extra`,`model_id`,`is_must`,`status`,`update_time`,`create_time`,`validate_rule`,`validate_time`,`error_info`,`validate_type`,`auto_rule`,`auto_time`,`auto_type`) VALUES ('jp1s','奖品1实物/代金券(请填写纯数字)','varchar(255) NULL','string','','','1','','0','0','1','1460011487','1460011487','','3','','regex','','3','function');
+INSERT INTO `wp_attribute` (`name`,`title`,`field`,`type`,`value`,`remark`,`is_show`,`extra`,`model_id`,`is_must`,`status`,`update_time`,`create_time`,`validate_rule`,`validate_time`,`error_info`,`validate_type`,`auto_rule`,`auto_time`,`auto_type`) VALUES ('jp1g','奖品1概率（填写小数）','int(10) NULL','num','','','1','','0','0','1','1460012093','1460011574','','3','','regex','','3','function');
+INSERT INTO `wp_attribute` (`name`,`title`,`field`,`type`,`value`,`remark`,`is_show`,`extra`,`model_id`,`is_must`,`status`,`update_time`,`create_time`,`validate_rule`,`validate_time`,`error_info`,`validate_type`,`auto_rule`,`auto_time`,`auto_type`) VALUES ('jp2p','奖品2图片','int(10) UNSIGNED NULL','picture','','','1','','0','1','1','1460011605','1460011605','','3','','regex','','3','function');
+INSERT INTO `wp_attribute` (`name`,`title`,`field`,`type`,`value`,`remark`,`is_show`,`extra`,`model_id`,`is_must`,`status`,`update_time`,`create_time`,`validate_rule`,`validate_time`,`error_info`,`validate_type`,`auto_rule`,`auto_time`,`auto_type`) VALUES ('jp3p','奖品3图片','int(10) UNSIGNED NULL','picture','','','1','','0','1','1','1460011632','1460011632','','3','','regex','','3','function');
+INSERT INTO `wp_attribute` (`name`,`title`,`field`,`type`,`value`,`remark`,`is_show`,`extra`,`model_id`,`is_must`,`status`,`update_time`,`create_time`,`validate_rule`,`validate_time`,`error_info`,`validate_type`,`auto_rule`,`auto_time`,`auto_type`) VALUES ('jp4p','奖品4图片','int(10) UNSIGNED NULL','picture','','','1','','0','1','1','1460011657','1460011657','','3','','regex','','3','function');
+INSERT INTO `wp_attribute` (`name`,`title`,`field`,`type`,`value`,`remark`,`is_show`,`extra`,`model_id`,`is_must`,`status`,`update_time`,`create_time`,`validate_rule`,`validate_time`,`error_info`,`validate_type`,`auto_rule`,`auto_time`,`auto_type`) VALUES ('jp5p','奖品5图片','int(10) UNSIGNED NULL','picture','','','1','','0','1','1','1460011772','1460011772','','3','','regex','','3','function');
+INSERT INTO `wp_attribute` (`name`,`title`,`field`,`type`,`value`,`remark`,`is_show`,`extra`,`model_id`,`is_must`,`status`,`update_time`,`create_time`,`validate_rule`,`validate_time`,`error_info`,`validate_type`,`auto_rule`,`auto_time`,`auto_type`) VALUES ('jp6p','奖品6图片','int(10) UNSIGNED NULL','picture','','','1','','0','1','1','1460011840','1460011840','','3','','regex','','3','function');
+INSERT INTO `wp_attribute` (`name`,`title`,`field`,`type`,`value`,`remark`,`is_show`,`extra`,`model_id`,`is_must`,`status`,`update_time`,`create_time`,`validate_rule`,`validate_time`,`error_info`,`validate_type`,`auto_rule`,`auto_time`,`auto_type`) VALUES ('jp7p','奖品7图片','int(10) UNSIGNED NULL','picture','','','1','','0','1','1','1460011914','1460011914','','3','','regex','','3','function');
+INSERT INTO `wp_attribute` (`name`,`title`,`field`,`type`,`value`,`remark`,`is_show`,`extra`,`model_id`,`is_must`,`status`,`update_time`,`create_time`,`validate_rule`,`validate_time`,`error_info`,`validate_type`,`auto_rule`,`auto_time`,`auto_type`) VALUES ('jp8p','奖品8图片','int(10) UNSIGNED NULL','picture','','','1','','0','1','1','1460011937','1460011937','','3','','regex','','3','function');
+INSERT INTO `wp_attribute` (`name`,`title`,`field`,`type`,`value`,`remark`,`is_show`,`extra`,`model_id`,`is_must`,`status`,`update_time`,`create_time`,`validate_rule`,`validate_time`,`error_info`,`validate_type`,`auto_rule`,`auto_time`,`auto_type`) VALUES ('jp2w','奖品2文字','varchar(255) NULL','string','','','1','','0','0','1','1460011969','1460011969','','3','','regex','','3','function');
+INSERT INTO `wp_attribute` (`name`,`title`,`field`,`type`,`value`,`remark`,`is_show`,`extra`,`model_id`,`is_must`,`status`,`update_time`,`create_time`,`validate_rule`,`validate_time`,`error_info`,`validate_type`,`auto_rule`,`auto_time`,`auto_type`) VALUES ('jp2l','奖品2类型','char(50) NULL','select','','','1','1:实物\r\n2:代金券','0','0','1','1460012016','1460012002','','3','','regex','','3','function');
+INSERT INTO `wp_attribute` (`name`,`title`,`field`,`type`,`value`,`remark`,`is_show`,`extra`,`model_id`,`is_must`,`status`,`update_time`,`create_time`,`validate_rule`,`validate_time`,`error_info`,`validate_type`,`auto_rule`,`auto_time`,`auto_type`) VALUES ('jp2s','奖品2实物/代金券(请填写纯数字)','varchar(255) NULL','string','','','1','','0','0','1','1460012044','1460012044','','3','','regex','','3','function');
+INSERT INTO `wp_attribute` (`name`,`title`,`field`,`type`,`value`,`remark`,`is_show`,`extra`,`model_id`,`is_must`,`status`,`update_time`,`create_time`,`validate_rule`,`validate_time`,`error_info`,`validate_type`,`auto_rule`,`auto_time`,`auto_type`) VALUES ('jp2g','奖品2概率（填写小数）','int(10) NULL','num','','','1','','0','0','1','1460012220','1460012070','','3','','regex','','3','function');
+INSERT INTO `wp_attribute` (`name`,`title`,`field`,`type`,`value`,`remark`,`is_show`,`extra`,`model_id`,`is_must`,`status`,`update_time`,`create_time`,`validate_rule`,`validate_time`,`error_info`,`validate_type`,`auto_rule`,`auto_time`,`auto_type`) VALUES ('jp3w','奖品3文字','varchar(255) NULL','string','','','1','','0','0','1','1460012125','1460012125','','3','','regex','','3','function');
+INSERT INTO `wp_attribute` (`name`,`title`,`field`,`type`,`value`,`remark`,`is_show`,`extra`,`model_id`,`is_must`,`status`,`update_time`,`create_time`,`validate_rule`,`validate_time`,`error_info`,`validate_type`,`auto_rule`,`auto_time`,`auto_type`) VALUES ('jp3l','奖品3类型','char(50) NULL','select','','','1','1:实物\r\n2:代金券','0','0','1','1460012148','1460012148','','3','','regex','','3','function');
+INSERT INTO `wp_attribute` (`name`,`title`,`field`,`type`,`value`,`remark`,`is_show`,`extra`,`model_id`,`is_must`,`status`,`update_time`,`create_time`,`validate_rule`,`validate_time`,`error_info`,`validate_type`,`auto_rule`,`auto_time`,`auto_type`) VALUES ('jp3s','奖品3实物/代金券(请填写纯数字)','varchar(255) NULL','string','','','1','','0','0','1','1460012180','1460012180','','3','','regex','','3','function');
+INSERT INTO `wp_attribute` (`name`,`title`,`field`,`type`,`value`,`remark`,`is_show`,`extra`,`model_id`,`is_must`,`status`,`update_time`,`create_time`,`validate_rule`,`validate_time`,`error_info`,`validate_type`,`auto_rule`,`auto_time`,`auto_type`) VALUES ('jp3g','奖品3概率（填写小数）','int(10) NULL','num','','','1','','0','0','1','1460012203','1460012203','','3','','regex','','3','function');
+UPDATE `wp_attribute` SET model_id= (SELECT MAX(id) FROM `wp_model`) WHERE model_id=0;
+
+

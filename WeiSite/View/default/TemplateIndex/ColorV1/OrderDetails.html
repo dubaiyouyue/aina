@@ -1,0 +1,309 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="format-detection" content="telephone=no" />
+<title>会员中心-订单详情</title>
+<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+
+<script src="js/layer.js"></script>
+<script>	
+//- 设置html标签font-size
+(function (doc, win) {
+    var _root = doc.documentElement,
+        resizeEvent = 'orientationchange' in window ? 'orientationchange' : 'resize',
+        resizeCallback = function () {
+            var clientWidth = _root.clientWidth,
+                fontSize = 20;
+            if (!clientWidth) return;
+            //if(clientWidth < 640) {
+                fontSize = 20 * (clientWidth / 320);
+            /*} else {
+                fontSize = 20 * (640 / 320);
+            }*/
+            _root.style.fontSize = fontSize + 'px';
+        };
+    if (!doc.addEventListener) return;
+    win.addEventListener(resizeEvent, resizeCallback, false);
+    doc.addEventListener('DOMContentLoaded', resizeCallback, false);
+})(document, window);
+</script>
+
+<style type="text/css">
+*{
+	margin:0;
+	padding:0;
+	border:0;
+	color:#000;
+	font-family:"微软雅黑", Arial;
+	font-size:14px;
+}
+ul li{
+	list-style-type: none;
+}
+a{
+	text-decoration: none;
+	color:#000;
+}
+</style>
+</head>
+
+<body>
+<!---------------------------- 文字订单详情start ---------------------------->
+<style>
+body{
+	background-color:#EEE;
+}
+.top{
+	height:2.25rem;
+	width:100%;
+	background-color:#00415D;
+	margin-bottom:0.75rem;
+}
+.top .fanhui{
+	position:absolute;
+	left:5%;
+	top:0.7rem;
+}
+.top .baizi{
+	font-size:16px;
+	color:#FFF;
+	text-align:center;
+	line-height:2.25rem;
+}
+
+</style>
+<div class="top">
+   <div class="fanhui"><a  onclick="history.go(-1)" ><img src="images/fh.png" width="9" height="16" /></a></div>
+   <div class="baizi">订单详情</div>
+</div>
+<!---------------------------- 文字订单详情end ---------------------------->
+
+
+<!---------------------------- 订单详情内容start ---------------------------->
+<style>
+.ddxxnr1{
+	width:100%;
+/*	margin-top:10px;
+*/	background-color:#FFF;
+}
+.ddxxnr1 P{
+	width:95%;
+	padding-top:8px;
+	padding-bottom:8px;
+	display:block;
+	margin: 0 auto;
+}
+
+.ddxxnr2{
+	width:100%;
+	margin-top:10px;
+	background-color:#FFF;
+}
+.ddxxnr2 p{
+	width:95%;
+	display:block;
+	margin: 0 auto;
+}
+
+
+.spxx{
+	margin-top:10px;
+	margin-bottom:10px;
+	background-color:#FFF;
+	padding-bottom:10px;
+}
+.spxx .bt{
+	border-bottom:1px solid #E1E1E1;
+	padding-top:10px;
+	padding-bottom:5px;
+	margin: 0 auto;
+	width:95%;
+}
+.spxx .cptpxx{
+	background:url(images/gwtb.png) no-repeat left;
+	min-height:45px;
+	margin-left:10px;
+	margin-top:0.4rem;
+	margin-bottom:1rem;
+}
+
+
+
+.bianhaoshijiang{
+	width:100%;
+	background-color:#FFF;
+}
+.bianhaoshijiang p {
+	padding-left:10px;
+}
+.bhsjrght{
+    float:right; 
+	padding-right:15px;
+	font-size:13px;
+}
+
+.qxddqfk{
+	width:100%;
+	margin-top:20px;
+}
+.qxddqfk p{
+	text-align:right;
+	padding-right:10px;
+}
+.qxddqfk p .qxdd{
+	border:1px solid #000;
+	padding:3px 8px 3px 8px;
+	margin-right:15px;
+}
+.qxddqfk p .qfk{
+	padding:3px 8px 3px 8px;
+	border:1px solid #000;
+}
+</style>
+<div class="ddxxnr1">
+  <P>
+     <p>订单编号：{$mys.dingdanbianhao}</p>
+	 <p>您的订单<?php
+	 $mys['viphy']=$mys['viphy']+0;
+	 if($mys['fuk']=='已付款') echo '已经付款！';
+	 else echo '未支付，请及时付款！你也可以选择取消订单!';
+	 if($mys['queren']) echo '<span style="color: red;">您已经确认收货。</span>';
+	 ?></p>
+  </P>
+</div>
+
+<div class="ddxxnr2">
+  <P class="shxx" style="padding-top:8px;">收货信息</P>
+  <P style="padding-top:5px;">{$mys.shouhuodz}</P>
+  <br />
+</div>
+
+<div class="spxx">
+   <div class="bt">商品信息</div>
+   <div class="cptpxx" style="background: url(<?php
+		//$idddn=explode(',',$mys['sid']);
+		echo get_cover_url($mys['pic']);
+	  ?>) no-repeat left;background-size: 54px 45px;">
+     <p style="padding-left: 70px;">{$mys.goumaisp}</p>
+
+	 <br />
+   </div>
+   <div class="cpxxxx" style="border-top:1px dashed #E1E1E1; width:95%; margin: 0 auto;"></div>
+   	 <P style="font-size:13px; padding-left:10px; padding-top:15px;">选择配送日期：{$mys.paaasssrrii}</p>
+	 <P style="font-size:13px; padding-left:10px; padding-top:5px;">首选时间段：{$mys.sssxxssdd}</p>
+	 <P style="font-size:13px; padding-left:10px; padding-top:5px;">备选时间段：{$mys.bssxxxssd}</p>
+	 <P style="font-size:13px; padding-left:10px; padding-top:5px;">订单备注：{$mys.bdddbz}</p>
+	 <P style="font-size:13px; padding-left:10px; padding-top:5px;">配送方式：<?php
+		if($mys['peissfaina']==1) echo '艾娜配送';
+		if($mys['peissfaina']==2) echo '站点自提';
+	 ?></p>
+	 
+	 <br>
+   <P style="font-size:13px; padding-left:10px; padding-top:5px;">运费<span class="bhsjrght">￥{$mys.youfei}</span></P>
+   <P style="font-size:13px; padding-left:10px; padding-top:5px;">活动优惠<span class="bhsjrght">-￥{$mys.daijinquan}</span></P>
+   <P style="font-size:13px; padding-left:10px; padding-top:5px;">VIP优惠<span class="bhsjrght">-￥{$mys.viphy}</span></P>
+   <P style="font-size:13px; padding-left:10px; padding-top:5px;">实付金额<span class="bhsjrght">￥<?php
+	//echo ($mys['zongjine']-$mys['daijinquan']-$mys['viphy']+$nnpn_yunfei);
+	echo $mys['shjne'];
+	?></span></P>
+</div>
+
+<div class="bianhaoshijiang">
+   <P style="padding-top:8px;">下单时间<span class="bhsjrght">{$mys.ctime|time_format=###,'Y-m-d'}</span></P>
+   <P style="padding-bottom:8px;">付款时间<span class="bhsjrght">{$mys.mtime|time_format=###,'Y-m-d'}</span></P>
+</div>
+
+<div class="qxddqfk" style="margin-bottom: 28px;">
+	<?php
+		if($mys['fuk'] && !$mys['queren']){
+	?>
+   <P><span class="qxdd" id="qqqqssss{$mys.id}" onclick="ssswwss({$mys.id});">确认收货</span></P>
+   <?php
+	}if(!$mys['fuk']){
+   ?>
+   <P id="qqqq{$mys.id}"><span class="qxdd" onclick="sssww({$mys.id});">取消订单</span><span onclick="ssddsqqqss({$mys.id});" class="qfk">去付款</span></P>
+   <?php
+   }?>
+</div>
+<!---------------------------- 订单详情内容end ---------------------------->
+<script>
+//去付款
+function ssddsqqqss(id){
+	$('#qqqq'+id).remove();
+	location.href ='/index.php?s=/addon/WeiSite/WeiSite/wwwffkkkid/id/{$mys.id}.html';
+}
+//取消订单
+function sssww(id){
+	//询问框
+	layer.confirm('确定取消订单吗？', {
+	  btn: ['确定','取消'] //按钮
+	}, function(){
+	  
+
+
+	layer.closeAll();
+	$.ajax( {
+		url: 'http://aina.test.resonance.net.cn/index.php?s=/addon/WeiSite/WeiSite/Myorder/quxiao/'+id+'.html', //这里是静态页的地址
+		type: "GET", //静态页用get方法，否则服务器会抛出405错误
+		//dataType: "json",
+		//cache: false,
+		//async: false,
+		beforeSend: function(){
+		 // Handle the beforeSend event
+		 $('#qqqq'+id).remove();
+		},
+		success: function(data){
+			//var result = $(data).find("另一个html页面的指定的一部分").html();
+			location.href ='/index.php?s=/addon/WeiSite/WeiSite/Myorder/index.html';
+			
+		}
+	});	}, function(){
+	  //
+	});
+}
+//确认收货
+function ssswwss(id){
+	//询问框
+	layer.confirm('确定确认收货吗？', {
+	  btn: ['确定','取消'] //按钮
+	}, function(){layer.closeAll();
+	$.ajax( {
+		url: 'http://aina.test.resonance.net.cn/index.php?s=/addon/WeiSite/WeiSite/Myorder/quren/'+id+'.html', //这里是静态页的地址
+		type: "GET", //静态页用get方法，否则服务器会抛出405错误
+		//dataType: "json",
+		//cache: false,
+		//async: false,
+		beforeSend: function(){
+		 // Handle the beforeSend event
+		 $('#qqqqssss'+id).remove();
+		},
+		success: function(data){
+			//var result = $(data).find("另一个html页面的指定的一部分").html();
+			//location.href = '/index.php?s=/addon/WeiSite/WeiSite/Myorder/dfk/dfkok.html';
+		}
+	});	}, function(){
+	  //
+	});
+}
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<include file="Addons/WeiSite/View/default/TemplateIndex/ColorV1/footm.html" />

@@ -1,0 +1,22 @@
+<include file="Addons/WeiSite/View/default/TemplateIndex/ColorV1/headi.html" />
+<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="js/rem.js"></script>
+<script src="js/laydate/laydate.js"></script>
+<script src="js/layer.js"></script>
+<div style="    height: 200px;
+    text-align: center;
+    line-height: 200px;
+    color: red;">
+订单异常！
+</div>
+<script>
+	layer.confirm('订单异常！请重新购买！', {
+		closeBtn: 0,
+		title:false,
+	  btn: ['知道了'] //按钮
+	}, function(){
+	  //layer.msg('的确很重要', {icon: 1});
+		location.href = '/index.php?s=/addon/WeiSite/WeiSite/shooppcaa.html';
+	});
+</script>
+<include file="Addons/WeiSite/View/default/TemplateIndex/ColorV1/foot.html" />

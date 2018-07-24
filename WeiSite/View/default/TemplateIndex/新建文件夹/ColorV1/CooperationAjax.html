@@ -1,0 +1,24 @@
+
+
+<!-- 合作内容start -------------------->
+<?php
+  foreach($list_data_new['list_data'] as $k=>$v){
+?>
+<div class="box2">
+  <div class="img1"><a href="/index.php?s=/addon/WeiSite/WeiSite/CooperationDetail/id/{$v.id}.html"><img src="<?php
+      echo get_cover_url ( $v ['cover'] );
+    ?>" width="100%" /></a></div>
+  <div class="wenben">
+      <h4><a href="/index.php?s=/addon/WeiSite/WeiSite/CooperationDetail/id/{$v.id}.html">{$v['title']}</a></h4>
+      <ul>
+        <li class="time"><img src="images/time.jpg" width="12" height="12" /><?php
+            echo date("Y-m-d",$v['cTime']);
+          ?></li>
+        <li class="chakan" style=""><a href="/index.php?s=/addon/WeiSite/WeiSite/CooperationDetail/id/{$v.id}.html">查看详情</a></li>
+      </ul>
+  </div>
+  <div class="clearfloat"></div>
+</div>
+<?php
+}
+?>

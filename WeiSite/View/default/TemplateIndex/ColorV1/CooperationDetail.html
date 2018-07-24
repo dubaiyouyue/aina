@@ -1,0 +1,62 @@
+<include file="Addons/WeiSite/View/default/TemplateIndex/ColorV1/head.html" />
+
+<!-------------------- banner start -------------------->
+<div class="banner">
+  <img src="{$info.img}" width="100%" />
+</div>
+<!-------------------- banner end -------------------->
+
+
+
+<!-------------------- 关于艾娜start -------------------->
+
+<div class="biaoti">
+  <div class="biaoti-wenzi1">About Aina`s Cafe</div>
+  <div class="biaoti-wenzi2">关于艾娜</div>
+</div>
+<!-------------------- 关于艾娜end -------------------->
+
+
+<!-------------------- 栏目start -------------------->
+
+<div class="lanmu">
+  <ul class="xuanxiang xuanxiangnew-lij clearfloat">
+<include file="Addons/WeiSite/View/default/TemplateIndex/ColorV1/AboutUrl.html" />
+  </ul>
+</div>
+<!-------------------- 栏目end  -------------------->
+
+<!-------------------- 滚动文字内容start -------------------->
+
+
+<!-------------------- 滚动文字内容end -------------------->
+
+<!-------------------- 内容start -------------------->
+
+<div class="content contentimg" style="
+    width: 15.227rem;
+    margin: auto;
+    margin-bottom: 15px;
+">
+<h3 style="
+    text-align: center;
+    padding: 15px 0px;
+    margin-top: -16px;
+">{$info.title}</h3>
+<p style="
+    text-align: center;
+    color: #aaa;
+    margin-top: -15px;
+    margin-bottom: 12px;
+    font-size: 12px;
+">{$info.cTime|time_format=###,'Y-m-d'}</p>
+{$info.content}
+
+
+
+</div>
+<!-------------------- 内容end -------------------->
+
+
+<!-------------------- footer start -------------------->
+<include file="Addons/WeiSite/View/default/TemplateIndex/ColorV1/foot.html" />

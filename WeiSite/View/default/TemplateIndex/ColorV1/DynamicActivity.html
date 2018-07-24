@@ -1,0 +1,77 @@
+
+<include file="Addons/WeiSite/View/default/TemplateIndex/ColorV1/head.html" />
+
+<!-------------------- banner start -------------------->
+<div class="banner">
+  <img src="{$info.img}" width="100%" />
+</div>
+<!-------------------- banner end -------------------->
+
+
+
+<!--------------------最新推荐start------------------>
+
+<div class="biaoti">
+  <div class="biaoti-wenzi1">New Recommended</div>
+  <div class="biaoti-wenzi2">最新推荐</div>
+</div>
+<!--------------------最新推荐end------------------>
+
+
+<!-------------------- 栏目start -------------------->
+
+<div class="lanmu">
+  <ul class="xuanxiang xuanxiangnew-lij clearfloat">
+  <ul class="xuanxiang xuanxiangnew-lij clearfloat" style="
+    width: 165px;
+    margin: auto;
+">
+
+		<li><a href="/index.php?s=/addon/WeiSite/WeiSite/LatestRecomm.html">新品上市</a></li>
+		<li class="xuanxiang_on"><a href="<?php
+			if($nnurlss) echo $nnurlss;
+			else echo '/index.php?s=/addon/WeiSite/WeiSite/DynamicActivity.html';
+		?>">活动动态</a></li>
+  </ul>
+  </ul>
+</div>
+<!-------------------- 栏目end -------------------->
+
+
+
+
+
+<!-------------------- 合作内容start -------------------->
+
+<?php
+  //dump($list_data_new['list_data']);
+  foreach($list_data_new['list_data'] as $k=>$v){
+    $cccs='box2';
+    if(!$k) $cccs='box1';
+?>
+<div class="{$cccs}">
+  <div class="img1"><a href="/index.php?s=/addon/WeiSite/WeiSite/DynamicActivityDetail/id/{$v.id}.html"><img src="<?php
+      echo get_cover_url ( $v ['cover'] );
+    ?>" width="100%" /></a></div>
+  <div class="wenben">
+      <h4><a href="/index.php?s=/addon/WeiSite/WeiSite/DynamicActivityDetail/id/{$v.id}.html">{$v['title']}</a></h4>
+      <ul>
+        <li class="time"><img src="images/time.jpg" width="12" height="12" /><?php
+            echo date("Y-m-d",$v['cTime']);
+          ?></li>
+        <li class="chakan" style=""><a href="/index.php?s=/addon/WeiSite/WeiSite/DynamicActivityDetail/id/{$v.id}.html">查看详情</a></li>
+      </ul>
+  </div>
+  <div class="clearfloat"></div>
+</div>
+<?php
+}
+?>
+
+
+<!-------------------- 合作内容end -------------------->
+
+
+<!-------------------- footer start -------------------->
+
+<include file="Addons/WeiSite/View/default/TemplateIndex/ColorV1/foot.html" />

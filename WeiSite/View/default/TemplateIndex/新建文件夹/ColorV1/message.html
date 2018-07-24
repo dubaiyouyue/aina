@@ -1,0 +1,135 @@
+<include file="Addons/WeiSite/View/default/TemplateIndex/ColorV1/head.html" />
+
+
+<!-------------------- banner start -------------------->
+<div class="banner">
+  <img src="images/web-banner.jpg" width="100%" />
+</div>
+<!-------------------- banner end -------------------->
+
+<!-------------------- 客服中心start -------------------->
+<style>
+.biaoti{
+	margin-top: 15px;
+	margin-bottom: 15px;
+}
+.biaoti .biaoti-wenzi1{
+	color:#00415D;
+	font-size: 20px;
+	text-align: center;
+}
+.biaoti .biaoti-wenzi2{
+	font-size: 16px;
+	color: #1F1F2E;
+	text-align: center;
+	font-weight: bold;
+    background: url(images/line.png) no-repeat center;
+}
+</style>
+<div class="biaoti">
+  <div class="biaoti-wenzi1">Customer Service</div>
+  <div class="biaoti-wenzi2">客服中心</div>
+</div>
+<!-------------------- 客服中心end -------------------->
+
+<!-------------------- 栏目start -------------------->
+<style>
+.lanmu{
+	width: 100%;
+    height:auto;
+    overflow:auto;
+	text-align: center;
+}
+.xuanxiangnew-lij {text-align: center;}
+.xuanxiangnew-lij li{display:inline-block;}
+.xuanxiang li{
+	/*float:left;*/ 
+/*	margin-right:10px; 
+*/	margin-bottom:10px; 
+	line-height:30px; 
+	font-size:14px; 
+	text-align:center; 
+	padding:0px 8px 0px 8px;
+}
+.xuanxiang li:hover,.xuanxiang_on{
+	background-color:#00415D;
+}
+.xuanxiang li:hover,.xuanxiang_on a{
+	color:#FFF; 
+}
+
+</style>
+<div class="lanmu">
+  <ul class="xuanxiang xuanxiangnew-lij">
+    <li><a href="/index.php?s=/addon/WeiSite/WeiSite/OnlineService.html">在线客服</a></li>
+    <li class="xuanxiang_on"><a href="/index.php?s=/addon/WeiSite/WeiSite/message.html">建议留言</a></li>
+  </ul>
+</div>
+<!-------------------- 栏目end  -------------------->
+
+
+<!-------------------- 留言start -------------------->
+<style>
+.clears{ clear:both;}
+.biaoti{
+	margin-left:10px;
+	margin-right:10px;
+}
+.biaoti p{
+	color:#00415D;
+}
+
+</style>
+<div class="biaoti">
+  <p>艾娜西点欢迎您留下宝贵的建议！</p>
+</div>
+
+<div class="liuyan">
+<center>
+<form name="myform" id="myform" action="/index.php?s=/addon/WeiSite/WeiSite/message.html" method="POST" class="messages">
+     <div class="messlist">
+      <label></label>
+      <input type="text" placeholder="姓名" name="xingm" style="border:1px solid #E1E1E1; width:90%; height:35px; font-size:12px; padding-left:5px;" />
+      <div class="clears"></div>
+     </div>
+     <div class="messlist">
+      <label></label>
+      <input type="text" placeholder="电话" name="tel" style="border:1px solid #E1E1E1; width:90%; height:35px; font-size:12px; margin-top:10px; padding-left:5px;" />
+      <div class="clears"></div>
+     </div>
+     <div class="messlist textareas" style="margin-top:10px;">
+      <label></label>
+      <textarea cols="200" placeholder="留言内容" name="content" id="content" style="border:1px solid #E1E1E1; width:90%; height:200px; font-size:12px; padding-top:5px; padding-left:5px;"></textarea>
+      <div class="clears"></div>
+     </div>
+     <div class="messsub" style="margin-top:10px; margin-bottom:20px;">
+     <input type="button" onclick="chongzhisss();" value="提交" style="background:#00415D;color:#fff;height:35px; width:92%; margin:0 auto;" />
+     </div>
+</form>
+</center>
+</div>
+<!-------------------- 留言end -------------------->
+
+
+
+
+<script>
+function chongzhisss(){
+	var je=$('#content').val();
+	if(!je){
+		alert('请填写留言内容！');
+		return false;
+	}
+	alert('留言提交成功！');
+	document.getElementById('myform').submit();
+	}
+	
+</script>
+
+
+
+
+
+
+
+<include file="Addons/WeiSite/View/default/TemplateIndex/ColorV1/foot.html" />

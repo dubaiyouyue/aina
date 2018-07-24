@@ -1,0 +1,186 @@
+<style>
+.sssnimmmmmm{width:300px;border:1px solid #ddd;padding: 10px 0px;margin: 10px 0 11px 0;}
+</style>
+<form style="padding: 8px;" id="myformsfsdfsd" name="myformsfsdfsd" action="/index.php?s=/addon/WeiSite/WeiSite/baidumappost/" method="POST" >
+<div id="mpapphidd">
+<p>姓名：</p>
+<input type="text" name="xingm" id="xingm" class="sssnimmmmmm" /> 
+<p>电话：</p>
+<input type="text" name="tel" id="telsdfsdfsd" value="{$user.tel}" class="sssnimmmmmm" /> 
+
+
+
+
+		<link rel="stylesheet" type="text/css" href="dd/dist/mobile-select-area.css">
+		<script type="text/javascript" src="dd/src/require.js"></script>
+<p>地区：</p>
+		<input type="text" id="txt_area" class="sssnimmmmmm" name="txt_area" value="广西壮族自治区 南宁市 青秀区" data-value="21,254,559"/>
+		<input type="hidden" id="hd_area" value="21,254,559"/>
+		<script>
+		requirejs.config({
+			//By default load any module IDs from js/lib
+			baseUrl: 'dd/src',
+			paths: {
+				$: 'jquery-1.11.2',
+				dialog:'dialog',
+				'mobile-select-area':'mobile-select-area'
+			}
+		});
+		require(['mobile-select-area','$'], function(MobileSelectArea,$) {
+			var selectArea = new MobileSelectArea();
+			selectArea.init({trigger:'#txt_area',value:$('#hd_area').val(),data:'data.json?v1'});
+		});
+		</script>
+
+
+
+
+
+
+
+<p>地址：</p>
+<input type="text" name="dz" id="dzdsafadsf" class="sssnimmmmmm" /> 
+<input type="hidden" name="lng" id="lng" /> 
+<input type="hidden" name="lat" id="lat" /> 
+<br /></div>
+<div id="allmap" style="width:100%;height:200px;display:none;"></div><br /><div id="ddssjjddzzzzsss">
+<input type="button" onclick="chongzhisss();" value="提 交" style="margin-top: 10px;padding: 11px 30px;background-color: #00415D;color: #fff;border: none;" /></div>
+</form>
+<script>
+
+$('#ddssjjddzzzz').html('<div class="new_address">+使用新地址</div>');
+immmssssaa='<div style="height: 39px;background:url(data:image/gif;base64,R0lGODlhEAAQALMPAHp6evf394qKiry8vJOTk83NzYKCgubm5t7e3qysrMXFxe7u7pubm7S0tKOjo////yH/C05FVFNDQVBFMi4wAwEAAAAh+QQJCAAPACwAAAAAEAAQAAAETPDJSau9NRDAgWxDYGmdZADCkQnlU7CCOA3oNgXsQG2FRhUAAoWDIU6MGeSDR0m4ghRa7JjIUXCogqQzpRxYhi2HILsOGuJxGcNuTyIAIfkECQgADwAsAAAAABAAEAAABGLwSXmMmjhLAQjSWDAYQHmAz8GVQPIESxZwggIYS0AIATYAvAdh8OIQJwRAQbJkdjAlUCA6KfU0VEmyGWgWnpNfcEAoAo6SmWtBUtCuk9gjwQKeQAeWYQAHIZICKBoKBncTEQAh+QQJCAAPACwAAAAAEAAQAAAEWvDJORejGCtQsgwDAQAGGWSHMK7jgAWq0CGj0VEDIJxPnvAU0a13eAQKrsnI81gqAZ6AUzIonA7JRwFAyAQSgCQsjCmUAIhjDEhlrQTFV+lMGLApWwUzw1jsIwAh+QQJCAAPACwAAAAAEAAQAAAETvDJSau9L4QaBgEAMWgEQh0CqALCZ0pBKhRSkYLvM7Ab/OGThoE2+QExyAdiuexhVglKwdCgqKKTGGBgBc00Np7VcVsJDpVo5ydyJt/wCAAh+QQJCAAPACwAAAAAEAAQAAAEWvDJSau9OAwCABnBtQhdCQjHlQhFWJBCOKWPLAXk8KQIkCwWBcAgMDw4Q5CkgOwohCVCYTIwdAgPolVhWSQAiN1jcLLVQrQbrBV4EcySA8l0Alo0yA8cw+9TIgAh+QQFCAAPACwAAAAAEAAQAAAEWvDJSau9WA4AyAhWMChPwXHCQRUGYARgKQBCzJxAQgXzIC2KFkc1MREoHMTAhwQ0Y5oBgkMhAAqUw8mgWGho0EcCx5DwaAUQrGXATg6zE7bwCQ2sAGZmz7dEAAA7);background-repeat: no-repeat;background-position: center;line-height: 39px;color: red;">正在获取地理经纬度...</div>';
+function chongzhisss(){
+	var xingm=$('#xingm').val();
+	var telsdfsdfsd=$('#telsdfsdfsd').val();
+	var dzdsafadsf=$('#dzdsafadsf').val();
+	var txt_area=$('#txt_area').val();
+	if(!xingm) {
+		alert('请填写姓名！');
+		return false;
+	}
+		if(!telsdfsdfsd) {
+		alert('请填写电话！');
+		return false;
+	}
+		if(!dzdsafadsf) {
+		alert('请填写地址！');
+		return false;
+	}
+	
+	$('#ddssjjddzzzzsss').html(immmssssaa);
+	hsssdjj(txt_area+dzdsafadsf);
+	
+		/*$.ajax( {
+			url: 'http://aina.test.resonance.net.cn/address.php?address='+txt_area+dzdsafadsf, //这里是静态页的地址
+			type: "GET", //静态页用get方法，否则服务器会抛出405错误
+			dataType: "json",
+			timeout : 60000,
+			//cache: false,
+			//async: false,
+			beforeSend: function(){
+			 // Handle the beforeSend event
+			 $('#ddssjjddzzzzsss').html(immmssssaa);
+			},
+			success: function(data){
+				$('#lat').val(data.lat);
+				$('#lng').val(data.lng);
+				document.getElementById('myformsfsdfsd').submit();
+				return false;
+				//alert(data.lng);
+				//var result = $(data).find("另一个html页面的指定的一部分").html();
+			}
+		});
+		setTimeout('chongzhisss()',15000);*/
+		//alert('fdasfads');
+}
+
+function hsssdjj(jwdddzzz){
+$('#mpapphidd').hide();
+$('#allmap').show();
+	// 百度地图API功能
+	var map = new BMap.Map("allmap");
+	var point = new BMap.Point(108.33082,22.815558);
+	map.centerAndZoom(point,18);
+	// 创建地址解析器实例
+	var myGeo = new BMap.Geocoder();
+	//20161213
+  // 添加带有定位的导航控件
+  var navigationControl = new BMap.NavigationControl({
+    // 靠左上角位置
+    anchor: BMAP_ANCHOR_TOP_LEFT,
+    // LARGE类型
+    type: BMAP_NAVIGATION_CONTROL_LARGE,
+    // 启用显示定位
+    enableGeolocation: false
+  });
+  map.addControl(navigationControl);
+  
+	function showInfo(e){
+			//alert(e.point.lng + ", " + e.point.lat);
+			map.clearOverlays();
+			map.centerAndZoom(e.point, 18);
+			//map.addOverlay(new BMap.Marker(e.point));
+			var markersss = new BMap.Marker(e.point);// 创建标注
+			//markersss.addEventListener("dragend", showInfo);
+			map.addOverlay(markersss);
+			markersss.enableDragging();
+			markersss.addEventListener("dragend", showInfo);
+			$('#lng').val(e.point.lng);
+			$('#lat').val(e.point.lat);
+			//return true;
+		
+	}
+	map.addEventListener("click", showInfo);
+	
+	//end
+	// 将地址解析结果显示在地图上,并调整地图视野
+	myGeo.getPoint(jwdddzzz, function(point){
+		if (point) {
+			map.centerAndZoom(point, 18);
+			var markersss = new BMap.Marker(point);// 创建标注
+			//markersss.addEventListener("dragend", showInfo);
+			map.addOverlay(markersss);
+			markersss.enableDragging();
+			markersss.addEventListener("dragend", showInfo);
+			$('#lng').val(point.lng);
+			$('#lat').val(point.lat);
+			
+		
+			
+			if(point.lng && point.lat) {
+				if(point.lng==108.54168 && point.lat==22.829218){
+					alert('解析地址失败，请填写详细街道门牌号。');
+					$('#mpapphidd').show();
+					$('#allmap').hide();
+					$('#ddssjjddzzzzsss').html('<input type="button" onclick="chongzhisss();" value="提 交" style="margin-top: 10px;padding: 11px 30px;background-color: #00415D;color: #fff;border: none;" />');
+					return false;
+				}
+				//document.getElementById('myform').submit();
+				var newwwstssrt='<p>轻点地图或拖拽红点校准收货地址</p><p>如果地图位置错误，请填写详细街道门牌号</p>';
+				$('#ddssjjddzzzzsss').html(newwwstssrt+'<input type="button" onclick="chongzhisssqr();" value="确认地址" style="margin-top: 10px;padding: 11px 30px;background-color: #00415D;color: #fff;border: none;" /> <input type="button" onclick="chongzhisss();" value="重新获取" style="margin-top: 10px;padding: 11px 30px;background-color: #00415D;color: #fff;border: none;" />');
+			}else {
+				alert('解析地址失败');
+				$('#ddssjjddzzzzsss').html('<input type="button" onclick="chongzhisss();" value="提 交" style="margin-top: 10px;padding: 11px 30px;background-color: #00415D;color: #fff;border: none;" />');
+			}
+			//map.addEventListener("click", showInfo);
+			/*function showInfo(e){
+				map.clearOverlays();
+				map.addOverlay(new BMap.Marker(new BMap.Point(e.point.lng,e.point.lat)));
+				//alert(e.point.lng + ", " + e.point.lat);
+			}*/
+			//map.panTo(new BMap.Point(116.409, 39.918));
+			//alert(point.lng);point.lat
+		}else{
+			alert('解析地址失败');
+			$('#ddssjjddzzzzsss').html('<input type="button" onclick="chongzhisss();" value="提 交" style="margin-top: 10px;padding: 11px 30px;background-color: #00415D;color: #fff;border: none;" />');
+			//解析地址失败
+		}
+	}, "南宁市");
+}
+function chongzhisssqr(){
+document.getElementById('myformsfsdfsd').submit();
+	}
+
+
+</script>

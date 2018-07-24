@@ -1,0 +1,330 @@
+<include file="Addons/WeiSite/View/default/TemplateIndex/ColorV1/head.html" />
+
+<script src="js/layer.js"></script>
+<!---------------------------- 商品详情文字start ---------------------------->
+<style>
+body{padding-bottom:68px;}
+</style>
+<div class="top" style="position: relative;">
+ <a onclick="history.go(-1)" style="cursor:pointer;"><div class="fanhui"><img src="images/huifh.png" width="9" height="16" /></div></a>
+ <div class="biaoti">商品详情</div>
+</div>
+<!---------------------------- 商品详情文字end ---------------------------->
+
+
+
+<!---------------------------- banner start ---------------------------->
+<div class="spxqbn" style="
+    width: 90%;
+    margin: auto;
+">
+<include file="Addons/WeiSite/View/default/TemplateIndex/ColorV1/I_b.html" />
+</div>
+<!---------------------------- banner end ---------------------------->
+
+
+
+<!---------------------------- 产品详情内容start ---------------------------->
+
+<div class="cpxx" style="
+    width: 90%;
+    margin: auto;
+">
+   <div class="cpm">{$info.title}&nbsp;&nbsp;&nbsp;{$info.yingwen}</div>
+   <div style="font-size:13px;color:#B67F2F;">
+   <?php
+    echo str_ireplace("\r\n","<br />",$info['intro']);
+   ?>
+ </div>
+  <div class="line" style="border-bottom:1px solid #E1E1E1; width:90%;  padding-bottom:15px; margin: 0 auto;  "></div>
+</div>
+
+<div class="jiamu">
+   <div class="chicun">尺寸：
+
+     <?php
+      $info['chicun']=str_ireplace("\r\n","#",$info['chicun']);
+       $chicun=explode("#",$info['chicun']);
+      //$chicun=explode('#',$chicun[0]);
+       foreach($chicun as $k=>$v){
+          if(!($k%2)){
+              $kk=$k+1;
+             $vjg=$chicun['1'];
+			 $vccdefualut=$chicun['0'];
+             $vcc=$chicun[$k];
+             echo '<span class="ccfk ccfkonclick" jg="'.$chicun[$kk].'" style="margin-right:10px;position: relative;">';
+               if(!$k) echo '<span id="triangle-bottomright"><span>√</span></span>';
+            echo $vcc.'</span>';
+          }
+       }
+
+       //$chicun=explode('#',$chicun[0]);
+       //dump($chicun);
+       //echo '￥'.$chicun[1].'/'.$chicun[0];
+       ?>
+
+
+
+
+
+ </div>
+   <div class="jiage" >价格：￥<span id="vjgjqnew">{$vjg}</span></div>
+  <div class="line" style="border-bottom:1px solid #E1E1E1; width:90%;padding-top:15px;margin: 0 auto;"></div>
+</div>
+
+<div class="kouwei">
+  <P>口味：{$info.kouwei}</P>
+  <p style="padding-top:5px;">甜度：<?php
+        for($i=0;$i<$info['tiandu'];$i++){
+          echo '★';
+        }
+    ?></p>
+  <div class="line" style="border-bottom:1px solid #E1E1E1; width:90%;padding-top:15px;margin: 0 auto;"></div>
+</div>
+
+
+
+
+<style>
+.newcontttt {
+    width: 90%;
+    margin: auto;
+    overflow: hidden;
+}
+  .newcontttt img{max-width: 100%;}.nnqqqgggss{
+    color: #fff;
+    background-color: #00415D;
+}.nnqqqgggss span{color:#fff;}
+</style>
+<div class="newcontttt">
+  {$info.content}
+</div>
+
+
+
+<!---------------------------- 产品详情内容end ---------------------------->
+
+
+
+
+
+
+<!---------------------------- 立即订购、加入购物车start ---------------------------->
+
+<div class="zhiwei">
+	<p style="display:none;<?php
+	//if($_COOKIE['tel']==194) echo 'display:none;';
+	?>position: fixed;
+    bottom: 0px;/*55px;*/
+    background: yellow;    z-index: 9999999;
+    color: #00415d;">网站维护升级中，重新开放时间2016-09-09 01:00</p>
+	<?php
+		//dump($info);
+		if($info['qianggou'] && $info['shifsxj']!=2){
+			$qqqgggsssjjjjkaishi=($info['qgetime']-time());
+			if($info['qgstime']>time()){
+				$dssfsdfsd='style="display:none;"';
+				$qqqgggsssjjjjkaishi=($info['qgstime']-time());
+				
+	?>
+	<p class="nnqqqgggss">抢购开始时间剩余：<span id="day_show"></span>天<span id="hour_show"></span>小时<span id="minute_show"></span>分钟<span id="second_show"></span>秒
+	</p>
+	<?php
+			}
+			if($info['qgetime']<time() || !$info['qgnum']){
+				$dssfsdfsd='style="display:none;"';
+				$qqqgggsssjjjjkaishi=time();
+			?>
+			<p class="nnqqqgggss">亲来晚啦，抢购活动已经结束哦</p>
+			<?php
+			}
+		}
+		if($info['shifsxj']==2){
+			$dssfsdfsd='style="display:none;"';
+			echo '<p class="nnqqqgggss">即将上线</p>';
+		}
+	?>
+   <P {$dssfsdfsd} <?php
+   if($info['qianggou']) echo 'style="background: #d19f4d;"';
+   ?>>   
+   <?php
+   if($info['qianggou']){
+   ?>
+   
+ 
+   <span><a href="javascript:;" onclick="ljjlggmm();"><span class="order">立即抢购</span></a></span>
+   <span class="nnqqqgggss" style="background: none;color: #000;"><span id="day_show"></span>天<span id="hour_show"></span>小时<span id="minute_show"></span>分钟<span id="second_show"></span>秒后结束
+	</span>
+   <?php
+   }else{
+   ?>
+   <a href="javascript:;" onclick="ljjlggmm();"><span class="order">立即订购</span></a><a href="javascript:;" id="sdfsdaaaa" onclick="jiarugouwuc();"><span class="cart">加入购物车</span></a>
+   <?php
+   }?>
+   
+   </P>
+</div>
+<!---------------------------- 立即订购、加入购物车end ---------------------------->
+
+
+
+<script>
+		//倒计时
+			var intDiff = parseInt('<?php echo $qqqgggsssjjjjkaishi;?>');//倒计时总秒数量
+			function timer(intDiff){
+				window.setInterval(function(){
+				var day=0,
+					hour=0,
+					minute=0,
+					second=0;//时间默认值        
+				if(intDiff > 0){
+					day = Math.floor(intDiff / (60 * 60 * 24));
+					hour = Math.floor(intDiff / (60 * 60)) - (day * 24);
+					minute = Math.floor(intDiff / 60) - (day * 24 * 60) - (hour * 60);
+					second = Math.floor(intDiff) - (day * 24 * 60 * 60) - (hour * 60 * 60) - (minute * 60);
+				}
+				if (minute <= 9) minute = '0' + minute;
+				if (second <= 9) second = '0' + second;
+				$('#day_show').html(day);
+				$('#hour_show').html(hour);
+				$('#minute_show').html(minute);
+				$('#second_show').html(second);
+				if(intDiff==0) location.href = '<?php echo $_SESSION['dangqian_url'];?>';
+				intDiff--;
+				}, 1000);
+			} 
+			$(function(){
+				timer(intDiff);
+			});   
+		//end
+
+
+
+
+chicun='{$vccdefualut}';
+//立即购买
+var loooggg='{$no_login}';
+function ljjlggmm(){
+	if(loooggg){
+		location.href = '/index.php?s=/addon/WeiSite/WeiSite/login.html';
+		return false;
+	}
+	jiarugouwuc(1);
+	
+}
+function qqggrrssggdddssss(){
+	layer.confirm('商品目前暂无库存哦', {
+	  btn: ['好的'],
+		title:false,
+		closeBtn: 0,
+		area: '320px'
+		
+	}, function(){
+		layer.closeAll();
+		location.href = '{$fuqshifoufanwang}';
+	  //按钮【按钮一】的回调
+	});
+	return false;
+}
+//抢购人数过多
+function qqggrrssggddd(){
+	layer.confirm('当前购买人数过多，请稍等哦', {
+	  btn: ['好的'],
+		title:false,
+		closeBtn: 0,
+		area: '320px'
+		
+	}, function(){
+		layer.closeAll();
+		location.href = '{$fuqshifoufanwang}';
+	  //按钮【按钮一】的回调
+	});
+	return false;
+}
+
+//加入购物车
+function jiarugouwuc(n){
+	if(loooggg){
+		location.href = '/index.php?s=/addon/WeiSite/WeiSite/login.html';
+		return false;
+	}
+	var ssfffjjjggg=0;
+	if(n==1){
+		ssfffjjjggg=1;
+	}
+	//var chicun=$('#triangle-bottomright').next().text();
+	$("#sdfsdaaaa").removeAttr("onclick");
+	var jiage=$('#vjgjqnew').text();
+	var ggssww=parseInt($('#dsafggzzs').text());
+	
+	if(ggssww<8) {
+		
+		ggssww=ggssww+1;
+		$('#dsafggzzs').text(ggssww);
+	}
+	//alert(chicun+jiage);
+	chicun = chicun.replace("+", "2500152288");
+	$.ajax( {
+		url: '/index.php?s=/addon/WeiSite/WeiSite/JoinCart/chicun/'+chicun+'/jiage/'+jiage+'/sid/{$info.id}/pic/{$info.cover}/title/{$info.title}/jiage/'+jiage+'/ssfffjjjggg/'+ssfffjjjggg+'.html', //这里是静态页的地址
+		type: "GET", //静态页用get方法，否则服务器会抛出405错误
+		//dataType: "json",
+		//cache: false,
+		//async: false,
+		beforeSend: function(){
+		 // Handle the beforeSend event
+			$('#sdfsdaaaa').children().text('正在添加...');
+		},
+		success: function(data){
+			if(data=='Server busy..'){
+				qqggrrssggddd();
+				return false;
+			}
+			if(data=='nonumxxoo'){
+				qqggrrssggdddssss();
+				return false;
+			}
+			if(n==1){
+				location.href = 'index.php?s=/addon/WeiSite/WeiSite/lijigoumaiqianggou/sid/{$info.id}/chicun/'+chicun+'.html';
+				return false;
+			}
+			//alert(data);
+			//var result = $(data).find("另一个html页面的指定的一部分").html();
+			//if(data=='noloing') location.href = '/index.php?s=/addon/WeiSite/WeiSite/login.html';
+			if(data=='ok') $('#sdfsdaaaa').children().text('已经加入购物车');
+			//if(data=='noloing') $('#sdfsdaaaa').children().text('请先登录');
+			else //location.href = '/index.php?s=/addon/WeiSite/WeiSite/login.html';
+			$('#sdfsdaaaa').children().text('服务器繁忙');
+		}
+	});
+}
+
+$(document).ready(function(){
+  $(".ccfkonclick").click(function(){
+  //点击尺寸变化价格
+	$("#sdfsdaaaa").attr("onclick","jiarugouwuc();");
+	$('#sdfsdaaaa').children().text('加入购物车');
+    var nttt='<span id="triangle-bottomright"><span>√</span></span>';
+    $('#triangle-bottomright').remove();
+	chicun=$(this).text();
+	//jiage=$(this).attr("jg");
+	//chicun=chicun.replace("寸", "");
+    $(this).append(nttt);
+    $('#vjgjqnew').text($(this).attr("jg"));
+  });
+});
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<include file="Addons/WeiSite/View/default/TemplateIndex/ColorV1/foot.html" />

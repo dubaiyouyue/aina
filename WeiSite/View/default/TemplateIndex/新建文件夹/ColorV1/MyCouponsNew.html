@@ -1,0 +1,146 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="format-detection" content="telephone=no" />
+<title>会员中心-我的优惠券</title>
+<!-------------- css start -------------->
+<!--全部css-->
+<link href="css/style.css" type="text/css" rel="stylesheet"  />
+<!-------------- css end ---------------->
+
+<!-------------- js start -------------->
+<!--手机布局rem-->
+<script src="js/rem.js"></script>
+<!-------------- js end ---------------->   
+</head>
+
+<body>
+<!---------------------------- 文字我的优惠券start ---------------------------->
+<div class="top" style="margin-bottom:0.75rem;">
+   <div class="fanhui"><a  onclick="history.go(-1)"  style="cursor:pointer;"><img src="images/fh.png" width="9" height="16" /></a></div>
+   <div class="baizi">使用优惠券</div>
+</div>
+<!---------------------------- 文字我的优惠券end ---------------------------->
+
+<style>
+.lanmu {
+    width: 100%;
+    height: auto;
+    overflow: auto;
+    text-align: center;
+    margin-top: 85px;
+    background-color: yellow;
+    padding: 6px 0px;
+    margin-bottom: 15px;
+    color: red;
+}
+body{padding-bottom:60px;}
+</style>
+<!-------------------- 栏目start -------------------->
+<div class="lanmu">
+点击优惠券使用到当前购物订单中
+</div>
+<!-------------------- 栏目end  -------------------->
+
+
+<!-------------------- 优惠券start -------------------->
+
+<?php
+	if(empty($y)) echo '暂无可以代金券哦。';
+	foreach($y as $k=>$v){
+	
+			//使用条件
+			$nnpnxxee=$config['djqshiyongxianer'];
+			$nnpnxxee=str_ireplace("\r\n",'#',$nnpnxxee);
+			$nnpnxxee=str_ireplace("购",'',$nnpnxxee);
+			$nnpnxxee=explode("#",$nnpnxxee);
+			foreach ($nnpnxxee as &$vsss) {
+				$vsss = str_ireplace(' ','',$vsss);
+			}
+			$xxeennpn=array_search($v['jine'],$nnpnxxee);
+			if($xxeennpn) $xxeennpn=$nnpnxxee[($xxeennpn-1)];
+			if($xxeennpn<=$_SESSION['new_Total_fee']){
+		//已使用
+		if($v['ok']==1) {
+		
+		
+?>
+<div class="huiyhq3">
+  <div class="rnb">￥</div>
+  <div class="jine">{$v.jine}</div>
+  <div class="yhqwz">优惠券</div>
+  <div class="edu">消费满{$xxeennpn}元可用</div><!--{$v.xe}-->
+  <div class="qxbj qixian" style="color: #CCC;">{$v.etime|time_format=###,'Y-m-d'}前可使用</div>
+  <div class="yishiyong"></div>
+</div>
+<?php
+}else if($v['etime']<time()){
+	//已过期
+?>
+
+<div class="huiyhq4">
+  <div class="rnb">￥</div>
+  <div class="jine">{$v.jine}</div>
+  <div class="yhqwz">优惠券</div>
+  <div class="edu">消费满{$xxeennpn}元可用</div>
+  <div class="qxbj qixian" style="color: #CCC;">{$v.etime|time_format=###,'Y-m-d'}前可使用</div>
+  <div class="yiguoqi"></div>
+</div>
+<?php
+}else if(!($k%2)){
+?><a href="/index.php?s=/addon/WeiSite/WeiSite/MyCouponsNewUsy/useid/{$v.id}.html">
+<div class="jinyhq1">
+
+	<div class="rnb">￥</div>
+	<div class="jine">{$v.jine}</div>
+	
+	<div class="yhqwz">优惠券</div>
+   <div class="edu">消费满{$xxeennpn}元可用</div>
+	<div class="qxbj qixian" style="color: #B67F2F;">{$v.etime|time_format=###,'Y-m-d'}前可使用</div>
+	
+</div>
+
+<?php
+}else{
+?>
+<a href="/index.php?s=/addon/WeiSite/WeiSite/MyCouponsNewUsy/useid/{$v.id}.html">
+<div class="lanyhq2">
+  <div class="rnb">￥</div>
+  <div class="jine">{$v.jine}</div>
+  <div class="yhqwz">优惠券</div>
+  <div class="edu">消费满{$xxeennpn}元可用</div>
+  <div class="qxbj qixian" style="color: #00415D;">{$v.etime|time_format=###,'Y-m-d'}前可使用</div>
+</div></a>
+<?php
+}}}
+?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-------------------- 优惠券end -------------------->
+<include file="Addons/WeiSite/View/default/TemplateIndex/ColorV1/footm.html" />

@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="format-detection" content="telephone=no" />
+<title>会员中心-账号信息</title>
+
+<script>	
+//- 设置html标签font-size
+(function (doc, win) {
+    var _root = doc.documentElement,
+        resizeEvent = 'orientationchange' in window ? 'orientationchange' : 'resize',
+        resizeCallback = function () {
+            var clientWidth = _root.clientWidth,
+                fontSize = 20;
+            if (!clientWidth) return;
+            //if(clientWidth < 640) {
+                fontSize = 20 * (clientWidth / 320);
+            /*} else {
+                fontSize = 20 * (640 / 320);
+            }*/
+            _root.style.fontSize = fontSize + 'px';
+        };
+    if (!doc.addEventListener) return;
+    win.addEventListener(resizeEvent, resizeCallback, false);
+    doc.addEventListener('DOMContentLoaded', resizeCallback, false);
+})(document, window);
+</script>
+<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+
+<script src="js/layer.js"></script>
+<style type="text/css">
+*{
+	margin:0;
+	padding:0;
+	border:0;
+	font-family:"微软雅黑", Arial;
+	font-size:14px;
+}
+ul li{
+	list-style-type: none;
+}
+a{
+	text-decoration: none;
+	color: #000;
+}
+</style>
+
+<body>
+	<?php
+	setcookie('uptxsstel','/index.php?s=/addon/WeiSite/WeiSite/Accountinformation.html');
+//echo file_exists('shearphoto_common/file/shearphoto_file/'.$user['id'].'_big.jpg');
+$nnntxsss='/tx/0.jpg';
+if(file_exists('shearphoto_common/file/shearphoto_file/'.$user['id'].'_big.jpg')){
+	$nnntxsss='shearphoto_common/file/shearphoto_file/'.$user['id'].'_big.jpg?'.time();
+}
+?>
+
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=X8u8xx9GzO88EIydfLbTsvbK"></script>
+	
+	
+
+
+
+<!---------------------------- 文字账号信息start ---------------------------->
+<style>
+body{
+	background-color:#EEE;
+}
+.top{
+	height:2.25rem;
+	width:100%;
+	background-color:#00415D;
+	margin-bottom:0.75rem;
+}
+.top .fanhui{
+	position:absolute;
+	left:5%;
+	top:0.7rem;
+}
+.top .baizi{
+	font-size:16px;
+	color:#FFF;
+	text-align:center;
+	line-height:2.25rem;
+}
+
+
+}
+</style>
+<div class="top">
+   <div class="fanhui"><a  onclick="history.go(-1)"  style="cursor:pointer;"><img src="images/fh.png" width="9" height="16" /></a></div>
+   <div class="baizi">账号信息</div>
+</div>
+<!---------------------------- 文字账号信息end ---------------------------->
+
+
+<!---------------------------- 列表内容start ---------------------------->
+<style>
+.zhxxlb1{
+	width:100%;
+	margin-bottom:10px;
+}
+.zhxxlb1 .xgtx{
+	background-color:#FFF;
+	padding-left:15px;
+	line-height:100px;
+}
+.zhxxlb1 .xgtx .txdt{
+	background:url(images/txbjb2.png) no-repeat right;
+	height:62px;
+}
+
+
+
+.zhxxlb2{
+	background-color:#FFF;
+	margin-bottom:15px;
+}
+.zhxxlb2 ul .zh{	
+	line-height:55px;
+	border-bottom:1px solid #EEE;
+	margin-left:15px;
+}
+.zhxxlb2 ul .zh .zhmx{
+    float: right;
+    margin-right: 20px;
+    display: inline-block;
+	line-height:55px;
+}
+.zhxxlb2 ul .xgsjh{
+	line-height:55px;
+	border-bottom:1px solid #EEE;
+	margin-left:15px;
+}
+.zhxxlb2 ul .xgsjh .sjh{
+    float: right;
+    margin-right: 55px;
+    display: inline-block;
+	line-height:55px;
+}
+
+.zhxxlb2 ul .xgmm{
+	line-height:55px;
+	border-bottom:1px solid #EEE;
+	margin-left:15px;
+}
+.zhxxlb2 ul .shdz{
+	line-height:55px;
+	margin-left:15px;
+}
+
+
+/*------------------------------------------------------------------------*/
+.sssrightbbb{
+	/*右边箭头*/
+	background: url(images/lanjinru.png);
+	background-repeat: no-repeat;
+	background-position: right;
+	padding-right: 16px;
+	margin-right: 18px!important;
+	float: right;
+    display: block;
+    height: 55px;
+    line-height: 55px;
+	/*padding-top:23px;*/
+}
+.sssrightbbb-tx{
+	/*头像右边箭头*/
+    height: 100px;
+}
+.sssrightbbb-tx-user{
+	/*会员头像*/
+	background: #fff url(images/lanaina.png) no-repeat right;
+    height: 62px;
+    width: 62px;
+	border-radius: 100%;
+	position: absolute;
+    top: 21px;
+    right: 52px;
+	background-size: cover;
+	border: 1px solid #CCC;
+}
+.sssrightbbb-tx-xgtx{
+	position:relative;
+}
+
+
+
+.mrdd1{
+	margin-bottom:15px;
+	margin-left:15px;
+}
+.mrdd1 .xmsjh{
+}
+.mrdd1 .xmsjh .huizi{
+    font-size:12px; 
+	color:#BBB;
+	padding-left:20px;
+}
+.mrdd1 .mr{
+	font-size:12px; 
+	color:#BBB;
+}
+.mrdd1 .xmsjh .yuangou{
+	background: url(images/yuangou.png);
+	background-repeat: no-repeat;
+	background-position: right;
+	padding-top:18px;
+	margin-right:20px;
+	float: right;
+    display: block;
+    height: 22px;
+	width:22px;
+}
+
+
+
+.mrdd2{
+	margin-bottom:10px;
+	padding-left:15px;
+	background-color:#FFF;
+	padding-top:10px;
+	padding-bottom:10px;
+}
+.mrdd2 .xmsjh .huizi{
+    font-size:12px; 
+	color:#BBB;
+	padding-left:20px;
+}
+.mrdd2 .mr{
+	font-size:12px; 
+	color:#BBB;
+}
+
+.tjxdz{
+	width:100%;
+	margin-top:30px;
+	margin-bottom:30px;
+}
+.tjxdz .tianjia{
+	background-color:#00415D;
+	padding:10px 0px 10px 0px;
+	width:150px;
+	color:#FFF;
+	text-align:center;
+	margin: 0 auto;
+}
+.sssrightbbb-tx-user {
+    background: #fff url({$nnntxsss}) no-repeat right;
+
+    background-size: cover;
+}
+ .footer{
+    	width: 100%;
+    	margin-bottom: 20px;
+    }
+    .footer .huidise{
+    	width: 100%;
+    	height: 35px;
+    	background-color: #E1E1E1;
+    	margin-bottom: 10px;
+    }
+    .footer .huidise .wz_left{
+    	text-align: left;
+    	line-height: 35px;
+        margin-left: 20px;
+    }
+    .footer .huidise .wz_left a{
+    	color:#00415D;
+    }
+    .footer .huidise .wz_left .wz_right{
+        float: right;
+        margin-right: 20px;
+        display: inline-block;
+    }
+    .footer .huidise .wz_right a{
+    	color:#B67F2F;
+    }
+    .footer p{
+    	color: #B67F2F;
+    	text-align: center;
+    }
+</style>
+
+<div class="zhxxlb1" onclick="ajaxuptx();">
+	<div class="xgtx sssrightbbb-tx-xgtx">修改头像
+		<div class="sssrightbbb-tx-user"></div>
+		<span class="sssrightbbb sssrightbbb-tx"></span>
+	</div>
+</div>
+
+     
+	 
+
+
+<div class="zhxxlb2">
+   <ul>
+   <!--start-->
+		<li class="zh">账号<span class="zhmx" style="font-size:12px; color:#CCC;">{$user.tel}</span></li>
+		<li class="xgsjh" style="display:none;">修改手机号<span class="sjh sssrightbbb" style="font-size:12px; color:#CCC;">{$user.tel}</span></li>
+		<a href="/index.php?s=/addon/WeiSite/WeiSite/xiugaimim/index.html"><li class="xgmm">修改密码<span class="jr sssrightbbb"></span></li></a>
+		<li class="shdz">收货地址<span class="jr sssrightbbb"></span></li>
+		
+   <!--end------------------------------------------------------------------------>
+   </ul>
+</div>
+
+<?php
+	foreach($s as $k=>$v){
+	
+	
+?>
+<div class="<?php
+	if($v['mor']) echo 'mrdd1';
+	else echo 'mrdd2';
+?>">
+  <div class="xmsjh">{$v.xingm}<span class="huizi">{$v.tel}</span><span class="yuangou"></span>
+</div>
+  <div class="mr"><span style="color: #00415D;<?php
+	if($v['mor']) echo'display:none;';
+  ?>" onclick="mor({$v.id});">【设为默认】</span>{$v.dz} <span onclick="mordd({$v.id});" style="<?php
+	if($v['mor']) echo'display:none;';
+  ?>color:red;">【删除】</span></div>
+</div>
+
+<?php
+
+}?>
+
+<div class="tjxdz" id="ddssjjddzzzz" onclick="shouhuodizi();"><P class="tianjia">添加新地址</P></div>
+<!---------------------------- 列表内容end ---------------------------->
+
+
+<script>
+	immm='<div style="height: 39px;background:url(data:image/gif;base64,R0lGODlhEAAQALMPAHp6evf394qKiry8vJOTk83NzYKCgubm5t7e3qysrMXFxe7u7pubm7S0tKOjo////yH/C05FVFNDQVBFMi4wAwEAAAAh+QQJCAAPACwAAAAAEAAQAAAETPDJSau9NRDAgWxDYGmdZADCkQnlU7CCOA3oNgXsQG2FRhUAAoWDIU6MGeSDR0m4ghRa7JjIUXCogqQzpRxYhi2HILsOGuJxGcNuTyIAIfkECQgADwAsAAAAABAAEAAABGLwSXmMmjhLAQjSWDAYQHmAz8GVQPIESxZwggIYS0AIATYAvAdh8OIQJwRAQbJkdjAlUCA6KfU0VEmyGWgWnpNfcEAoAo6SmWtBUtCuk9gjwQKeQAeWYQAHIZICKBoKBncTEQAh+QQJCAAPACwAAAAAEAAQAAAEWvDJORejGCtQsgwDAQAGGWSHMK7jgAWq0CGj0VEDIJxPnvAU0a13eAQKrsnI81gqAZ6AUzIonA7JRwFAyAQSgCQsjCmUAIhjDEhlrQTFV+lMGLApWwUzw1jsIwAh+QQJCAAPACwAAAAAEAAQAAAETvDJSau9L4QaBgEAMWgEQh0CqALCZ0pBKhRSkYLvM7Ab/OGThoE2+QExyAdiuexhVglKwdCgqKKTGGBgBc00Np7VcVsJDpVo5ydyJt/wCAAh+QQJCAAPACwAAAAAEAAQAAAEWvDJSau9OAwCABnBtQhdCQjHlQhFWJBCOKWPLAXk8KQIkCwWBcAgMDw4Q5CkgOwohCVCYTIwdAgPolVhWSQAiN1jcLLVQrQbrBV4EcySA8l0Alo0yA8cw+9TIgAh+QQFCAAPACwAAAAAEAAQAAAEWvDJSau9WA4AyAhWMChPwXHCQRUGYARgKQBCzJxAQgXzIC2KFkc1MREoHMTAhwQ0Y5oBgkMhAAqUw8mgWGho0EcCx5DwaAUQrGXATg6zE7bwCQ2sAGZmz7dEAAA7);background-repeat: no-repeat;background-position: center;"></div>';
+
+
+//删除地址
+function mordd(id){
+	layer.confirm('确定要删除该地址吗？', {
+		closeBtn: 0,
+		title:false,
+	  btn: ['确认','取消'] //按钮
+	}, function(){
+	  //layer.msg('的确很重要', {icon: 1});
+	  layer.closeAll();
+		location.href = '/index.php?s=/addon/WeiSite/WeiSite/Accountinformation/mordel/'+id+'.html';
+		
+	}, function(){
+		layer.closeAll();
+	});
+}
+//修改默认地址
+function mor(id){
+	location.href = '/index.php?s=/addon/WeiSite/WeiSite/Accountinformation/mor/'+id+'.html';
+}
+function shouhuodizi(){
+$('#ddssjjddzzzz').html(immm);
+//Ajax获取
+$.post('/index.php?s=/addon/WeiSite/WeiSite/shouhuodizi/', {}, function(str){
+    layer.open({
+		title:'添加新地址',
+		shade: [0.8, '#393D49'],
+        type: 1,
+		area: ['320px','434px'],//area: '320px',
+        content: str //注意，如果str是object，那么需要字符拼接。
+    });
+});
+
+}
+
+
+
+function ajaxuptx(){
+location.href = '/uptxnew.html';
+return false;
+//Ajax获取
+$.post('/index.php?s=/addon/WeiSite/WeiSite/uptx/', {}, function(str){
+    layer.open({
+		title:'上传头像',
+		shade: [0.8, '#393D49'],
+        type: 1,
+        content: str //注意，如果str是object，那么需要字符拼接。
+    });
+});
+
+}
+</script>
+<include file="Addons/WeiSite/View/default/TemplateIndex/ColorV1/footm.html" />
